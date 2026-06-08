@@ -1,17 +1,19 @@
 @import "tailwindcss";
 
 * {
-	margin: 0;
-	padding: 0;
 	box-sizing: border-box;
 }
 
 body {
+	margin: 0;
+	padding: 0;
 	width: 100dvw;
-	overflow: hidden;
+	overflow-x: hidden;
 	min-height: 100dvh;
 	font-family: sans-serif;
 	scroll-behavior: smooth;
+	color: var(--text-color);
+	background: var(--background-color);
 }
 
 img,
@@ -28,5 +30,5 @@ svg {
 	--background-color: #11181b;
 	--text-second-color: #B9CACB;
 	--box-background-color: #1e202399;
-	--background-second-color: #111417;
+	--background-second-color: #0d0f11;
 }
