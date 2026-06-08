@@ -1,0 +1,21 @@
+@import "tailwindcss";
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	width: 100dvw;
+	overflow: hidden;
+	min-height: 100dvh;
+	font-family: sans-serif;
+	scroll-behavior: smooth;
+}
+
+img,
+svg {
+	width: 100%;
+	height: 100%;
+}
