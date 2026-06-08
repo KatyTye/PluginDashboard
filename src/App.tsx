@@ -3,6 +3,7 @@ import PrimaryLayout from "./layouts/Primary"
 import NotFound from "./pages/NotFound"
 import ErrorPage from "./pages/Error"
 import Home from "./pages/Home"
+import Terms from "./pages/Terms"
 
 function App() {
 
@@ -13,6 +14,10 @@ function App() {
 				{
 					index: true,
 					element: <Home />
+				},
+				{
+					path: "/terms",
+					element: <Terms />
 				},
 				{
 					path: "*",

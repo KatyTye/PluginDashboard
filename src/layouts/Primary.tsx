@@ -6,7 +6,7 @@ export default function PrimaryLayout() {
 
 	return (<>
 		<Header />
-		<main className="page-content flex flex-col p-4 md:pl-20 md:pr-20">
+		<main className="page-content flex flex-col p-4 md:p-20 pt-10 pb-10">
 			<Outlet />
 		</main>
 		<Footer />
