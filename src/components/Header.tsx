@@ -12,15 +12,15 @@ export default function Header() {
 		</Link>
 
 		<nav className="grid gap-5 md:gap-10 justify-center md:grid-cols-3 md:flex">
-			<NavLink to={"/features"} className="border-b-2 border-transparent transition-all [&.active]:border-(--special-color) 
+			<NavLink to={"/features"} className="border-b-2 w-fit m-auto border-transparent transition-all [&.active]:border-(--special-color) 
 			hover:border-(--special-color) duration-500 [&.active]:text-(--text-color) text-(--text-second-color) text-center">
 				Features
 			</NavLink>
-			<NavLink to={"/docs"} className="border-b-2 border-transparent transition-all [&.active]:border-(--special-color) 
+			<NavLink to={"/docs"} className="border-b-2 w-fit m-auto border-transparent transition-all [&.active]:border-(--special-color) 
 			hover:border-(--special-color) duration-500 [&.active]:text-(--text-color) text-(--text-second-color) text-center">
 				Documentation
 			</NavLink>
-			<NavLink to={"/support"} className="border-b-2 border-transparent transition-all [&.active]:border-(--special-color) 
+			<NavLink to={"/support"} className="border-b-2 w-fit m-auto border-transparent transition-all [&.active]:border-(--special-color) 
 			hover:border-(--special-color) duration-500 [&.active]:text-(--text-color) text-(--text-second-color) text-center">
 				Support
 			</NavLink>

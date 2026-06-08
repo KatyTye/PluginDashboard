@@ -8,11 +8,14 @@ body {
 	margin: 0;
 	padding: 0;
 	width: 100dvw;
+	display: flex;
 	overflow-x: hidden;
 	min-height: 100dvh;
+	flex-direction: column;
 	font-family: sans-serif;
 	scroll-behavior: smooth;
 	color: var(--text-color);
+	justify-content: space-between;
 	background: var(--background-color);
 }
 
