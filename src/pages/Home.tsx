@@ -108,7 +108,7 @@ export default function Home() {
 			</div>
 		</div>
 
-		<figure className="relative mt-25 overflow-hidden rounded-lg h-100 bg-[url('/images/village.jpg')] bg-cover bg-center">
+		<figure className="relative mt-50 overflow-hidden rounded-lg h-100 bg-[url('/images/village.jpg')] bg-cover bg-center">
 			<figcaption className="absolute p-5 top-0 w-full h-full flex flex-col justify-end bg-(--semi-transparent)">
 				<h2 className="text-4xl font-bold mt-5">
 					Built for Creators
