@@ -8,7 +8,7 @@ export default function Header() {
 	const [phoneOpen, setPhoneOpen] = useState(false)
 
 	return (<header className={`top-content grid gap-5 md:gap-0 md:grid-cols-3 items-center bg-(--background-second-color) p-4
-		lg:pl-20 lg:pr-20 transition-all duration-700justify-center grid-cols-1 ${phoneOpen ? "" : "nogap h-75"}`}>
+		lg:pl-20 lg:pr-20 transition-all duration-700 justify-center grid-cols-1 ${phoneOpen ? "" : "nogap lg:h-75"}`}>
 
 		<Link to={"/"} className="text-2xl text-center font-bold md:w-fit hover:text-(--special-color) duration-500">
 			SEssentials
@@ -40,11 +40,11 @@ export default function Header() {
 
 		<div className="md:flex gap-10 justify-center ml-auto hidden">
 			<NavLink to={"/profile"} className="w-6 [&.active]:text-(--text-color) hover:text-(--special-color)
-			duration-500 text-(--text-second-color)">
+			duration-500 text-(--text-second-color) full-image">
 				<FaRegUserCircle />
 			</NavLink>
 			<button className="cursor-pointer w-6 [&.active]:text-(--text-color) hover:text-(--special-color)
-			duration-500 text-(--text-second-color)">
+			duration-500 text-(--text-second-color) full-image">
 				<MdOutlineSettings />
 			</button>
 		</div>
