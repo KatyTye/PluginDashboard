@@ -1,15 +1,19 @@
 import { createBrowserRouter, RouterProvider } from "react-router"
+import { returnPluginDownloads } from "./helpers/downloads"
 import PrimaryLayout from "./layouts/Primary"
+import Downloads from "./pages/Downloads"
 import NotFound from "./pages/NotFound"
 import ErrorPage from "./pages/Error"
-import Home from "./pages/Home"
 import Terms from "./pages/Terms"
+import Home from "./pages/Home"
 
 function App() {
 
 	const BrowserRouter = createBrowserRouter([
 		{
+			id: "primary",
 			element: <PrimaryLayout />,
+			loader: returnPluginDownloads,
 			children: [
 				{
 					index: true,
@@ -20,13 +24,18 @@ function App() {
 					element: <Terms />
 				},
 				{
+					path: "/downloads",
+					element: <Downloads />
+				},
+				{
 					path: "*",
 					element: <NotFound />
 				}
 			]
 		},
 		{
-			id: "primary",
+			id: "layout",
+			path: "/edit",
 			element: <PrimaryLayout />,
 			errorElement: <ErrorPage />
 		}

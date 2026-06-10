@@ -20,6 +20,10 @@ export default function Header() {
 			hover:border-(--special-color) duration-500 [&.active]:text-(--text-color) text-(--text-second-color) text-center">
 				Documentation
 			</NavLink>
+			<NavLink to={"/downloads"} className="border-b-2 w-fit m-auto border-transparent transition-all [&.active]:border-(--special-color) 
+			hover:border-(--special-color) duration-500 [&.active]:text-(--text-color) text-(--text-second-color) text-center">
+				Downloads
+			</NavLink>
 			<NavLink to={"/support"} className="border-b-2 w-fit m-auto border-transparent transition-all [&.active]:border-(--special-color) 
 			hover:border-(--special-color) duration-500 [&.active]:text-(--text-color) text-(--text-second-color) text-center">
 				Support
