@@ -30,11 +30,11 @@ export default function Downloads() {
 
 						{element.downloadable ? <a href={`./files/sessentials-${element.version}.jar`} download={true}
 							className="w-full text-center ml-auto bg-(--special-color) rounded-lg p-2 pl-7
-							pr-7 font-bold transition-all duration-500">
+							pr-7 font-bold transition-all duration-500 hover:bg-amber-700">
 							Download
 						</a> : <button
 							className="w-full text-center ml-auto rounded-lg p-2 pl-7
-							pr-7 font-bold transition-all duration-500 bg-gray-700">
+							pr-7 font-bold bg-gray-700">
 							Not Released
 						</button>}
 					</li>)}
