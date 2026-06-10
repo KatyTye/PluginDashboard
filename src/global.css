@@ -49,6 +49,15 @@ footer svg {
 	color: #e8590c;
 }
 
+.noshow {
+	height: 0px;
+}
+
+.nogap {
+	height: 100px;
+	gap: 0;
+}
+
 @media screen and (width >=48rem) {
 	.custom-grid {
 		display: grid;

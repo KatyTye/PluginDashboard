@@ -4,7 +4,7 @@ import { NavLink } from "react-router";
 export default function Footer() {
 
 	return (<footer className="bottom-content flex flex-col gap-10 md:grid md:grid-cols-2 items-center bg-(--background-second-color)
-		p-4 md:pl-20 md:pr-20">
+		p-4 lg:pl-20 lg:pr-20">
 		<div>
 			<p className="text-center md:text-left">SEssentials</p>
 			<p className="text-(--text-second-color) text-[14px] text-center md:text-left">
