@@ -28,11 +28,15 @@ export default function Downloads() {
 							{Versions(element.minecraft_versions, index, false)}
 						</div>
 
-						<a href={`./files/sessentials-${element.version}.jar`} download={true}
+						{element.downloadable ? <a href={`./files/sessentials-${element.version}.jar`} download={true}
 							className="w-full text-center ml-auto bg-(--special-color) rounded-lg p-2 pl-7
-							pr-7 font-bold hover:bg-orange-600 transition-all duration-500">
+							pr-7 font-bold transition-all duration-500">
 							Download
-						</a>
+						</a> : <button
+							className="w-full text-center ml-auto rounded-lg p-2 pl-7
+							pr-7 font-bold transition-all duration-500 bg-gray-700">
+							Not Released
+						</button>}
 					</li>)}
 			</ul> : <>
 			</>

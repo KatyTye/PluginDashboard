@@ -28,7 +28,7 @@ export default function Versions(data: Array<typesObject>, index: number, useIco
 					{element?.name}
 				</p>
 
-				<div className="absolute opacity-0 hover:opacity-100 w-full transition-all duration-500">
+				<div className="absolute opacity-0 not-sm:hidden hover:opacity-100 w-full transition-all duration-500">
 					<p className="transform-[translateX(-35%)_translateY(-100%)] rounded-full bg-(--background-color)
 						border-2 border-(--border-color) w-fit text-(--text-second-color) p-2 text-nowrap">
 						{(
