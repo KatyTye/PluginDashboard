@@ -5,6 +5,8 @@ export interface typesObject {
 
 export interface downloadObject {
 	version: string,
+	released: boolean,
+	"minecraft_versions": Array<typesObject>,
 	"server_types": Array<typesObject>
 }
 
