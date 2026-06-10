@@ -12,7 +12,7 @@ export default function Footer() {
 			</p>
 		</div>
 		<nav className="flex flex-wrap gap-10 md:ml-auto justify-center">
-			<NavLink to={"/contact"} className="border-b-2 border-transparent transition-all [&.active]:border-(--special-color) 
+			<NavLink to={"/support"} className="border-b-2 border-transparent transition-all [&.active]:border-(--special-color) 
 			hover:border-(--special-color) duration-500 text-[14px] [&.active]:text-(--text-color) text-(--text-second-color)">
 				Contact Us
 			</NavLink>
