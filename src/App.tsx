@@ -13,6 +13,7 @@ function App() {
 		{
 			id: "primary",
 			element: <PrimaryLayout />,
+			errorElement: <ErrorPage />,
 			loader: returnPluginDownloads,
 			children: [
 				{

@@ -5,7 +5,7 @@ import { Link } from "react-router";
 export default function NotFound() {
 
 	return (<>
-		<div className="m-auto mt-10 mb-10 p-2 bg-(--background-color) shadow-[0_0_50px_5px_#ff6467] rounded-full w-2/3 max-w-50 shadow-red-400">
+		<div className="m-auto mt-10 mb-10 full-image p-2 bg-(--background-color) shadow-[0_0_50px_5px_#ff6467] rounded-full w-2/3 max-w-50 shadow-red-400">
 			<MdOutlineError className="text-red-400" />
 		</div>
 		<h2 className="text-2xl text-center font-bold">404 - Not Found</h2>
@@ -18,7 +18,7 @@ export default function NotFound() {
 			</span>
 		</p>
 		<Link to={"/"} className="m-auto mt-5 flex gap-2 w-fit bg-(--special-color) rounded-lg p-5 pl-7 pr-7 font-bold">
-			<span>
+			<span className="full-image">
 				<FaHouseChimney />
 			</span>
 			<span>
