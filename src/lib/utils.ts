@@ -15,5 +15,5 @@ export interface downloadResult {
 	status: number,
 	success: boolean,
 	message: string,
-	result: any
+	result: downloadObject[]
 }

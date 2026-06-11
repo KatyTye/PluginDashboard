@@ -1,36 +1,59 @@
-import downloadsData from "../data/Downloads.json"
+import downloadsData from "../data/Downloads.json";
+import type { downloadResult } from "../lib/utils";
 
-export async function returnPluginDownloads() {
+const CACHE_KEY = "downloadCache"
+const CACHE_TIMESTAMP_KEY = "downloadCacheTimestamp"
+const CACHE_DURATION = 15 * 60 * 1000
 
+export async function returnPluginDownloads(): Promise<downloadResult> {
 	if (!import.meta.env.VITE_PROD) {
 		return downloadsData
 	} else {
 		const fetchPath = import.meta.env.VITE_DOWNLOADS_URL
 		const authKey = import.meta.env.VITE_DOWNLOADS_KEY
 
-		let returnData = {
+		const currentTime = Date.now()
+
+		const cachedData = localStorage.getItem(CACHE_KEY)
+		const cachedTimestamp = localStorage.getItem(CACHE_TIMESTAMP_KEY)
+
+		if (cachedData && cachedTimestamp && (currentTime - Number(cachedTimestamp) < CACHE_DURATION)) {
+			return JSON.parse(cachedData)
+		} else if (cachedData) {
+			localStorage.clear()
+		}
+
+		let returnData: downloadResult = {
 			status: 418,
 			success: false,
-			message: "Could not get any downloads data."
-		};
+			message: "Could not get any downloads data.",
+			result: []
+		}
 
 		try {
-			const repsone = await fetch(fetchPath, {
+			const response = await fetch(fetchPath, {
 				method: "GET",
 				headers: {
-					Authorizer: `Bearer ${authKey}`
+					Authorization: `Bearer ${authKey}`
 				}
 			})
 
-			const data = await repsone.json()
+			if (!response.ok) {
+				throw new Error(`HTTP error ${response.status}`)
+			}
+
+			const data = await response.json()
 
 			if (data.success) {
-				returnData = data.result
+				returnData = data
+
+				localStorage.setItem(CACHE_KEY, data)
+				localStorage.setItem(CACHE_TIMESTAMP_KEY, currentTime.toString())
 			} else {
-				throw new Error("Failed to get downloads: " + data)
+				throw new Error("Failed to get downloads: " + JSON.stringify(data))
 			}
 		} catch (error) {
-			console.error(error)
+			console.error("Error fetching downloads:", error)
 		}
 
 		return returnData
