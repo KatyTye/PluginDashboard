@@ -6,7 +6,7 @@ const CACHE_TIMESTAMP_KEY = "downloadCacheTimestamp"
 const CACHE_DURATION = 15 * 60 * 1000
 
 export async function returnPluginDownloads(): Promise<downloadResult> {
-	if (!import.meta.env.VITE_PROD) {
+	if (!import.meta.env.VITE_PROD || import.meta.env.VITE_PROD == false) {
 		return downloadsData
 	} else {
 		const fetchPath = import.meta.env.VITE_DOWNLOADS_URL
