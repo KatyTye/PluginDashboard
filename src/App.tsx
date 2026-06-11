@@ -6,6 +6,7 @@ import NotFound from "./pages/NotFound"
 import ErrorPage from "./pages/Error"
 import Terms from "./pages/Terms"
 import Home from "./pages/Home"
+import Support from "./pages/Support"
 
 function App() {
 
@@ -23,6 +24,10 @@ function App() {
 				{
 					path: "/terms",
 					element: <Terms />
+				},
+				{
+					path: "/support",
+					element: <Support />
 				},
 				{
 					path: "/downloads",
