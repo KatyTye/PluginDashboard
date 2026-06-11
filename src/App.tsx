@@ -4,9 +4,10 @@ import PrimaryLayout from "./layouts/Primary"
 import Downloads from "./pages/Downloads"
 import NotFound from "./pages/NotFound"
 import ErrorPage from "./pages/Error"
+import Support from "./pages/Support"
+import Loading from "./pages/Loading"
 import Terms from "./pages/Terms"
 import Home from "./pages/Home"
-import Support from "./pages/Support"
 
 function App() {
 
@@ -16,6 +17,7 @@ function App() {
 			element: <PrimaryLayout />,
 			errorElement: <ErrorPage />,
 			loader: returnPluginDownloads,
+			hydrateFallbackElement: <Loading />,
 			children: [
 				{
 					index: true,
@@ -43,7 +45,8 @@ function App() {
 			id: "layout",
 			path: "/edit",
 			element: <PrimaryLayout />,
-			errorElement: <ErrorPage />
+			errorElement: <ErrorPage />,
+			hydrateFallbackElement: <Loading />,
 		}
 	])
 
