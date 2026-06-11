@@ -16,9 +16,9 @@ function reutrnIcon(name: string, tested: boolean) {
 	return <></>
 }
 
-export default function Versions(data: Array<typesObject>, index: number, useIcons: boolean) {
+export default function Versions(data: Array<typesObject>, index: number, useIcons: boolean, showNotTested: boolean = true) {
 	return (
-		data.map((element, idx: number) =>
+		data.map((element, idx: number) => (showNotTested || (!showNotTested && element.tested == true)) &&
 			<div key={"item-" + index + "-" + idx} className={`flex justify-center
 			items-center gap-2 cursor-context-menu relative ${element.name.toLowerCase()}
 			${element.tested ? "" : "text-red-600"}`}>
