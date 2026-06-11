@@ -7,7 +7,7 @@ export default function Downloads() {
 
 	return (<article>
 		{
-			downloadsData ? <ul className="grid gap-6">
+			downloadsData ? <ul className="grid gap-6 mt-10 mb-10">
 				{downloadsData.result.map((element: downloadObject, index: number) =>
 					<li key={"download-item-" + index} className="rounded-2xl p-5 items-center gap-5 border-2
 					flex flex-col custom-grid bg-(--box-background-color) border-(--border-color)">
