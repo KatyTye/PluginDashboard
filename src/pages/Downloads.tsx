@@ -6,6 +6,12 @@ export default function Downloads() {
 	const downloadsData = useRouteLoaderData("primary")
 
 	return (<article>
+		<h1 className="text-center text-4xl font-bold mt-10">Version Downloads</h1>
+
+		<p className="mt-2 text-(--text-second-color) tracking-widest text-center">
+			On this page, you can download the different versions of the plugin. You can also see the upcoming version. Click on a version to view the changelog for that version.
+		</p>
+
 		{
 			downloadsData ? <ul className="grid gap-6 mt-10 mb-10">
 				{downloadsData.result.map((element: downloadObject, index: number) =>
