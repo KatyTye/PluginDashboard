@@ -1,21 +1,94 @@
 @import "tailwindcss";
 
 * {
-	margin: 0;
-	padding: 0;
 	box-sizing: border-box;
 }
 
 body {
+	margin: 0;
+	padding: 0;
 	width: 100dvw;
-	overflow: hidden;
+	display: flex;
+	overflow-x: hidden;
 	min-height: 100dvh;
+	flex-direction: column;
 	font-family: sans-serif;
 	scroll-behavior: smooth;
+	color: var(--text-color);
+	justify-content: space-between;
+	background: var(--background-color);
 }
 
-img,
-svg {
+.full-image>svg {
 	width: 100%;
 	height: 100%;
+}
+
+body>span {
+	display: none;
+}
+
+:root {
+	--text-color: #ffffff;
+	--empty-color: #11181b;
+	--tag-color: #e1fdff1a;
+	--special-color: #e8590c;
+	--border-color: #ffffff0d;
+	--background-color: #11181b;
+	--text-second-color: #B9CACB;
+	--semi-transparent: #00000059;
+	--box-background-color: #1e202399;
+	--background-second-color: #0d0f11;
+}
+
+.grid-cols-auto-fill {
+	grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.spigot {
+	color: #e2e83f;
+}
+
+.bukkit {
+	color: #e8590c;
+}
+
+.noshow {
+	height: 0px;
+}
+
+.nogap {
+	height: 100px;
+	gap: 0;
+}
+
+@media screen and (width >=48rem) {
+	.custom-grid {
+		display: grid;
+		grid-template-columns: 1fr;
+	}
+}
+
+@media screen and (max-width: 1265px) {
+	.custom-grid {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+	}
+
+	@media screen and (max-width: 767px) {
+		.custom-grid {
+			display: flex;
+		}
+	}
+}
+
+@media screen and (min-width: 1265px) {
+	.custom-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+	}
+
+	.custom-text {
+		justify-content: center;
+	}
 }
