@@ -12,11 +12,11 @@ export interface typesObject {
 }
 
 export interface downloadObject {
-	notes: string,
+	notes?: string,
 	version: string,
 	released: boolean,
 	downloadable: boolean,
-	changelog: changesObject[],
+	changelog?: changesObject[],
 	"minecraft_versions": typesObject[],
 	"server_types": typesObject[]
 }
