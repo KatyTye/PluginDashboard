@@ -2,6 +2,7 @@ import { createBrowserRouter, RouterProvider } from "react-router"
 import { returnPluginDownloads } from "./helpers/downloads"
 import PrimaryLayout from "./layouts/Primary"
 import Downloads from "./pages/Downloads"
+import Changelog from "./pages/Changelog"
 import NotFound from "./pages/NotFound"
 import ErrorPage from "./pages/Error"
 import Support from "./pages/Support"
@@ -34,6 +35,10 @@ function App() {
 				{
 					path: "/downloads",
 					element: <Downloads />
+				},
+				{
+					path: "/changelog/:version",
+					element: <Changelog />
 				},
 				{
 					path: "*",
