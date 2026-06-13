@@ -1,0 +1,134 @@
+{
+	"status": 200,
+	"success": true,
+	"message": "Everything works good.",
+	"result": [
+		{
+			"released": true,
+			"version": "0.2.3",
+			"downloadable": false,
+			"minecraft_versions": [
+				{
+					"name": "1.21.X",
+					"tested": true
+				},
+				{
+					"name": "1.20.X",
+					"tested": true
+				},
+				{
+					"name": "1.19.X",
+					"tested": true
+				}
+			],
+			"server_types": [
+				{
+					"name": "Bukkit",
+					"tested": true
+				},
+				{
+					"name": "Spigot",
+					"tested": true
+				},
+				{
+					"name": "Paper",
+					"tested": true
+				}
+			]
+		},
+		{
+			"released": true,
+			"version": "0.1.1",
+			"notes": "First official release of a smaller version!",
+			"downloadable": true,
+			"changelog": [
+				{
+					"changes": 7,
+					"type": "Added",
+					"name": "Commands",
+					"list": [
+						"SEssentials",
+						"SetSpawn",
+						"Gamemode",
+						"Economy",
+						"Balance",
+						"Spawn",
+						"Give"
+					]
+				},
+				{
+					"changes": 5,
+					"type": "Added",
+					"name": "Events",
+					"list": [
+						"Update Checker",
+						"SEssentials",
+						"Join",
+						"Quit"
+					]
+				},
+				{
+					"changes": 1,
+					"type": "Removed",
+					"name": "Commands",
+					"list": [
+						"Reset Data"
+					]
+				}
+			],
+			"minecraft_versions": [
+				{
+					"name": "1.21.X",
+					"tested": true
+				},
+				{
+					"name": "1.20.X",
+					"tested": true
+				},
+				{
+					"name": "1.19.X",
+					"tested": true
+				}
+			],
+			"server_types": [
+				{
+					"name": "Bukkit",
+					"tested": true
+				},
+				{
+					"name": "Spigot",
+					"tested": true
+				},
+				{
+					"name": "Paper",
+					"tested": true
+				}
+			]
+		},
+		{
+			"released": false,
+			"version": "0.0.1",
+			"downloadable": true,
+			"minecraft_versions": [
+				{
+					"name": "1.19.4",
+					"tested": true
+				}
+			],
+			"server_types": [
+				{
+					"name": "Bukkit",
+					"tested": true
+				},
+				{
+					"name": "Spigot",
+					"tested": false
+				},
+				{
+					"name": "Paper",
+					"tested": false
+				}
+			]
+		}
+	]
+}
