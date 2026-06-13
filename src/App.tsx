@@ -9,6 +9,7 @@ import Support from "./pages/Support"
 import Loading from "./pages/Loading"
 import Terms from "./pages/Terms"
 import Home from "./pages/Home"
+import Documentation from "./pages/Documentation"
 
 function App() {
 
@@ -39,6 +40,10 @@ function App() {
 				{
 					path: "/changelog/:version",
 					element: <Changelog />
+				},
+				{
+					path: "/docs",
+					element: <Documentation />
 				},
 				{
 					path: "*",
