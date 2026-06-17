@@ -3,12 +3,13 @@ import { IoArrowBack, IoArrowForward } from "react-icons/io5"
 import Intro from "../components/docs-pages/Intro"
 import Setup from "../components/docs-pages/Setup"
 import { useEffect, useState } from "react"
+import { useParams } from "react-router"
 
 export default function Documentation() {
-	const BasicStages = ["Intro","Setup","Installation"]
+	const BasicStages = ["intro", "setup", "installation"]
+	const { section } = useParams()
 
-	const [selected, setSelected] = useState("Intro")
-
+	const [selected, setSelected] = useState(section?.toLowerCase() || "intro")
 	const [currentStage, setCurrentStage] = useState(0)
 
 	useEffect(() => {
@@ -20,7 +21,8 @@ export default function Documentation() {
 	function changeSelected(evt: React.MouseEvent<HTMLElement>) {
 		const elm = evt.target as HTMLElement
 
-		setSelected(elm.textContent)
+		history.replaceState(null, "", `/docs/${elm.textContent.toLowerCase()}`)
+		setSelected(elm.textContent.toLowerCase())
 
 		if (BasicStages.includes(elm.textContent)) {
 			setCurrentStage(BasicStages.findIndex(val => val == elm.textContent))
@@ -42,54 +44,54 @@ export default function Documentation() {
 				<p className="font-bold">Basic:</p>
 				<ol className="mt-2">
 					<li onClick={evt => changeSelected(evt)} className={`transition-all ml-2.5 pl-2.5 border-l-2 duration-500 cursor-pointer
-						${selected=="Intro" ? " text-(--special-color)" : ""}`}>Intro</li>
+						${selected == "intro" ? " text-(--special-color)" : ""}`}>Intro</li>
 					<li onClick={evt => changeSelected(evt)} className={`transition-all ml-2.5 pl-2.5 border-l-2 duration-500 cursor-pointer
-						${selected=="Setup" ? " text-(--special-color)" : ""}`}>Setup</li>
+						${selected == "setup" ? " text-(--special-color)" : ""}`}>Setup</li>
 					<li onClick={evt => changeSelected(evt)} className={`transition-all ml-2.5 pl-2.5 border-l-2 duration-500 cursor-pointer
-						${selected=="Installation" ? " text-(--special-color)" : ""}`}>Installation</li>
+						${selected == "installation" ? " text-(--special-color)" : ""}`}>Installation</li>
 				</ol>
 				<p className="font-bold mt-5">Managements:</p>
 				<ol className="mt-2">
 					<li onClick={evt => changeSelected(evt)} className={`transition-all ml-2.5 pl-2.5 border-l-2 duration-500 cursor-pointer
-						${selected=="Rank" ? " text-(--special-color)" : ""}`}>Rank</li>
+						${selected == "rank" ? " text-(--special-color)" : ""}`}>Rank</li>
 					<li onClick={evt => changeSelected(evt)} className={`transition-all ml-2.5 pl-2.5 border-l-2 duration-500 cursor-pointer
-						${selected=="Economy" ? " text-(--special-color)" : ""}`}>Economy</li>
+						${selected == "economy" ? " text-(--special-color)" : ""}`}>Economy</li>
 					<li onClick={evt => changeSelected(evt)} className={`transition-all ml-2.5 pl-2.5 border-l-2 duration-500 cursor-pointer
-						${selected=="Messages" ? " text-(--special-color)" : ""}`}>Messages</li>
+						${selected == "messages" ? " text-(--special-color)" : ""}`}>Messages</li>
 					<li onClick={evt => changeSelected(evt)} className={`transition-all ml-2.5 pl-2.5 border-l-2 duration-500 cursor-pointer
-						${selected=="SEssentials" ? " text-(--special-color)" : ""}`}>SEssentials</li>
+						${selected == "sessentials" ? " text-(--special-color)" : ""}`}>SEssentials</li>
 				</ol>
 				<p className="font-bold mt-5">Commands:</p>
 				<ol className="mt-2">
 					<li onClick={evt => changeSelected(evt)} className={`transition-all ml-2.5 pl-2.5 border-l-2 duration-500 cursor-pointer
-						${selected=="Give" ? " text-(--special-color)" : ""}`}>Give</li>
+						${selected == "give" ? " text-(--special-color)" : ""}`}>Give</li>
 					<li onClick={evt => changeSelected(evt)} className={`transition-all ml-2.5 pl-2.5 border-l-2 duration-500 cursor-pointer
-						${selected=="Spawn" ? " text-(--special-color)" : ""}`}>Spawn</li>
+						${selected == "spawn" ? " text-(--special-color)" : ""}`}>Spawn</li>
 				</ol>
 			</div>
 
 			<div className="bg-(--box-background-color) border-(--border-color) p-10 border-2 rounded-2xl">
 
-				<h2 className="font-bold text-3xl">{selected}</h2>
+				<h2 className="font-bold text-3xl">{selected.replace(selected.charAt(0), selected.charAt(0).toUpperCase())}</h2>
 
 				{
-				selected == "Intro" ? <Intro /> : 
-				selected == "Setup" ? <Setup /> :
-				selected == "Installation" ? <Installation /> :
-				<></>}
+					selected == "intro" ? <Intro /> :
+						selected == "setup" ? <Setup /> :
+							selected == "installation" ? <Installation /> :
+								<></>}
 
 				{BasicStages.includes(selected) ? <div className="flex w-full">
 					{currentStage != 0 && <button className="flex tracking-wider gap-2 mt-15 items-center transition-all duration-500 focus:text-(--special-color)
-					hover:text-(--special-color) cursor-pointer" onClick={() => {setCurrentStage(currentStage-1); setSelected(BasicStages[currentStage-1])}}>
-					<IoArrowBack /><span>Go to last stage</span></button>}
+					hover:text-(--special-color) cursor-pointer" onClick={() => { setCurrentStage(currentStage - 1); setSelected(BasicStages[currentStage - 1]) }}>
+						<IoArrowBack /><span>Go to last stage</span></button>}
 
-					{currentStage != BasicStages.length-1 && <button className="flex tracking-wider gap-2 ml-auto mt-15 items-center transition-all duration-500 focus:text-(--special-color)
-					hover:text-(--special-color) cursor-pointer" onClick={() => {setCurrentStage(currentStage+1); setSelected(BasicStages[currentStage+1])}}>
-					<span>Go to next stage</span><IoArrowForward /></button>}</div>
+					{currentStage != BasicStages.length - 1 && <button className="flex tracking-wider gap-2 ml-auto mt-15 items-center transition-all duration-500 focus:text-(--special-color)
+					hover:text-(--special-color) cursor-pointer" onClick={() => { setCurrentStage(currentStage + 1); setSelected(BasicStages[currentStage + 1]) }}>
+						<span>Go to next stage</span><IoArrowForward /></button>}</div>
 
-				: <button className="flex tracking-wider gap-2 ml-auto mt-15 items-center transition-all duration-500 focus:text-(--special-color)
-					hover:text-(--special-color) cursor-pointer" onClick={() => {setCurrentStage(0); setSelected(BasicStages[0])}}>
-					<IoArrowBack /><span>Return to the basics</span></button>}
+					: <button className="flex tracking-wider gap-2 ml-auto mt-15 items-center transition-all duration-500 focus:text-(--special-color)
+					hover:text-(--special-color) cursor-pointer" onClick={() => { setCurrentStage(0); setSelected(BasicStages[0]) }}>
+						<IoArrowBack /><span>Return to the basics</span></button>}
 			</div>
 		</div>
 	</>)
