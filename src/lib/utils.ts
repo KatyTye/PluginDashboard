@@ -22,7 +22,7 @@ export interface downloadObject {
 }
 
 export interface downloadResult {
-	status: number,
+	status?: number,
 	success: boolean,
 	message: string,
 	result: downloadObject[]

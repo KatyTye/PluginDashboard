@@ -47,7 +47,7 @@ export async function returnPluginDownloads(): Promise<downloadResult> {
 			if (data.success) {
 				returnData = data
 
-				localStorage.setItem(CACHE_KEY, data)
+				localStorage.setItem(CACHE_KEY, JSON.stringify(data))
 				localStorage.setItem(CACHE_TIMESTAMP_KEY, currentTime.toString())
 			} else {
 				throw new Error("Failed to get downloads: " + JSON.stringify(data))
