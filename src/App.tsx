@@ -1,4 +1,4 @@
-import { createBrowserRouter, RouterProvider } from "react-router"
+import { createBrowserRouter, Navigate, RouterProvider } from "react-router"
 import { returnPluginDownloads } from "./helpers/downloads"
 import PrimaryLayout from "./layouts/Primary"
 import Downloads from "./pages/Downloads"
@@ -43,7 +43,16 @@ function App() {
 				},
 				{
 					path: "/docs",
-					element: <Documentation />
+					children: [
+						{
+							index: true,
+							element: <Navigate to={"intro"} />
+						},
+						{
+							path: ":section",
+							element: <Documentation />
+						},
+					]
 				},
 				{
 					path: "*",
