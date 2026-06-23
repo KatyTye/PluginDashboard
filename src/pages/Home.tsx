@@ -11,7 +11,7 @@ export default function Home() {
 			<figcaption className="absolute p-5 top-0 w-full h-full flex flex-col items-center justify-center bg-(--semi-transparent)">
 				<p className="border-2 rounded-full p-5 pt-1.5 pb-1.5 tracking-widest font-bold text-[12px]
 				border-[#ae3d00] bg-[#e8590c73]">
-					A NEW VERSION AVAILABLE NOW
+					NEW VERSION AVAILABLE NOW
 				</p>
 
 				<h2 className="text-4xl font-bold text-center mt-5">
