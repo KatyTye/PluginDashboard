@@ -1,12 +1,14 @@
+import SpecialBox from "../SpecialBox";
+
 export default function Setup() {
 
 	return (<>
 		<p className="mt-2 text-(--text-second-color) tracking-widest">
 			This section of the documentation introduces the setups of your custom version of the plugin.
 		</p>
-		<p className="mt-10 mb-10 p-10 pt-5 pb-5 border-l-2 bg-[#ff000040] border-l-red-500">
+		<SpecialBox critical={true}>
 			Please note that the <span className="font-bold">Configurations</span> section applies only to versions greater than 0.0.1 and less than 1.0.0. It does not apply to 0.0.1 or to 1.0.0 and later.
-		</p>
+		</SpecialBox>
 		<h3 className="text-xl mt-10 font-bold">Configurations</h3>
 		<p>
 			Each plugin version creates a config file in its folder containing major switches and message text. Changing messages or non-toggle settings takes effect immediately and does not require reloading the plugin. Toggling feature-specific switches or changing major enable/disable switches requires a plugin reload to apply.
