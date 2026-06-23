@@ -15,10 +15,8 @@ function App() {
 
 	const BrowserRouter = createBrowserRouter([
 		{
-			id: "primary",
 			element: <PrimaryLayout />,
 			errorElement: <ErrorPage />,
-			loader: returnPluginDownloads,
 			hydrateFallbackElement: <Loading />,
 			children: [
 				{
@@ -33,13 +31,20 @@ function App() {
 					path: "/support",
 					element: <Support />
 				},
+
 				{
-					path: "/downloads",
-					element: <Downloads />
-				},
-				{
-					path: "/changelog/:version",
-					element: <Changelog />
+					id: "primary",
+					loader: returnPluginDownloads,
+					children: [
+						{
+							path: "/downloads",
+							element: <Downloads />
+						},
+						{
+							path: "/changelog/:version",
+							element: <Changelog />
+						}
+					]
 				},
 				{
 					path: "/docs",

@@ -1,21 +1,17 @@
-import { findLatestValue } from "../helpers/findLatests"
-import { Link, useRouteLoaderData } from "react-router"
-import type { downloadObject } from "../lib/utils"
+import { Link } from "react-router"
 import { PiSpeedometerFill } from "react-icons/pi"
 import { IoColorPalette } from "react-icons/io5"
 import { GiFootprint } from "react-icons/gi"
 import { BsSliders2 } from "react-icons/bs"
 
 export default function Home() {
-	const downloadsData = useRouteLoaderData("primary")
-	const resultData: downloadObject[] = downloadsData.result
 
 	return (<>
 		<figure className="relative overflow-hidden rounded-lg h-150 bg-[url('/images/frontpage.jpg')] bg-cover bg-center">
 			<figcaption className="absolute p-5 top-0 w-full h-full flex flex-col items-center justify-center bg-(--semi-transparent)">
 				<p className="border-2 rounded-full p-5 pt-1.5 pb-1.5 tracking-widest font-bold text-[12px]
 				border-[#ae3d00] bg-[#e8590c73]">
-					VERSION {findLatestValue(resultData, "version", "downloadable")} AVAILABLE NOW
+					A NEW VERSION AVAILABLE NOW
 				</p>
 
 				<h2 className="text-4xl font-bold text-center mt-5">
