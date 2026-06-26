@@ -22,7 +22,7 @@ export default function Footer() {
 				rel="alternate">Copyright and Terms
 			</NavLink>
 
-			<a href="https://discord.gg/xxxxxxxx" target="_blank" className="flex gap-2 text-[14px] items-center"
+			<a href="https://discord.gg/Z96GVjHe2z" target="_blank" className="flex gap-2 text-[14px] items-center"
 				rel="noopener noreferrer">
 				<PiChatsBold className="w-3.5 h-3.5" />
 				<span>
