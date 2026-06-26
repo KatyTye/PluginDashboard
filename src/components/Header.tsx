@@ -87,7 +87,7 @@ export default function Header() {
 						</div>
 					</div>
 					<div className="cursor-pointer bg-(--special-color) text-white font-bold
-					rounded-md hover:bg-amber-700 duration-500 transition-all" onClick={() => cleared == true ? null : clearCache()}>
+					rounded-md hover:bg-amber-700 duration-500 transition-all" onClick={() => cleared ? null : clearCache()}>
 						{cleared && "Cleared" || "Clear Cache"}
 					</div>
 				</div>
