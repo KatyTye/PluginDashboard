@@ -10,6 +10,7 @@ import Loading from "./pages/Loading"
 import Terms from "./pages/Terms"
 import Home from "./pages/Home"
 import Documentation from "./pages/Documentation"
+import Profile from "./pages/Profile"
 
 function App() {
 
@@ -35,6 +36,7 @@ function App() {
 				{
 					id: "primary",
 					loader: returnPluginDownloads,
+					hydrateFallbackElement: <Loading />,
 					children: [
 						{
 							path: "/downloads",
@@ -45,6 +47,11 @@ function App() {
 							element: <Changelog />
 						}
 					]
+				},
+				{
+					id: "profile",
+					path: "/profile",
+					element: <Profile />
 				},
 				{
 					path: "/docs",

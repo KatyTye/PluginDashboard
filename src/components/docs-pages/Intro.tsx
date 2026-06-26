@@ -1,12 +1,14 @@
+import SpecialBox from "../SpecialBox";
+
 export default function Intro() {
 
 	return (<>
 		<p className="mt-2 text-(--text-second-color) tracking-widest">
 			This section of the documentation introduces the plugins sections and related topics.
 		</p>
-		<p className="mt-10 mb-10 p-10 pt-5 pb-5 border-l-2 bg-[#ffc40040] border-l-yellow-500">
+		<SpecialBox>
 			This plugin is designed for any Minecraft server that supports plugins. It was created to solve a problem I discovered on many servers: there are too many separate plugins for different tasks. This plugin replaces all the plugins a server needs.
-		</p>
+		</SpecialBox>
 
 		<h3 className="text-xl font-bold">The Sidebar</h3>
 		<p>

@@ -15,7 +15,7 @@ export default function Support() {
 				<p className="mt-2 text-(--text-second-color) tracking-widest">
 					If you have any general questions about how to do things, please check the <Link to={"/docs"}
 						className="text-(--special-color) hover:text-amber-700" rel="alternate">
-						documentation</Link> or ask the <a href="https://discord.gg/xxxxxxxx" rel="noopener noreferrer"
+						documentation</Link> or ask the <a href="https://discord.gg/Z96GVjHe2z" rel="noopener noreferrer"
 							target="_blank" className="text-(--special-color) hover:text-amber-700">
 						community</a> for assistance.
 				</p>

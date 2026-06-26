@@ -4,6 +4,7 @@ import Intro from "../components/docs-pages/Intro"
 import Setup from "../components/docs-pages/Setup"
 import { useEffect, useState } from "react"
 import { useParams } from "react-router"
+import Api from "../components/docs-pages/Api"
 
 export default function Documentation() {
 	const BasicStages = ["intro", "setup", "installation"]
@@ -31,15 +32,15 @@ export default function Documentation() {
 
 	return (<>
 		<article>
-			<h1 id="top" className="text-center text-4xl font-bold mt-10">
-				Features Documentation
+			<h1 className="text-center text-4xl font-bold mt-10">
+				Documentation
 			</h1>
 			<p className="mt-2 text-(--text-second-color) max-w-250 m-auto tracking-widest text-center">
 				This page provides a comprehensive inventory of all available features, describes each feature’s purpose and functionality in detail, explains how to access and configure them.
 			</p>
 		</article>
 
-		<div className="md:flex mt-10 gap-10">
+		<div className="md:flex m-auto mt-10 gap-10 max-w-375">
 			<div className="bg-(--box-background-color) mb-10 h-fit border-(--border-color) p-5 pl-15 pr-15 border-2 rounded-2xl">
 				<p className="font-bold">Basic:</p>
 				<ol className="mt-2">
@@ -68,17 +69,23 @@ export default function Documentation() {
 					<li onClick={evt => changeSelected(evt)} className={`transition-all ml-2.5 pl-2.5 border-l-2 duration-500 cursor-pointer
 						${selected == "spawn" ? " text-(--special-color)" : ""}`}>Spawn</li>
 				</ol>
+				<p className="font-bold mt-5">Other:</p>
+				<ol className="mt-2">
+					<li onClick={evt => changeSelected(evt)} className={`transition-all ml-2.5 pl-2.5 border-l-2 duration-500 cursor-pointer
+						${selected == "api" ? " text-(--special-color)" : ""}`}>Api</li>
+				</ol>
 			</div>
 
-			<div className="bg-(--box-background-color) border-(--border-color) p-10 border-2 rounded-2xl">
+			<div id="top" className="bg-(--box-background-color) border-(--border-color) p-10 border-2 rounded-2xl">
 
 				<h2 className="font-bold text-3xl">{selected.replace(selected.charAt(0), selected.charAt(0).toUpperCase())}</h2>
 
 				{
 					selected == "intro" ? <Intro /> :
-						selected == "setup" ? <Setup /> :
-							selected == "installation" ? <Installation /> :
-								<></>}
+					selected == "setup" ? <Setup /> :
+					selected == "installation" ? <Installation /> :
+					selected == "api" ? <Api /> :
+				<></>}
 
 				{BasicStages.includes(selected) ? <div className="flex w-full">
 					{currentStage != 0 && <button className="flex tracking-wider gap-2 mt-15 items-center transition-all duration-500 focus:text-(--special-color)
