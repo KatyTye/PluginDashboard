@@ -1,5 +1,7 @@
 import { createBrowserRouter, Navigate, RouterProvider } from "react-router"
+import LoadingComponent from "./components/LoadingComponent"
 import { returnPluginDownloads } from "./helpers/downloads"
+import Documentation from "./pages/Documentation"
 import PrimaryLayout from "./layouts/Primary"
 import Downloads from "./pages/Downloads"
 import Changelog from "./pages/Changelog"
@@ -7,10 +9,9 @@ import NotFound from "./pages/NotFound"
 import ErrorPage from "./pages/Error"
 import Support from "./pages/Support"
 import Loading from "./pages/Loading"
+import Profile from "./pages/Profile"
 import Terms from "./pages/Terms"
 import Home from "./pages/Home"
-import Documentation from "./pages/Documentation"
-import Profile from "./pages/Profile"
 
 function App() {
 
@@ -36,7 +37,7 @@ function App() {
 				{
 					id: "primary",
 					loader: returnPluginDownloads,
-					hydrateFallbackElement: <Loading />,
+					hydrateFallbackElement: <LoadingComponent />,
 					children: [
 						{
 							path: "/downloads",
