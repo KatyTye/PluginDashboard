@@ -3,21 +3,24 @@ import { FaRegUserCircle } from "react-icons/fa";
 import { IoIosArrowDown } from "react-icons/io";
 import { Link, NavLink } from "react-router";
 import { IoClose } from "react-icons/io5";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { convertTextToBoolean } from "../helpers/converter";
 
 export default function Header() {
 	const [phoneOpen, setPhoneOpen] = useState(false)
 	const [settings, setSettings] = useState(false)
 	const [cleared, setCleared] = useState(false)
-	
-	// @ts-ignore
-	const [lightMode, setlightMode] = useState(false)
+	const [useIcon, setUseIcon] = useState(localStorage.getItem("settingsUseIcon") === "true" || false)
 
 	// @ts-ignore
-	const [useCache, setUseCache] = useState(true)
+	const [lightMode, setlightMode] = useState(localStorage.getItem("settingsLightMode") === "true" || false)
+
+	// @ts-ignore
+	const [useCache, setUseCache] = useState(convertTextToBoolean(localStorage.getItem("settingsUseCache")))
 
 	function clearCache() {
 		setCleared(true)
+		setUseIcon(false)
 		localStorage.clear()
 
 		setTimeout(() => {
@@ -25,12 +28,28 @@ export default function Header() {
 		}, 1000)
 	}
 
+	useEffect(() => {
+		localStorage.setItem("settingsUseIcon", useIcon.toString())
+	}, [useIcon])
+
+	useEffect(() => {
+		localStorage.setItem("settingsLightMode", lightMode.toString())
+	}, [lightMode])
+
+
+	useEffect(() => {
+		localStorage.setItem("settingsUseCache", useCache.toString())
+	}, [useCache])
+
 	return (<header className={`top-content grid gap-5 md:gap-0 md:grid-cols-3 items-center bg-(--background-second-color) p-4
 		lg:pl-20 lg:pr-20 transition-all duration-700 justify-center grid-cols-1 not-md:h-75 ${phoneOpen ? "" : "nogap"}`}>
 
-		<Link to={"/"} className="text-2xl text-center font-bold md:w-fit hover:text-(--special-color) duration-500"
+		{useIcon && <Link to={"/"} className="w-12 h-12 rounded-full overflow-hidden m-auto md:m-0 hover:border-(--special-color)
+		border-transparent border-2 transition-[border-color] duration-500" rel="alternate">
+			<img src="./favicon.ico" alt="SEssentials Logo" className="w-12 h-auto m-auto md:m-0 transform-[scale(1.5)]" />
+		</Link> || <Link to={"/"} className="text-2xl text-center border-none font-bold md:w-fit hover:text-(--special-color) duration-500"
 			rel="alternate">SEssentials
-		</Link>
+		</Link>}
 
 		<nav className={`grid gap-5 md:gap-10 justify-center md:grid-cols-3 md:flex w-fit h-full transition-all
 			${phoneOpen ? "" : "md:noshow"} justify-self-center overflow-hidden`}>
@@ -79,16 +98,24 @@ export default function Header() {
 								<div className={`w-4 h-4 ml-0 transition-all rounded-full${lightMode && " ml-5 bg-green-500" || " bg-red-500"}`}></div>
 							</div>
 						</div>
-						<div className="flex justify-between items-center">
-							<p className="text-white">Use Cache</p>
-							<div className="w-12 p-1.25 bg-(--box-background-color) rounded-full flex cursor-pointer">
-								<div className={`w-4 h-4 ml-0 transition-all rounded-full${useCache && " ml-5 bg-green-500" || " bg-red-500"}`}></div>
-							</div>
+					</div>
+					<div className="flex justify-between items-center">
+						<p className="text-white">Use Cache</p>
+						<div className="w-12 p-1.25 bg-(--box-background-color) rounded-full flex cursor-pointer"
+							onClick={() => setUseCache(!useCache)}>
+							<div className={`w-4 h-4 ml-0 transition-all rounded-full${useCache && " ml-5 bg-green-500" || " bg-red-500"}`}></div>
+						</div>
+					</div>
+					<div className="flex justify-between items-center">
+						<p className="text-white">Use Icon</p>
+						<div className="w-12 p-1.25 bg-(--box-background-color) rounded-full flex cursor-pointer"
+							onClick={() => setUseIcon(!useIcon)}>
+							<div className={`w-4 h-4 ml-0 transition-all rounded-full${useIcon && " ml-5 bg-green-500" || " bg-red-500"}`}></div>
 						</div>
 					</div>
 					<div className="cursor-pointer bg-(--special-color) text-white font-bold
 					rounded-md hover:bg-amber-700 duration-500 transition-all" onClick={() => cleared ? null : clearCache()}>
-						{cleared && "Cleared" || "Clear Cache"}
+						{cleared && "Cleared" || "Clear Settings"}
 					</div>
 				</div>
 			</button>

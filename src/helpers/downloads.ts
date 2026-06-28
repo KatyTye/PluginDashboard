@@ -23,13 +23,16 @@ export async function returnPluginDownloads(): Promise<downloadResult> {
 
 			const currentTime = Date.now()
 
+			const useCache = localStorage.getItem("settingsUseCache") === "true" || false
+
 			const cachedData = localStorage.getItem(CACHE_KEY)
 			const cachedTimestamp = localStorage.getItem(CACHE_TIMESTAMP_KEY)
 
-			if (cachedData && cachedTimestamp && (currentTime - Number(cachedTimestamp) < CACHE_DURATION)) {
+			if (useCache && cachedData && cachedTimestamp && (currentTime - Number(cachedTimestamp) < CACHE_DURATION)) {
 				return JSON.parse(cachedData)
-			} else if (cachedData) {
-				localStorage.clear()
+			} else if (useCache && cachedData) {
+				localStorage.removeItem(CACHE_KEY)
+				localStorage.removeItem(CACHE_TIMESTAMP_KEY)
 			}
 			
 			const response = await fetch(fetchPath, {
@@ -48,8 +51,10 @@ export async function returnPluginDownloads(): Promise<downloadResult> {
 			if (data.success) {
 				returnData = data
 
-				localStorage.setItem(CACHE_KEY, JSON.stringify(data))
-				localStorage.setItem(CACHE_TIMESTAMP_KEY, currentTime.toString())
+				if (useCache) {
+					localStorage.setItem(CACHE_KEY, JSON.stringify(data))
+					localStorage.setItem(CACHE_TIMESTAMP_KEY, currentTime.toString())
+				}
 			} else {
 				throw new Error("Failed to get downloads: " + JSON.stringify(data))
 			}
