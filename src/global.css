@@ -45,6 +45,14 @@ body>span {
 	grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 }
 
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0 1000px #191d20 inset !important;
+  -webkit-text-fill-color: #ffffff !important;
+  border-color: #ffffff !important;
+}
+
 .spigot {
 	color: #e2e83f;
 }
