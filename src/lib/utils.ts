@@ -27,3 +27,8 @@ export interface downloadResult {
 	message: string,
 	result: downloadObject[]
 }
+
+export interface zodCheckFormObject {
+	username: string,
+	password: string
+}
