@@ -2,6 +2,7 @@ import { createBrowserRouter, Navigate, RouterProvider } from "react-router"
 import LoadingComponent from "./components/LoadingComponent"
 import { returnPluginDownloads } from "./helpers/downloads"
 import Documentation from "./pages/Documentation"
+import { doConsoleMessage } from "./lib/console"
 import PrimaryLayout from "./layouts/Primary"
 import Downloads from "./pages/Downloads"
 import Changelog from "./pages/Changelog"
@@ -12,6 +13,7 @@ import Loading from "./pages/Loading"
 import Profile from "./pages/Profile"
 import Terms from "./pages/Terms"
 import Home from "./pages/Home"
+import { useEffect } from "react"
 
 function App() {
 
@@ -81,6 +83,10 @@ function App() {
 			hydrateFallbackElement: <Loading />,
 		}
 	])
+
+	useEffect(() => {
+		doConsoleMessage()
+	}, [])
 
 	return (
 		<RouterProvider router={BrowserRouter} />
