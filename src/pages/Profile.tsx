@@ -1,20 +1,20 @@
-import { checkLoginField } from "../helpers/profile";
-import { useState, type ChangeEvent } from "react";
+import { useState, type ChangeEvent, type SyntheticEvent } from "react";
+import { beginLoginAction, checkLoginField } from "../helpers/profile";
 import InputField from "../components/InputField";
 
 export default function Profile() {
 	const [usernameArray, setUsernameArray] = useState<string[]>([])
-
 	const [passwordArray, setPasswordArray] = useState<string[]>([])
+	const [passedFields, setPassedFields] = useState(false)
 
 	function changeHandler(event: ChangeEvent<HTMLFormElement>) {
 		const formElement = event.currentTarget
-		const usernameInput = formElement.elements.namedItem("username") as HTMLInputElement | null
-		const passwordInput = formElement.elements.namedItem("password") as HTMLInputElement | null
+		const usernameInput = formElement.elements.namedItem("username") as HTMLInputElement
+		const passwordInput = formElement.elements.namedItem("password") as HTMLInputElement
 
 		const checkResults = checkLoginField({
-			username: usernameInput?.value || "",
-			password: passwordInput?.value || ""
+			username: usernameInput.value,
+			password: passwordInput.value
 		})
 
 		if (event.target.id === "username") {
@@ -22,9 +22,19 @@ export default function Profile() {
 		} else {
 			setPasswordArray(checkResults.errors.password)
 		}
+
+		setPassedFields(checkResults.passed)
 	}
 
-	
+	function submitHandler(event: SyntheticEvent<HTMLFormElement>) {
+		event.preventDefault()
+
+		const formElement = event.currentTarget
+		const usernameInput = formElement.elements.namedItem("username") as HTMLInputElement
+		const passwordInput = formElement.elements.namedItem("password") as HTMLInputElement
+		
+		beginLoginAction(usernameInput.value, passwordInput.value)
+	}
 
 	return (<>
 		<article className="m-auto bg-(--box-background-color) max-w-125 border-(--border-color) p-5 pl-7.5 pr-7.5 border-2 rounded-2xl">
@@ -34,7 +44,7 @@ export default function Profile() {
 				These accounts are only for supporters to unlock special features, become the highest tier to get yours.
 			</p>
 
-			<form className="flex flex-col gap-3 items-center" onChange={changeHandler}>
+			<form className="flex flex-col gap-3 items-center" onChange={changeHandler} onSubmit={submitHandler}>
 				<InputField id="username" name="Username" type="text" placeholder="Enter your username here" errors={usernameArray.length} />
 				<ul className="list-disc ml-3.5 mb-2.5 mr-auto text-red-500">
 					{usernameArray.map((err, idx) => <li key={"a-list-" + idx}>{err}</li>)}
@@ -44,7 +54,7 @@ export default function Profile() {
 					{passwordArray.map((err, idx) => <li key={"b-list-" + idx}>{err}</li>)}
 				</ul>
 				<button type="submit" className="bg-(--special-color) w-full p-3 mt-5 rounded-lg cursor-pointer font-bold
-				transition-all duration-500 hover:bg-amber-700">
+				transition-all duration-500 hover:bg-amber-700" disabled={!passedFields}>
 					Login
 				</button>
 			</form>

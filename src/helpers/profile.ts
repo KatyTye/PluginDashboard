@@ -1,6 +1,6 @@
-import z from "zod"
-import type { zodCheckFormObject } from "../lib/utils"
 import { passwordField, usernameField } from "../lib/zod"
+import type { zodCheckFormObject } from "../lib/utils"
+import z from "zod"
 
 export function checkLoginField(input: zodCheckFormObject) {
 
@@ -20,4 +20,9 @@ export function checkLoginField(input: zodCheckFormObject) {
 			password: passwordResponse.error ? z.flattenError(passwordResponse.error).formErrors || [] : []
 		}
 	}
+}
+
+export function beginLoginAction(username: string, password: string) {
+	console.log(username)
+	console.log(password)
 }
