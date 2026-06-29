@@ -3,7 +3,6 @@ export function doConsoleMessage() {
 
 	setTimeout(() => {
 		console.clear()
-		console.log(Array(100).join("\n"));
 		console.log(`%c[ SEssentials ]%cModern Minecraft Plugin%c
 ╭──────────────────────────────────────────────────────────────╮
 │  All-in-one Bukkit essentials plugin built for flexibility,  │
