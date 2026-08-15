@@ -1,0 +1,97 @@
+services:
+  app:
+    container_name: enterprise-app
+    ports:
+      - "3100:3000"
+    build:
+      context: ./app
+      dockerfile: Dockerfile
+    environment:
+      PUBLIC_KEY: ${PUBLIC_KEY}
+      INTERNAL_KEY: ${INTERNAL_KEY}
+      TOKEN_SECRET: ${TOKEN_SECRET}
+    depends_on:
+      api:
+        condition: service_healthy
+  admin:
+    container_name: enterprise-admin
+    ports:
+      - "3200:3000"
+    build:
+      context: ./admin
+      dockerfile: Dockerfile
+    depends_on:
+      api:
+        condition: service_healthy
+    environment:
+      PUBLIC_KEY: ${PUBLIC_KEY}
+      INTERNAL_KEY: ${INTERNAL_KEY}
+      TOKEN_SECRET: ${TOKEN_SECRET}
+  api:
+    container_name: enterprise-api
+    ports:
+      - "3300:3000"
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    environment:
+      PUBLIC_KEY: ${PUBLIC_KEY}
+      TOKEN_SECRET: ${TOKEN_SECRET}
+      INTERNAL_KEY: ${INTERNAL_KEY}
+      POSTGRES_SECRET: ${POSTGRES_SECRET}
+      GOOGLE_APP_PASSWORD: ${GOOGLE_APP_PASSWORD}
+      DATABASE_URL: ${DATABASE_URL}
+    healthcheck:
+      test: [ "CMD", "node", "-e", "fetch('http://127.0.0.1:3000/').then((res) => process.exit(res.ok ? 0 : 1)).catch(() => process.exit(1))" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 20s
+    depends_on:
+      postgres:
+        condition: service_healthy
+  primary:
+    container_name: enterprise-primary
+    ports:
+      - "3400:3000"
+    build:
+      context: ./primary
+      dockerfile: Dockerfile
+    environment:
+      PUBLIC_KEY: ${PUBLIC_KEY}
+      STRIPE_SECRET: ${STRIPE_SECRET}
+      INTERNAL_KEY: ${INTERNAL_KEY}
+      TOKEN_SECRET: ${TOKEN_SECRET}
+    depends_on:
+      api:
+        condition: service_healthy
+  status:
+    container_name: enterprise-status
+    ports:
+      - "3500:3000"
+    build:
+      context: ./status
+      dockerfile: Dockerfile
+    environment:
+      PUBLIC_KEY: ${PUBLIC_KEY}
+      INTERNAL_KEY: ${INTERNAL_KEY}
+      TOKEN_SECRET: ${TOKEN_SECRET}
+  postgres:
+    container_name: enterprise-postgres
+    ports:
+      - "55432:5432"
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}" ]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
