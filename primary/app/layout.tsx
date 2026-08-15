@@ -26,9 +26,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
       <body>
         <HeaderComponent />
-        <Suspense fallback={<LoadingComponent />}>
-          {children}
-        </Suspense>
+        <main className="page-content flex flex-col p-4 md:p-20 pt-10 pb-10">
+          <Suspense fallback={<LoadingComponent />}>
+            {children}
+          </Suspense>
+        </main>
         <FooterComponent />
       </body>
     </html>
