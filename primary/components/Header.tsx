@@ -1,6 +1,5 @@
 "use client"
 
-import { convertTextToBoolean } from "@/helpers/converter"
 import { getStoredBoolean } from "@/helpers/localstorage"
 import { MdOutlineSettings } from "react-icons/md"
 import { FaRegUserCircle } from "react-icons/fa"
@@ -17,22 +16,18 @@ export default function HeaderComponent() {
 	const [isHydrated, setIsHydrated] = useState(false)
 	const [useIcon, setUseIcon] = useState(false)
 	const [lightMode, setLightMode] = useState(false)
-	const [useCache, setUseCache] = useState(false)
-
 	useEffect(() => {
 		setIsHydrated(true)
 		if (typeof window === "undefined") return
 
 		setUseIcon(getStoredBoolean("settingsUseIcon", false))
 		setLightMode(getStoredBoolean("settingsLightMode", false))
-		setUseCache(getStoredBoolean("settingsUseCache", convertTextToBoolean("")))
 	}, [])
 
 	function clearCache() {
 		setCleared(true)
 		setUseIcon(false)
 		setLightMode(false)
-		setUseCache(false)
 
 		if (typeof window !== "undefined") {
 			window.localStorage.removeItem("settingsUseIcon")
@@ -54,11 +49,6 @@ export default function HeaderComponent() {
 		if (!isHydrated || typeof window === "undefined") return
 		window.localStorage.setItem("settingsLightMode", lightMode.toString())
 	}, [isHydrated, lightMode])
-
-	useEffect(() => {
-		if (!isHydrated || typeof window === "undefined") return
-		window.localStorage.setItem("settingsUseCache", useCache.toString())
-	}, [isHydrated, useCache])
 
 	return (<header className={`top-content grid gap-5 md:gap-0 md:grid-cols-3 items-center bg-(--background-second-color) p-4
 		lg:pl-20 lg:pr-20 transition-all duration-700 justify-center grid-cols-1 not-md:h-75 ${phoneOpen ? "" : "nogap"}`}>
@@ -115,13 +105,6 @@ export default function HeaderComponent() {
 						</div>
 					</div>
 					<div className="flex justify-between items-center">
-						<p className="text-white">Use Cache</p>
-						<div className="w-12 p-1.25 bg-(--box-background-color) rounded-full flex cursor-pointer"
-							onClick={() => setUseCache(!useCache)}>
-							<div className={`w-4 h-4 ml-0 transition-all rounded-full${useCache && " ml-5 bg-green-500" || " bg-red-500"}`}></div>
-						</div>
-					</div>
-					<div className="flex justify-between items-center">
 						<p className="text-white">Use Icon</p>
 						<div className="w-12 p-1.25 bg-(--box-background-color) rounded-full flex cursor-pointer"
 							onClick={() => setUseIcon(!useIcon)}>
@@ -130,7 +113,7 @@ export default function HeaderComponent() {
 					</div>
 					<div className="cursor-pointer bg-(--special-color) text-white font-bold
 					rounded-md hover:bg-amber-700 duration-500 transition-all" onClick={() => cleared ? null : clearCache()}>
-						{cleared && "Cleared" || "Clear Settings"}
+						{cleared && "Reseted" || "Reset Settings"}
 					</div>
 				</div>
 			</button>

@@ -17,7 +17,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "SEssentials Primary",
+  title: "SEssentials",
   description: "Created by KatyTyi",
 };
 
