@@ -10,7 +10,7 @@ import Link from "next/link";
 import { NextResponse } from "next/server";
 
 export default function Changelog() {
-	const { downloadsData } = usePrimaryContext();
+	const { downloadsData } = usePrimaryContext()
 	const params = useParams()
 	const version = params?.version?.toString()
 
@@ -85,7 +85,7 @@ export default function Changelog() {
 			</section>
 		</article>
 
-		{data.downloadable ? <a href={`./files/sessentials-${version}.jar`} download={true}
+		{data.downloadable ? <a href={`/files/sessentials-${version}.jar`} download={true}
 			className="w-full text-center ml-auto bg-(--special-color) mt-10 rounded-lg p-4 pl-10
 			pr-10 font-bold transition-all duration-500 hover:bg-amber-700 mb-10">
 			Download
