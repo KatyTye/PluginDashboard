@@ -12,7 +12,6 @@ import Link from "next/link"
 export default function HeaderComponent() {
 	const [phoneOpen, setPhoneOpen] = useState(false)
 	const [settings, setSettings] = useState(false)
-	const [cleared, setCleared] = useState(false)
 	const [isHydrated, setIsHydrated] = useState(false)
 	const [useIcon, setUseIcon] = useState(false)
 	const [lightMode, setLightMode] = useState(false)
@@ -23,22 +22,6 @@ export default function HeaderComponent() {
 		setUseIcon(getStoredBoolean("settingsUseIcon", false))
 		setLightMode(getStoredBoolean("settingsLightMode", false))
 	}, [])
-
-	function clearCache() {
-		setCleared(true)
-		setUseIcon(false)
-		setLightMode(false)
-
-		if (typeof window !== "undefined") {
-			window.localStorage.removeItem("settingsUseIcon")
-			window.localStorage.removeItem("settingsLightMode")
-			window.localStorage.removeItem("settingsUseCache")
-		}
-
-		setTimeout(() => {
-			setCleared(false)
-		}, 1000)
-	}
 
 	useEffect(() => {
 		if (!isHydrated || typeof window === "undefined") return
@@ -85,6 +68,7 @@ export default function HeaderComponent() {
 			duration-500 text-(--text-second-color) full-image" rel="alternate">
 				<FaRegUserCircle />
 			</NavLink>
+			
 			<button className="cursor-pointer [&.active]:text-(--text-color) hover:text-(--special-color)
 			duration-500 text-(--text-second-color) full-image relative" >
 				<div onClick={() => setSettings(!settings)}>
@@ -110,10 +94,6 @@ export default function HeaderComponent() {
 							onClick={() => setUseIcon(!useIcon)}>
 							<div className={`w-4 h-4 ml-0 transition-all rounded-full${useIcon && " ml-5 bg-green-500" || " bg-red-500"}`}></div>
 						</div>
-					</div>
-					<div className="cursor-pointer bg-(--special-color) text-white font-bold
-					rounded-md hover:bg-amber-700 duration-500 transition-all" onClick={() => cleared ? null : clearCache()}>
-						{cleared && "Reseted" || "Reset Settings"}
 					</div>
 				</div>
 			</button>

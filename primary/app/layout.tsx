@@ -5,6 +5,7 @@ import HeaderComponent from "@/components/Header";
 import type { Metadata } from "next";
 import { Suspense } from "react";
 import "./globals.css";
+import PrimaryContextWrapper from "@/components/contexts/Primary";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,9 +28,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body>
         <HeaderComponent />
         <main className="page-content flex flex-col p-4 md:p-20 pt-10 pb-10">
-          <Suspense fallback={<LoadingComponent />}>
+          <PrimaryContextWrapper>
             {children}
-          </Suspense>
+          </PrimaryContextWrapper>
         </main>
         <FooterComponent />
       </body>
