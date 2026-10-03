@@ -1,6 +1,9 @@
 FROM node:24.16.0-alpine AS deps
 WORKDIR /app
 
+ARG DATABASE_URL="postgresql://databaseadmin:xtSKhR4gdoXLtLjQE45zlUtbVP4@postgres:5432/sessentials?schema=public"
+ENV DATABASE_URL=${DATABASE_URL}
+
 COPY package*.json ./
 COPY prisma ./prisma
 COPY prisma.config.ts ./prisma.config.ts

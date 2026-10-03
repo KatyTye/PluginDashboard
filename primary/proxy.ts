@@ -7,7 +7,7 @@ export async function proxy(request: NextRequest) {
 		return NextResponse.redirect(new URL("/downloads", request.url))
 	} else {
 		const cookies = request.cookies;
-		const token = cookies.has("token");
+		const token = cookies.has("SE_PROFILE_TOKEN");
 
 		if (!token) {
 			return NextResponse.redirect(new URL("/profile/login", request.url))

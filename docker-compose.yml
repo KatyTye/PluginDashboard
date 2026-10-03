@@ -34,13 +34,15 @@ services:
     build:
       context: ./api
       dockerfile: Dockerfile
+      args:
+        DATABASE_URL: postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}?schema=public
     environment:
       PUBLIC_KEY: ${PUBLIC_KEY}
       TOKEN_SECRET: ${TOKEN_SECRET}
       INTERNAL_KEY: ${INTERNAL_KEY}
       POSTGRES_SECRET: ${POSTGRES_SECRET}
       GOOGLE_APP_PASSWORD: ${GOOGLE_APP_PASSWORD}
-      DATABASE_URL: ${DATABASE_URL}
+      DATABASE_URL: postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}?schema=public
     healthcheck:
       test: [ "CMD", "node", "-e", "fetch('http://127.0.0.1:3000/').then((res) => process.exit(res.ok ? 0 : 1)).catch(() => process.exit(1))" ]
       interval: 10s

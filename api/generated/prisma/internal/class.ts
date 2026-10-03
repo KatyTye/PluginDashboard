@@ -11,49 +11,66 @@
  * Please import the `PrismaClient` class from the `client.ts` file instead.
  */
 
-import * as runtime from "@prisma/client/runtime/client"
+import * as runtime from "@prisma/client/runtime/library"
 import type * as Prisma from "./prismaNamespace"
 
 
 const config: runtime.GetPrismaClientConfig = {
-  "previewFeatures": [],
-  "clientVersion": "7.9.1",
-  "engineVersion": "e922089b7d7502aff4249d5da3420f6fa55fc6ad",
+  "generator": {
+    "name": "client",
+    "provider": {
+      "fromEnvVar": null,
+      "value": "prisma-client"
+    },
+    "output": {
+      "value": "/home/david/Documents/dev/GitHub/sessentials-page/api/generated/prisma",
+      "fromEnvVar": null
+    },
+    "config": {
+      "engineType": "library"
+    },
+    "binaryTargets": [
+      {
+        "fromEnvVar": null,
+        "value": "debian-openssl-3.0.x",
+        "native": true
+      }
+    ],
+    "previewFeatures": [],
+    "sourceFilePath": "/home/david/Documents/dev/GitHub/sessentials-page/api/prisma/schema.prisma",
+    "isCustomOutput": true
+  },
+  "relativePath": "../../prisma",
+  "clientVersion": "6.19.3",
+  "engineVersion": "c2990dca591cba766e3b7ef5d9e8a84796e47ab7",
+  "datasourceNames": [
+    "db"
+  ],
   "activeProvider": "postgresql",
-  "inlineSchema": "// This is your Prisma schema file,\n// learn more about it in the docs: https://pris.ly/d/prisma-schema\n\n// Get a free hosted Postgres database in seconds: `npx create-db`\n\ngenerator client {\n  provider = \"prisma-client\"\n  output   = \"../generated/prisma\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n}\n\nmodel User {\n  id             String         @id @default(uuid())\n  name           String\n  email          String         @unique\n  password       String\n  plan           String         @default(\"free\")\n  active         Boolean        @default(false)\n  activation_key String?        @default(uuid())\n  createdAt      DateTime       @default(now())\n  updatedAt      DateTime       @updatedAt\n  refreshTokens  RefreshToken[]\n}\n\nmodel RefreshToken {\n  id     String @id @default(uuid())\n  userId String\n  token  String\n\n  user User @relation(fields: [userId], references: [id], onDelete: Cascade)\n}\n\nmodel Version {\n  id         String   @id @default(uuid())\n  version    String\n  release    Boolean\n  note       String   @default(\"\")\n  types      String[]\n  mcversions String[]\n  changes    String[]\n  createdAt  DateTime @default(now())\n  updatedAt  DateTime @updatedAt\n}\n",
+  "postinstall": false,
+  "inlineDatasources": {
+    "db": {
+      "url": {
+        "fromEnvVar": "DATABASE_URL",
+        "value": null
+      }
+    }
+  },
+  "inlineSchema": "// This is your Prisma schema file,\n// learn more about it in the docs: https://pris.ly/d/prisma-schema\n\n// Get a free hosted Postgres database in seconds: `npx create-db`\n\ngenerator client {\n  provider = \"prisma-client\"\n  output   = \"../generated/prisma\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel User {\n  id             String         @id @default(uuid())\n  name           String\n  email          String         @unique\n  password       String\n  plan           String         @default(\"free\")\n  active         Boolean        @default(false)\n  activation_key String?        @default(uuid())\n  createdAt      DateTime       @default(now())\n  updatedAt      DateTime       @updatedAt\n  refreshTokens  RefreshToken[]\n}\n\nmodel RefreshToken {\n  id     String @id @default(uuid())\n  userId String\n  token  String\n\n  user User @relation(fields: [userId], references: [id], onDelete: Cascade)\n}\n\nmodel Version {\n  id         String   @id @default(uuid())\n  version    String\n  release    Boolean\n  note       String   @default(\"\")\n  types      String[]\n  mcversions String[]\n  changes    String[]\n  createdAt  DateTime @default(now())\n  updatedAt  DateTime @updatedAt\n}\n",
+  "inlineSchemaHash": "c63dce3cb8cff2d4286411b2db7d5dec2caf79f829bba43347ed07f8883aa553",
+  "copyEngine": true,
   "runtimeDataModel": {
     "models": {},
     "enums": {},
     "types": {}
   },
-  "parameterizationSchema": {
-    "strings": [],
-    "graph": ""
-  }
+  "dirname": ""
 }
 
-config.runtimeDataModel = JSON.parse("{\"models\":{\"User\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"email\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"password\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"plan\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"active\",\"kind\":\"scalar\",\"type\":\"Boolean\"},{\"name\":\"activation_key\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"refreshTokens\",\"kind\":\"object\",\"type\":\"RefreshToken\",\"relationName\":\"RefreshTokenToUser\"}],\"dbName\":null},\"RefreshToken\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"userId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"token\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"user\",\"kind\":\"object\",\"type\":\"User\",\"relationName\":\"RefreshTokenToUser\"}],\"dbName\":null},\"Version\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"version\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"release\",\"kind\":\"scalar\",\"type\":\"Boolean\"},{\"name\":\"note\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"types\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"mcversions\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"changes\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":null}},\"enums\":{},\"types\":{}}")
-config.parameterizationSchema = {
-  strings: JSON.parse("[\"where\",\"orderBy\",\"cursor\",\"user\",\"refreshTokens\",\"_count\",\"User.findUnique\",\"User.findUniqueOrThrow\",\"User.findFirst\",\"User.findFirstOrThrow\",\"User.findMany\",\"data\",\"User.createOne\",\"User.createMany\",\"User.createManyAndReturn\",\"User.updateOne\",\"User.updateMany\",\"User.updateManyAndReturn\",\"create\",\"update\",\"User.upsertOne\",\"User.deleteOne\",\"User.deleteMany\",\"having\",\"_min\",\"_max\",\"User.groupBy\",\"User.aggregate\",\"RefreshToken.findUnique\",\"RefreshToken.findUniqueOrThrow\",\"RefreshToken.findFirst\",\"RefreshToken.findFirstOrThrow\",\"RefreshToken.findMany\",\"RefreshToken.createOne\",\"RefreshToken.createMany\",\"RefreshToken.createManyAndReturn\",\"RefreshToken.updateOne\",\"RefreshToken.updateMany\",\"RefreshToken.updateManyAndReturn\",\"RefreshToken.upsertOne\",\"RefreshToken.deleteOne\",\"RefreshToken.deleteMany\",\"RefreshToken.groupBy\",\"RefreshToken.aggregate\",\"Version.findUnique\",\"Version.findUniqueOrThrow\",\"Version.findFirst\",\"Version.findFirstOrThrow\",\"Version.findMany\",\"Version.createOne\",\"Version.createMany\",\"Version.createManyAndReturn\",\"Version.updateOne\",\"Version.updateMany\",\"Version.updateManyAndReturn\",\"Version.upsertOne\",\"Version.deleteOne\",\"Version.deleteMany\",\"Version.groupBy\",\"Version.aggregate\",\"AND\",\"OR\",\"NOT\",\"id\",\"version\",\"release\",\"note\",\"types\",\"mcversions\",\"changes\",\"createdAt\",\"updatedAt\",\"equals\",\"in\",\"notIn\",\"lt\",\"lte\",\"gt\",\"gte\",\"not\",\"has\",\"hasEvery\",\"hasSome\",\"contains\",\"startsWith\",\"endsWith\",\"userId\",\"token\",\"name\",\"email\",\"password\",\"plan\",\"active\",\"activation_key\",\"every\",\"some\",\"none\",\"is\",\"isNot\",\"connectOrCreate\",\"upsert\",\"createMany\",\"set\",\"disconnect\",\"delete\",\"connect\",\"updateMany\",\"deleteMany\",\"push\"]"),
-  graph: "lAEaMA0EAABmACA8AABkADA9AAAJABA-AABkADA_AQAAAAFGQABdACFHQABdACFYAQBbACFZAQAAAAFaAQBbACFbAQBbACFcIABcACFdAQBlACEBAAAAAQAgBwMAAGgAIDwAAGcAMD0AAAMAED4AAGcAMD8BAFsAIVYBAFsAIVcBAFsAIQEDAACOAQAgBwMAAGgAIDwAAGcAMD0AAAMAED4AAGcAMD8BAAAAAVYBAFsAIVcBAFsAIQMAAAADACABAAAEADACAAAFACABAAAAAwAgAQAAAAEAIA0EAABmACA8AABkADA9AAAJABA-AABkADA_AQBbACFGQABdACFHQABdACFYAQBbACFZAQBbACFaAQBbACFbAQBbACFcIABcACFdAQBlACECBAAAjQEAIF0AAHoAIAMAAAAJACABAAAKADACAAABACADAAAACQAgAQAACgAwAgAAAQAgAwAAAAkAIAEAAAoAMAIAAAEAIAoEAACMAQAgPwEAAAABRkAAAAABR0AAAAABWAEAAAABWQEAAAABWgEAAAABWwEAAAABXCAAAAABXQEAAAABAQsAAA4AIAk_AQAAAAFGQAAAAAFHQAAAAAFYAQAAAAFZAQAAAAFaAQAAAAFbAQAAAAFcIAAAAAFdAQAAAAEBCwAAEAAwAQsAABAAMAoEAAB_ACA_AQBsACFGQABxACFHQABxACFYAQBsACFZAQBsACFaAQBsACFbAQBsACFcIABtACFdAQB-ACECAAAAAQAgCwAAEwAgCT8BAGwAIUZAAHEAIUdAAHEAIVgBAGwAIVkBAGwAIVoBAGwAIVsBAGwAIVwgAG0AIV0BAH4AIQIAAAAJACALAAAVACACAAAACQAgCwAAFQAgAwAAAAEAIBIAAA4AIBMAABMAIAEAAAABACABAAAACQAgBAUAAHsAIBgAAH0AIBkAAHwAIF0AAHoAIAw8AABfADA9AAAcABA-AABfADA_AQBPACFGQABSACFHQABSACFYAQBPACFZAQBPACFaAQBPACFbAQBPACFcIABQACFdAQBgACEDAAAACQAgAQAAGwAwFwAAHAAgAwAAAAkAIAEAAAoAMAIAAAEAIAEAAAAFACABAAAABQAgAwAAAAMAIAEAAAQAMAIAAAUAIAMAAAADACABAAAEADACAAAFACADAAAAAwAgAQAABAAwAgAABQAgBAMAAHkAID8BAAAAAVYBAAAAAVcBAAAAAQELAAAkACADPwEAAAABVgEAAAABVwEAAAABAQsAACYAMAELAAAmADAEAwAAeAAgPwEAbAAhVgEAbAAhVwEAbAAhAgAAAAUAIAsAACkAIAM_AQBsACFWAQBsACFXAQBsACECAAAAAwAgCwAAKwAgAgAAAAMAIAsAACsAIAMAAAAFACASAAAkACATAAApACABAAAABQAgAQAAAAMAIAMFAAB1ACAYAAB3ACAZAAB2ACAGPAAAXgAwPQAAMgAQPgAAXgAwPwEATwAhVgEATwAhVwEATwAhAwAAAAMAIAEAADEAMBcAADIAIAMAAAADACABAAAEADACAAAFACAMPAAAWgAwPQAAOAAQPgAAWgAwPwEAAAABQAEAWwAhQSAAXAAhQgEAWwAhQwAAUQAgRAAAUQAgRQAAUQAgRkAAXQAhR0AAXQAhAQAAADUAIAEAAAA1ACAMPAAAWgAwPQAAOAAQPgAAWgAwPwEAWwAhQAEAWwAhQSAAXAAhQgEAWwAhQwAAUQAgRAAAUQAgRQAAUQAgRkAAXQAhR0AAXQAhAAMAAAA4ACABAAA5ADACAAA1ACADAAAAOAAgAQAAOQAwAgAANQAgAwAAADgAIAEAADkAMAIAADUAIAk_AQAAAAFAAQAAAAFBIAAAAAFCAQAAAAFDAAByACBEAABzACBFAAB0ACBGQAAAAAFHQAAAAAEBCwAAPQAgCT8BAAAAAUABAAAAAUEgAAAAAUIBAAAAAUMAAHIAIEQAAHMAIEUAAHQAIEZAAAAAAUdAAAAAAQELAAA_ADABCwAAPwAwCT8BAGwAIUABAGwAIUEgAG0AIUIBAGwAIUMAAG4AIEQAAG8AIEUAAHAAIEZAAHEAIUdAAHEAIQIAAAA1ACALAABCACAJPwEAbAAhQAEAbAAhQSAAbQAhQgEAbAAhQwAAbgAgRAAAbwAgRQAAcAAgRkAAcQAhR0AAcQAhAgAAADgAIAsAAEQAIAIAAAA4ACALAABEACADAAAANQAgEgAAPQAgEwAAQgAgAQAAADUAIAEAAAA4ACADBQAAaQAgGAAAawAgGQAAagAgDDwAAE4AMD0AAEsAED4AAE4AMD8BAE8AIUABAE8AIUEgAFAAIUIBAE8AIUMAAFEAIEQAAFEAIEUAAFEAIEZAAFIAIUdAAFIAIQMAAAA4ACABAABKADAXAABLACADAAAAOAAgAQAAOQAwAgAANQAgDDwAAE4AMD0AAEsAED4AAE4AMD8BAE8AIUABAE8AIUEgAFAAIUIBAE8AIUMAAFEAIEQAAFEAIEUAAFEAIEZAAFIAIUdAAFIAIQ4FAABUACAYAABZACAZAABZACBIAQAAAAFJAQAAAARKAQAAAARLAQAAAAFMAQAAAAFNAQAAAAFOAQAAAAFPAQBYACFTAQAAAAFUAQAAAAFVAQAAAAEFBQAAVAAgGAAAVwAgGQAAVwAgSCAAAAABTyAAVgAhBEgBAAAABVABAAAAAVEBAAAABFIBAAAABAsFAABUACAYAABVACAZAABVACBIQAAAAAFJQAAAAARKQAAAAARLQAAAAAFMQAAAAAFNQAAAAAFOQAAAAAFPQABTACELBQAAVAAgGAAAVQAgGQAAVQAgSEAAAAABSUAAAAAESkAAAAAES0AAAAABTEAAAAABTUAAAAABTkAAAAABT0AAUwAhCEgCAAAAAUkCAAAABEoCAAAABEsCAAAAAUwCAAAAAU0CAAAAAU4CAAAAAU8CAFQAIQhIQAAAAAFJQAAAAARKQAAAAARLQAAAAAFMQAAAAAFNQAAAAAFOQAAAAAFPQABVACEFBQAAVAAgGAAAVwAgGQAAVwAgSCAAAAABTyAAVgAhAkggAAAAAU8gAFcAIQ4FAABUACAYAABZACAZAABZACBIAQAAAAFJAQAAAARKAQAAAARLAQAAAAFMAQAAAAFNAQAAAAFOAQAAAAFPAQBYACFTAQAAAAFUAQAAAAFVAQAAAAELSAEAAAABSQEAAAAESgEAAAAESwEAAAABTAEAAAABTQEAAAABTgEAAAABTwEAWQAhUwEAAAABVAEAAAABVQEAAAABDDwAAFoAMD0AADgAED4AAFoAMD8BAFsAIUABAFsAIUEgAFwAIUIBAFsAIUMAAFEAIEQAAFEAIEUAAFEAIEZAAF0AIUdAAF0AIQtIAQAAAAFJAQAAAARKAQAAAARLAQAAAAFMAQAAAAFNAQAAAAFOAQAAAAFPAQBZACFTAQAAAAFUAQAAAAFVAQAAAAECSCAAAAABTyAAVwAhCEhAAAAAAUlAAAAABEpAAAAABEtAAAAAAUxAAAAAAU1AAAAAAU5AAAAAAU9AAFUAIQY8AABeADA9AAAyABA-AABeADA_AQBPACFWAQBPACFXAQBPACEMPAAAXwAwPQAAHAAQPgAAXwAwPwEATwAhRkAAUgAhR0AAUgAhWAEATwAhWQEATwAhWgEATwAhWwEATwAhXCAAUAAhXQEAYAAhDgUAAGIAIBgAAGMAIBkAAGMAIEgBAAAAAUkBAAAABUoBAAAABUsBAAAAAUwBAAAAAU0BAAAAAU4BAAAAAU8BAGEAIVMBAAAAAVQBAAAAAVUBAAAAAQ4FAABiACAYAABjACAZAABjACBIAQAAAAFJAQAAAAVKAQAAAAVLAQAAAAFMAQAAAAFNAQAAAAFOAQAAAAFPAQBhACFTAQAAAAFUAQAAAAFVAQAAAAEISAIAAAABSQIAAAAFSgIAAAAFSwIAAAABTAIAAAABTQIAAAABTgIAAAABTwIAYgAhC0gBAAAAAUkBAAAABUoBAAAABUsBAAAAAUwBAAAAAU0BAAAAAU4BAAAAAU8BAGMAIVMBAAAAAVQBAAAAAVUBAAAAAQ0EAABmACA8AABkADA9AAAJABA-AABkADA_AQBbACFGQABdACFHQABdACFYAQBbACFZAQBbACFaAQBbACFbAQBbACFcIABcACFdAQBlACELSAEAAAABSQEAAAAFSgEAAAAFSwEAAAABTAEAAAABTQEAAAABTgEAAAABTwEAYwAhUwEAAAABVAEAAAABVQEAAAABA14AAAMAIF8AAAMAIGAAAAMAIAcDAABoACA8AABnADA9AAADABA-AABnADA_AQBbACFWAQBbACFXAQBbACEPBAAAZgAgPAAAZAAwPQAACQAQPgAAZAAwPwEAWwAhRkAAXQAhR0AAXQAhWAEAWwAhWQEAWwAhWgEAWwAhWwEAWwAhXCAAXAAhXQEAZQAhYQAACQAgYgAACQAgAAAAAWYBAAAAAQFmIAAAAAECZgEAAAAEbAEAAAAFAmYBAAAABGwBAAAABQJmAQAAAARsAQAAAAUBZkAAAAABAWYBAAAABAFmAQAAAAQBZgEAAAAEAAAABRIAAJABACATAACTAQAgYwAAkQEAIGQAAJIBACBpAAABACADEgAAkAEAIGMAAJEBACBpAAABACAAAAAAAWYBAAAAAQsSAACAAQAwEwAAhQEAMGMAAIEBADBkAACCAQAwZQAAgwEAIGYAAIQBADBnAACEAQAwaAAAhAEAMGkAAIQBADBqAACGAQAwawAAhwEAMAI_AQAAAAFXAQAAAAECAAAABQAgEgAAiwEAIAMAAAAFACASAACLAQAgEwAAigEAIAELAACPAQAwBwMAAGgAIDwAAGcAMD0AAAMAED4AAGcAMD8BAAAAAVYBAFsAIVcBAFsAIQIAAAAFACALAACKAQAgAgAAAIgBACALAACJAQAgBjwAAIcBADA9AACIAQAQPgAAhwEAMD8BAFsAIVYBAFsAIVcBAFsAIQY8AACHAQAwPQAAiAEAED4AAIcBADA_AQBbACFWAQBbACFXAQBbACECPwEAbAAhVwEAbAAhAj8BAGwAIVcBAGwAIQI_AQAAAAFXAQAAAAEEEgAAgAEAMGMAAIEBADBlAACDAQAgaQAAhAEAMAACBAAAjQEAIF0AAHoAIAI_AQAAAAFXAQAAAAEJPwEAAAABRkAAAAABR0AAAAABWAEAAAABWQEAAAABWgEAAAABWwEAAAABXCAAAAABXQEAAAABAgAAAAEAIBIAAJABACADAAAACQAgEgAAkAEAIBMAAJQBACALAAAACQAgCwAAlAEAID8BAGwAIUZAAHEAIUdAAHEAIVgBAGwAIVkBAGwAIVoBAGwAIVsBAGwAIVwgAG0AIV0BAH4AIQk_AQBsACFGQABxACFHQABxACFYAQBsACFZAQBsACFaAQBsACFbAQBsACFcIABtACFdAQB-ACECBAYCBQADAQMAAQEEBwAAAAADBQAIGAAJGQAKAAAAAwUACBgACRkACgEDAAEBAwABAwUADxgAEBkAEQAAAAMFAA8YABAZABEAAAADBQAXGAAYGQAZAAAAAwUAFxgAGBkAGQYCAQcIAQgLAQkMAQoNAQwPAQ0RBA4SBQ8UARAWBBEXBhQYARUZARYaBBodBxseCxwfAh0gAh4hAh8iAiAjAiElAiInBCMoDCQqAiUsBCYtDScuAigvAikwBCozDis0Eiw2Ey03Ey46Ey87EzA8EzE-EzJABDNBFDRDEzVFBDZGFTdHEzhIEzlJBDpMFjtNGg"
-}
+config.runtimeDataModel = JSON.parse("{\"models\":{\"User\":{\"dbName\":null,\"schema\":null,\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":true,\"isReadOnly\":false,\"hasDefaultValue\":true,\"type\":\"String\",\"nativeType\":null,\"default\":{\"name\":\"uuid\",\"args\":[4]},\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"name\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"String\",\"nativeType\":null,\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"email\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":true,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"String\",\"nativeType\":null,\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"password\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"String\",\"nativeType\":null,\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"plan\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":true,\"type\":\"String\",\"nativeType\":null,\"default\":\"free\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"active\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":true,\"type\":\"Boolean\",\"nativeType\":null,\"default\":false,\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"activation_key\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":true,\"type\":\"String\",\"nativeType\":null,\"default\":{\"name\":\"uuid\",\"args\":[4]},\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":true,\"type\":\"DateTime\",\"nativeType\":null,\"default\":{\"name\":\"now\",\"args\":[]},\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"DateTime\",\"nativeType\":null,\"isGenerated\":false,\"isUpdatedAt\":true},{\"name\":\"refreshTokens\",\"kind\":\"object\",\"isList\":true,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"RefreshToken\",\"nativeType\":null,\"relationName\":\"RefreshTokenToUser\",\"relationFromFields\":[],\"relationToFields\":[],\"isGenerated\":false,\"isUpdatedAt\":false}],\"primaryKey\":null,\"uniqueFields\":[],\"uniqueIndexes\":[],\"isGenerated\":false},\"RefreshToken\":{\"dbName\":null,\"schema\":null,\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":true,\"isReadOnly\":false,\"hasDefaultValue\":true,\"type\":\"String\",\"nativeType\":null,\"default\":{\"name\":\"uuid\",\"args\":[4]},\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"userId\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":true,\"hasDefaultValue\":false,\"type\":\"String\",\"nativeType\":null,\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"token\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"String\",\"nativeType\":null,\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"user\",\"kind\":\"object\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"User\",\"nativeType\":null,\"relationName\":\"RefreshTokenToUser\",\"relationFromFields\":[\"userId\"],\"relationToFields\":[\"id\"],\"relationOnDelete\":\"Cascade\",\"isGenerated\":false,\"isUpdatedAt\":false}],\"primaryKey\":null,\"uniqueFields\":[],\"uniqueIndexes\":[],\"isGenerated\":false},\"Version\":{\"dbName\":null,\"schema\":null,\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":true,\"isReadOnly\":false,\"hasDefaultValue\":true,\"type\":\"String\",\"nativeType\":null,\"default\":{\"name\":\"uuid\",\"args\":[4]},\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"version\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"String\",\"nativeType\":null,\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"release\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"Boolean\",\"nativeType\":null,\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"note\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":true,\"type\":\"String\",\"nativeType\":null,\"default\":\"\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"types\",\"kind\":\"scalar\",\"isList\":true,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"String\",\"nativeType\":null,\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"mcversions\",\"kind\":\"scalar\",\"isList\":true,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"String\",\"nativeType\":null,\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"changes\",\"kind\":\"scalar\",\"isList\":true,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"String\",\"nativeType\":null,\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":true,\"type\":\"DateTime\",\"nativeType\":null,\"default\":{\"name\":\"now\",\"args\":[]},\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"DateTime\",\"nativeType\":null,\"isGenerated\":false,\"isUpdatedAt\":true}],\"primaryKey\":null,\"uniqueFields\":[],\"uniqueIndexes\":[],\"isGenerated\":false}},\"enums\":{},\"types\":{}}")
+config.engineWasm = undefined
+config.compilerWasm = undefined
 
-async function decodeBase64AsWasm(wasmBase64: string): Promise<WebAssembly.Module> {
-  const { Buffer } = await import('node:buffer')
-  const wasmArray = Buffer.from(wasmBase64, 'base64')
-  return new WebAssembly.Module(wasmArray)
-}
-
-config.compilerWasm = {
-  getRuntime: async () => await import("@prisma/client/runtime/query_compiler_fast_bg.postgresql.mjs"),
-
-  getQueryCompilerWasmModule: async () => {
-    const { wasm } = await import("@prisma/client/runtime/query_compiler_fast_bg.postgresql.wasm-base64.mjs")
-    return await decodeBase64AsWasm(wasm)
-  },
-
-  importName: "./query_compiler_fast_bg.js"
-}
 
 
 
@@ -67,14 +84,12 @@ export interface PrismaClientConstructor {
    * Type-safe database client for TypeScript
    * @example
    * ```
-   * const prisma = new PrismaClient({
-   *   adapter: new PrismaPg({ connectionString: process.env.DATABASE_URL })
-   * })
+   * const prisma = new PrismaClient()
    * // Fetch zero or more Users
    * const users = await prisma.user.findMany()
    * ```
    * 
-   * Read more in our [docs](https://pris.ly/d/client).
+   * Read more in our [docs](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client).
    */
 
   new <
@@ -82,7 +97,7 @@ export interface PrismaClientConstructor {
     LogOpts extends LogOptions<Options> = LogOptions<Options>,
     OmitOpts extends Prisma.PrismaClientOptions['omit'] = Options extends { omit: infer U } ? U : Prisma.PrismaClientOptions['omit'],
     ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs
-  >(options: Prisma.PrismaClientConstructorArgs<Options>): PrismaClient<LogOpts, OmitOpts, ExtArgs>
+  >(options?: Prisma.Subset<Options, Prisma.PrismaClientOptions> ): PrismaClient<LogOpts, OmitOpts, ExtArgs>
 }
 
 /**
@@ -91,14 +106,12 @@ export interface PrismaClientConstructor {
  * Type-safe database client for TypeScript
  * @example
  * ```
- * const prisma = new PrismaClient({
- *   adapter: new PrismaPg({ connectionString: process.env.DATABASE_URL })
- * })
+ * const prisma = new PrismaClient()
  * // Fetch zero or more Users
  * const users = await prisma.user.findMany()
  * ```
  * 
- * Read more in our [docs](https://pris.ly/d/client).
+ * Read more in our [docs](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client).
  */
 
 export interface PrismaClient<
@@ -127,7 +140,7 @@ export interface PrismaClient<
    * const result = await prisma.$executeRaw`UPDATE User SET cool = ${true} WHERE email = ${'user@email.com'};`
    * ```
    *
-   * Read more in our [docs](https://pris.ly/d/raw-queries).
+   * Read more in our [docs](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client/raw-database-access).
    */
   $executeRaw<T = unknown>(query: TemplateStringsArray | Prisma.Sql, ...values: any[]): Prisma.PrismaPromise<number>;
 
@@ -139,7 +152,7 @@ export interface PrismaClient<
    * const result = await prisma.$executeRawUnsafe('UPDATE User SET cool = $1 WHERE email = $2 ;', true, 'user@email.com')
    * ```
    *
-   * Read more in our [docs](https://pris.ly/d/raw-queries).
+   * Read more in our [docs](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client/raw-database-access).
    */
   $executeRawUnsafe<T = unknown>(query: string, ...values: any[]): Prisma.PrismaPromise<number>;
 
@@ -150,7 +163,7 @@ export interface PrismaClient<
    * const result = await prisma.$queryRaw`SELECT * FROM User WHERE id = ${1} OR email = ${'user@email.com'};`
    * ```
    *
-   * Read more in our [docs](https://pris.ly/d/raw-queries).
+   * Read more in our [docs](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client/raw-database-access).
    */
   $queryRaw<T = unknown>(query: TemplateStringsArray | Prisma.Sql, ...values: any[]): Prisma.PrismaPromise<T>;
 
@@ -162,7 +175,7 @@ export interface PrismaClient<
    * const result = await prisma.$queryRawUnsafe('SELECT * FROM User WHERE id = $1 OR email = $2;', 1, 'user@email.com')
    * ```
    *
-   * Read more in our [docs](https://pris.ly/d/raw-queries).
+   * Read more in our [docs](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client/raw-database-access).
    */
   $queryRawUnsafe<T = unknown>(query: string, ...values: any[]): Prisma.PrismaPromise<T>;
 
@@ -178,11 +191,12 @@ export interface PrismaClient<
    * ])
    * ```
    * 
-   * Read more in our [docs](https://www.prisma.io/docs/orm/prisma-client/queries/transactions).
+   * Read more in our [docs](https://www.prisma.io/docs/concepts/components/prisma-client/transactions).
    */
-  $transaction<P extends Prisma.PrismaPromise<any>[]>(arg: [...P], options?: { maxWait?: number, timeout?: number, isolationLevel?: Prisma.TransactionIsolationLevel }): runtime.Types.Utils.JsPromise<runtime.Types.Utils.UnwrapTuple<P>>
+  $transaction<P extends Prisma.PrismaPromise<any>[]>(arg: [...P], options?: { isolationLevel?: Prisma.TransactionIsolationLevel }): runtime.Types.Utils.JsPromise<runtime.Types.Utils.UnwrapTuple<P>>
 
   $transaction<R>(fn: (prisma: Omit<PrismaClient, runtime.ITXClientDenyList>) => runtime.Types.Utils.JsPromise<R>, options?: { maxWait?: number, timeout?: number, isolationLevel?: Prisma.TransactionIsolationLevel }): runtime.Types.Utils.JsPromise<R>
+
 
   $extends: runtime.Types.Extensions.ExtendsHook<"extends", Prisma.TypeMapCb<OmitOpts>, ExtArgs, runtime.Types.Utils.Call<Prisma.TypeMapCb<OmitOpts>, {
     extArgs: ExtArgs
@@ -219,6 +233,7 @@ export interface PrismaClient<
   get version(): Prisma.VersionDelegate<ExtArgs, { omit: OmitOpts }>;
 }
 
-export function getPrismaClientClass(): PrismaClientConstructor {
+export function getPrismaClientClass(dirname: string): PrismaClientConstructor {
+  config.dirname = dirname
   return runtime.getPrismaClient(config) as unknown as PrismaClientConstructor
 }

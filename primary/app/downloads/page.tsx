@@ -1,10 +1,11 @@
+import { returnPluginDownloads } from "@/helpers/downloads-fetcher";
 import type { downloadObject } from "@/lib/utils"
 import Versions from "@/components/Versions"
 import Link from "next/link"
-import { returnPluginDownloads } from "@/helpers/downloads-fetcher";
 
 export default async function Downloads() {
     const downloadsData = await returnPluginDownloads();
+
 	return (
 		<article>
 			<h1 className="text-center text-4xl font-bold mt-10">Version Downloads</h1>
