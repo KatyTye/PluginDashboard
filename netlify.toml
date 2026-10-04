@@ -1,3 +1,0 @@
-[build]
-	base = "primary"
-	command = "npm run build"
