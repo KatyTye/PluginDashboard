@@ -1,0 +1,618 @@
+{
+	"status": 200,
+	"message": "Here is your servers information",
+	"claim_token": "rg45ggg3f34dd347kkj655h45344322f5h",
+	"result": {
+		"api": {
+			"testing": true,
+			"ranking": 34,
+			"old_ranking": 51
+		},
+		"plugin": {
+			"ads": false,
+			"debug": false,
+			"active": true,
+			"features": true,
+			"commands": true,
+			"community": true,
+			"check_updates": false,
+			"supporter": true,
+			"migrated": false,
+			"version": "1.5.7",
+			"type": "Vanilla+",
+			"installed": "4 Octoper 2020",
+			"store": "https://sessentials.org/store",
+			"discord": "https://discord.gg/xxxxxxxx",
+			"settings": {
+				"allow_urls": false,
+				"spawn_on_join": false,
+				"force_respawn": false,
+				"force_gamemode": true,
+				"spawn_permission": false,
+				"allow_interfering": false,
+				"message_whitespace": true
+			}
+		},
+		"info": {
+			"status": true,
+			"online": 20,
+			"default_gamemode": 0,
+			"max_online": 100,
+			"uptime": 1600,
+			"total_joined": 3992,
+			"timestamp": 13576543687,
+			"ping": {
+				"amount": 21,
+				"value": 589
+			},
+			"usage": {
+				"cpu": 89.3,
+				"ram": 20,
+				"max_ram": 60
+			}
+		},
+		"analytics": {
+			"today": {
+				"show": true,
+				"joined": 400,
+				"left": 30,
+				"time_spent": 23
+			},
+			"week": {
+				"show": true,
+				"joined": 4900,
+				"left": 3600,
+				"time_spent": 64
+			},
+			"month": {
+				"show": true,
+				"joined": 9000,
+				"left": 8000,
+				"time_spent": 68
+			},
+			"year": {
+				"show": false,
+				"joined": 40000,
+				"left": 39000,
+				"time_spent": 70
+			},
+			"total": {
+				"show": true,
+				"joined": 156000,
+				"left": 145000,
+				"time_spent": 76
+			}
+		},
+		"online_players": [
+			{
+				"uuid": "e451-228d-af91",
+				"player_info": {
+					"name": "StellerCosmic",
+					"display_name": "Cosmic",
+					"staff": true
+				},
+				"server_info": {
+					"rank": 3,
+					"ban": {
+						"status": false,
+						"violation": "Reach (200+ blocks)",
+						"expire": "02-04-2027",
+						"time": "inf"
+					},
+					"location": {
+						"x": 34,
+						"y": 130,
+						"z": -56,
+						"world": "nether"
+					},
+					"gamemode": 0,
+					"godmode": false,
+					"flying": false
+				},
+				"permissions": [
+					"minecraft.command.op",
+					"minecraft.command.deop",
+					"sessentials.stop"
+				]
+			},
+			{
+				"uuid": "e451-228d-af91",
+				"player_info": {
+					"name": "StellerCosmic",
+					"display_name": "Cosmic",
+					"staff": false
+				},
+				"server_info": {
+					"rank": 3,
+					"ban": {
+						"status": true,
+						"violation": "Reach (200+ blocks)",
+						"expire": "02-04-2027",
+						"time": "inf"
+					},
+					"location": {
+						"x": 34,
+						"y": 130,
+						"z": -56,
+						"world": "nether"
+					},
+					"gamemode": 0,
+					"godmode": false,
+					"flying": false
+				},
+				"permissions": [
+					"minecraft.command.op",
+					"minecraft.command.deop",
+					"sessentials.stop"
+				]
+			},
+			{
+				"uuid": "e451-228d-af91",
+				"player_info": {
+					"name": "StellerCosmic",
+					"display_name": "Cosmic",
+					"staff": false
+				},
+				"server_info": {
+					"rank": 3,
+					"ban": {
+						"status": true,
+						"violation": "Reach (200+ blocks)",
+						"expire": "02-04-2027",
+						"time": "inf"
+					},
+					"location": {
+						"x": 34,
+						"y": 130,
+						"z": -56,
+						"world": "nether"
+					},
+					"gamemode": 0,
+					"godmode": false,
+					"flying": false
+				},
+				"permissions": [
+					"minecraft.command.op",
+					"minecraft.command.deop",
+					"sessentials.stop"
+				]
+			},
+			{
+				"uuid": "e451-228d-af91",
+				"player_info": {
+					"name": "StellerCosmic",
+					"display_name": "Cosmic",
+					"staff": false
+				},
+				"server_info": {
+					"rank": 3,
+					"ban": {
+						"status": true,
+						"violation": "Reach (200+ blocks)",
+						"expire": "02-04-2027",
+						"time": "inf"
+					},
+					"location": {
+						"x": 34,
+						"y": 130,
+						"z": -56,
+						"world": "nether"
+					},
+					"gamemode": 0,
+					"godmode": false,
+					"flying": false
+				},
+				"permissions": [
+					"minecraft.command.op",
+					"minecraft.command.deop",
+					"sessentials.stop"
+				]
+			},
+			{
+				"uuid": "e451-228d-af91",
+				"player_info": {
+					"name": "StellerCosmic",
+					"display_name": "Cosmic",
+					"staff": false
+				},
+				"server_info": {
+					"rank": 3,
+					"ban": {
+						"status": true,
+						"violation": "Reach (200+ blocks)",
+						"expire": "02-04-2027",
+						"time": "inf"
+					},
+					"location": {
+						"x": 34,
+						"y": 130,
+						"z": -56,
+						"world": "nether"
+					},
+					"gamemode": 0,
+					"godmode": false,
+					"flying": false
+				},
+				"permissions": [
+					"minecraft.command.op",
+					"minecraft.command.deop",
+					"sessentials.stop"
+				]
+			},
+			{
+				"uuid": "e451-228d-af91",
+				"player_info": {
+					"name": "StellerCosmic",
+					"display_name": "Cosmic",
+					"staff": false
+				},
+				"server_info": {
+					"rank": 3,
+					"ban": {
+						"status": true,
+						"violation": "Reach (200+ blocks)",
+						"expire": "02-04-2027",
+						"time": "inf"
+					},
+					"location": {
+						"x": 34,
+						"y": 130,
+						"z": -56,
+						"world": "nether"
+					},
+					"gamemode": 0,
+					"godmode": false,
+					"flying": false
+				},
+				"permissions": [
+					"minecraft.command.op",
+					"minecraft.command.deop",
+					"sessentials.stop"
+				]
+			},
+			{
+				"uuid": "e451-228d-af91",
+				"player_info": {
+					"name": "StellerCosmic",
+					"display_name": "Cosmic",
+					"staff": false
+				},
+				"server_info": {
+					"rank": 3,
+					"ban": {
+						"status": true,
+						"violation": "Reach (200+ blocks)",
+						"expire": "02-04-2027",
+						"time": "inf"
+					},
+					"location": {
+						"x": 34,
+						"y": 130,
+						"z": -56,
+						"world": "nether"
+					},
+					"gamemode": 0,
+					"godmode": false,
+					"flying": false
+				},
+				"permissions": [
+					"minecraft.command.op",
+					"minecraft.command.deop",
+					"sessentials.stop"
+				]
+			},
+			{
+				"uuid": "e451-228d-af91",
+				"player_info": {
+					"name": "StellerCosmic",
+					"display_name": "Cosmic",
+					"staff": false
+				},
+				"server_info": {
+					"rank": 3,
+					"ban": {
+						"status": true,
+						"violation": "Reach (200+ blocks)",
+						"expire": "02-04-2027",
+						"time": "inf"
+					},
+					"location": {
+						"x": 34,
+						"y": 130,
+						"z": -56,
+						"world": "nether"
+					},
+					"gamemode": 0,
+					"godmode": false,
+					"flying": false
+				},
+				"permissions": [
+					"minecraft.command.op",
+					"minecraft.command.deop",
+					"sessentials.stop"
+				]
+			},
+			{
+				"uuid": "e451-228d-af91",
+				"player_info": {
+					"name": "StellerCosmic",
+					"display_name": "Cosmic",
+					"staff": false
+				},
+				"server_info": {
+					"rank": 3,
+					"ban": {
+						"status": true,
+						"violation": "Reach (200+ blocks)",
+						"expire": "02-04-2027",
+						"time": "inf"
+					},
+					"location": {
+						"x": 34,
+						"y": 130,
+						"z": -56,
+						"world": "nether"
+					},
+					"gamemode": 0,
+					"godmode": false,
+					"flying": false
+				},
+				"permissions": [
+					"minecraft.command.op",
+					"minecraft.command.deop",
+					"sessentials.stop"
+				]
+			},
+			{
+				"uuid": "e451-228d-af91",
+				"player_info": {
+					"name": "StellerCosmic",
+					"display_name": "Cosmic",
+					"staff": false
+				},
+				"server_info": {
+					"rank": 3,
+					"ban": {
+						"status": true,
+						"violation": "Reach (200+ blocks)",
+						"expire": "02-04-2027",
+						"time": "inf"
+					},
+					"location": {
+						"x": 34,
+						"y": 130,
+						"z": -56,
+						"world": "nether"
+					},
+					"gamemode": 0,
+					"godmode": false,
+					"flying": false
+				},
+				"permissions": [
+					"minecraft.command.op",
+					"minecraft.command.deop",
+					"sessentials.stop"
+				]
+			},
+			{
+				"uuid": "e451-228d-af91",
+				"player_info": {
+					"name": "StellerCosmic",
+					"display_name": "Cosmic",
+					"staff": false
+				},
+				"server_info": {
+					"rank": 3,
+					"ban": {
+						"status": true,
+						"violation": "Reach (200+ blocks)",
+						"expire": "02-04-2027",
+						"time": "inf"
+					},
+					"location": {
+						"x": 34,
+						"y": 130,
+						"z": -56,
+						"world": "nether"
+					},
+					"gamemode": 0,
+					"godmode": false,
+					"flying": false
+				},
+				"permissions": [
+					"minecraft.command.op",
+					"minecraft.command.deop",
+					"sessentials.stop"
+				]
+			}
+		],
+		"banned_players": [
+			{
+				"uuid": "e451-228d-af91",
+				"name": "StellerCosmic",
+				"display_name": "Cosmic",
+				"violation": "Reach (200+ blocks)",
+				"expire": "02-04-2027",
+				"time": "inf"
+			}
+		],
+		"opped_players": [
+			{
+				"uuid": "e451-228d-af91",
+				"name": "StellerCosmic",
+				"by": "StellerCosmic",
+				"display_name": "Cosmic"
+			}
+		],
+		"messages": {
+			"defaults": [
+				{
+					"name": "join",
+					"content": " &8[&a+&8] &f"
+				},
+				{
+					"name": "quit",
+					"content": " &8[&c-&8] &f"
+				},
+				{
+					"name": "reload",
+					"content": "&aSEssentials has been reloaded."
+				},
+				{
+					"name": "online_shop",
+					"content": "https://shop.website.com/"
+				},
+				{
+					"name": "discord_link",
+					"content": "https://discord.gg/xxxxxxxx"
+				},
+				{
+					"name": "sending",
+					"content": "&8[%color%%prefix%&8] &f%name% &8≫ %message%"
+				},
+				{
+					"name": "permission_denied",
+					"content": "&cYou don't have the required permission to use this command."
+				},
+				{
+					"name": "subcommand-unknown",
+					"content": "&cUnknown subcommand. Try "
+				}
+			],
+			"features": [],
+			"commands": []
+		},
+		"ranks": [
+			{
+				"id": 0,
+				"name": "Default",
+				"color": "&f",
+				"prefix": "",
+				"suffix": "",
+				"members": 24,
+				"priority": 0,
+				"permissions": ["minecraft.tmp.filler"]
+			},
+			{
+				"id": 1,
+				"name": "Administrator",
+				"color": "&c",
+				"prefix": "Admin",
+				"suffix": "",
+				"members": 4,
+				"priority": 50,
+				"permissions": ["minecraft.tmp.filler"]
+			},
+			{
+				"id": 2,
+				"name": "Default",
+				"color": "&4",
+				"prefix": "Owner",
+				"suffix": "",
+				"members": 1,
+				"priority": 100,
+				"permissions": ["minecraft.tmp.filler"]
+			}
+		],
+		"locations": {
+			"cooldown": 0,
+			"price": 0,
+			"warps": [
+				{
+					"name": "Building Area",
+					"x": 34,
+					"y": 130,
+					"z": -56,
+					"yaw": 0,
+					"pitch": 0,
+					"price": 0,
+					"cooldown": 0,
+					"world": "world"
+				}
+			],
+			"spawns": [
+				{
+					"name": "default",
+					"x": 34,
+					"y": 130,
+					"z": -56,
+					"yaw": 0,
+					"pitch": 0,
+					"price": 0,
+					"cooldown": 0,
+					"world": "world"
+				}
+			],
+			"homes": [
+				{
+					"name": "Building Area",
+					"owner_uuid": "e451-228d-af91",
+					"x": 34,
+					"y": 130,
+					"z": -56,
+					"yaw": 0,
+					"pitch": 0,
+					"price": 0,
+					"cooldown": 0,
+					"world": "world"
+				}
+			],
+			"customs": [
+				{
+					"name": "other",
+					"x": 34,
+					"y": 130,
+					"z": -56,
+					"yaw": 0,
+					"pitch": 0,
+					"world": "world"
+				}
+			]
+		},
+		"backups": [
+			{
+				"name": "Bluebarry Backup",
+				"version": "1.5.7",
+				"date": "10/04/2025"
+			},
+			{
+				"name": "Rasp Backup",
+				"version": "1.4.1",
+				"date": "01/01/2025"
+			}
+		],
+		"commands": {
+			"total": 34,
+			"defaults": [
+				{
+					"name": "stop",
+					"active": true
+				},
+				{
+					"name": "gamemode",
+					"active": true
+				}
+			],
+			"features": [
+				{
+					"name": "rankmanager",
+					"active": true,
+					"subcommands": [
+						{
+							"name": "rm",
+							"active": true
+						}
+					]
+				}
+			]
+		},
+		"codes": [
+			{
+				"name": "Kit Manager",
+				"created": "01/03/2025",
+				"last_updated": "02/04/2025",
+				"code": "on join:\nteleport player to {location.custom.other}"
+			}
+		]
+	}
+}
