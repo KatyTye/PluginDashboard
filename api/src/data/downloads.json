@@ -1,0 +1,275 @@
+[
+	{
+		"released": true,
+		"version": "0.3.7",
+		"notes": "Another small version with many new features!",
+		"downloadable": true,
+		"changelog": [
+			{
+				"changes": 42,
+				"type": "Added",
+				"name": "Commands",
+				"list": [
+					"Clear/Clearinventory",
+					"Online/Onlinestaff",
+					"Tpall/Teleportall",
+					"Unbanip/Unban",
+					"Ec/Enderchest",
+					"Bc/Broadcast",
+					"Cc/Clearchat",
+					"Smite/Strike",
+					"Cl/Clearlag",
+					"Fix/Repair",
+					"Lightning",
+					"Workbench",
+					"Ban/Bans",
+					"Realname",
+					"Invensee",
+					"Eat/Feed",
+					"Killall",
+					"Suicide",
+					"Vanish",
+					"Money",
+					"Anvil",
+					"Craft",
+					"Speed",
+					"Kill",
+					"Rank",
+					"Seed",
+					"Ping",
+					"Kick",
+					"Stop",
+					"Heal",
+					"Hat"
+				]
+			},
+			{
+				"changes": 1,
+				"type": "Added",
+				"name": "Events",
+				"list": [
+					"Rank Displayname Assignment"
+				]
+			},
+			{
+				"changes": 2,
+				"type": "Fixed",
+				"name": "Things",
+				"list": [
+					"Permissions Handler: It was missing from rank management ecosystem.",
+					"Permission Issue: The * permissions now bypasses all permission requirements."
+				]
+			}
+		],
+		"minecraft_versions": [
+			{
+				"name": "1.21.X",
+				"tested": true
+			},
+			{
+				"name": "1.20.X",
+				"tested": true
+			},
+			{
+				"name": "1.19.X",
+				"tested": true
+			}
+		],
+		"server_types": [
+			{
+				"name": "Bukkit",
+				"tested": true
+			},
+			{
+				"name": "Spigot",
+				"tested": true
+			},
+			{
+				"name": "Paper",
+				"tested": true
+			}
+		]
+	},
+	{
+		"released": true,
+		"version": "0.2.5",
+		"notes": "Second small version with many bug fixes!",
+		"downloadable": true,
+		"changelog": [
+			{
+				"changes": 7,
+				"type": "Added",
+				"name": "Commands",
+				"list": [
+					"Warp and Warps",
+					"Buy/Store",
+					"Discord",
+					"Godmode",
+					"Fly"
+				]
+			},
+			{
+				"changes": 2,
+				"type": "Added",
+				"name": "Events",
+				"list": [
+					"Plugin Advertisement (not displayed until toggled)",
+					"Cancel Damage In Godmode"
+				]
+			},
+			{
+				"changes": 4,
+				"type": "Fixed",
+				"name": "Things",
+				"list": [
+					"Internal Plugin File: Changed pom.xml to use local time on build instead of UTC.",
+					"Player Counting: Changed event on first player join to counting in default rank.",
+					"SEssentials Command: Added check for console so it cant produce error.",
+					"Chat Manager: Changed default prefix to remove empty backets."
+				]
+			}
+		],
+		"minecraft_versions": [
+			{
+				"name": "1.21.X",
+				"tested": true
+			},
+			{
+				"name": "1.20.X",
+				"tested": true
+			},
+			{
+				"name": "1.19.X",
+				"tested": true
+			}
+		],
+		"server_types": [
+			{
+				"name": "Bukkit",
+				"tested": true
+			},
+			{
+				"name": "Spigot",
+				"tested": true
+			},
+			{
+				"name": "Paper",
+				"tested": true
+			}
+		]
+	},
+	{
+		"released": true,
+		"version": "0.1.1",
+		"notes": "First official release of a smaller version!",
+		"downloadable": true,
+		"changelog": [
+			{
+				"changes": 7,
+				"type": "Added",
+				"name": "Commands",
+				"list": [
+					"SEssentials",
+					"SetSpawn",
+					"Gamemode",
+					"Economy",
+					"Balance",
+					"Spawn",
+					"Give"
+				]
+			},
+			{
+				"changes": 5,
+				"type": "Added",
+				"name": "Events",
+				"list": [
+					"Update Checker",
+					"SEssentials",
+					"Join",
+					"Quit"
+				]
+			},
+			{
+				"changes": 1,
+				"type": "Removed",
+				"name": "Commands",
+				"list": [
+					"Reset Data"
+				]
+			}
+		],
+		"minecraft_versions": [
+			{
+				"name": "1.21.X",
+				"tested": true
+			},
+			{
+				"name": "1.20.X",
+				"tested": true
+			},
+			{
+				"name": "1.19.X",
+				"tested": true
+			}
+		],
+		"server_types": [
+			{
+				"name": "Bukkit",
+				"tested": true
+			},
+			{
+				"name": "Spigot",
+				"tested": true
+			},
+			{
+				"name": "Paper",
+				"tested": true
+			}
+		]
+	},
+	{
+		"released": false,
+		"version": "0.0.1",
+		"notes": "First sessentials official version release!",
+		"downloadable": true,
+		"changelog": [
+			{
+				"changes": 2,
+				"type": "Added",
+				"name": "Commands",
+				"list": [
+					"Rank Mangement",
+					"Reset Data"
+				]
+			},
+			{
+				"changes": 1,
+				"type": "Added",
+				"name": "Events",
+				"list": [
+					"Custom Chat"
+				]
+			}
+		],
+		"minecraft_versions": [
+			{
+				"name": "1.19.4",
+				"tested": true
+			}
+		],
+		"server_types": [
+			{
+				"name": "Bukkit",
+				"tested": true
+			},
+			{
+				"name": "Spigot",
+				"tested": false
+			},
+			{
+				"name": "Paper",
+				"tested": false
+			}
+		]
+	}
+]
