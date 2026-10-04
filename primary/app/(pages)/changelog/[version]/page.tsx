@@ -5,16 +5,21 @@ import type { downloadObject } from "@/src/lib/types";
 import Versions from "@/src/components/ui/Versions";
 import { findSpeficObject } from "@/src/lib/types";
 import { IoArrowBack } from "react-icons/io5";
-import { useParams } from "next/navigation";
-import { NextResponse } from "next/server";
+import { useParams, useRouter } from "next/navigation";
+import { useEffect } from "react";
 import Link from "next/link";
 
 export default function Changelog() {
 	const { downloadsList } = useDownloadInfoData()
 	const params = useParams()
+	const router = useRouter()
 	const version = params?.version?.toString()
 
-	if (!version) return NextResponse.redirect(new URL("/downloads", window.location.href))
+	useEffect(() => {
+		if (!version) router.replace("/downloads")
+	}, [router, version])
+
+	if (!version) return null
 
 	if (downloadsList) {
 		const data: downloadObject = findSpeficObject(downloadsList, "version", version)
@@ -97,4 +102,6 @@ export default function Changelog() {
 			</button>}
 		</> || <div className="text-center text-red-500 font-bold">Not Found</div>)
 	}
+
+	return <></>
 }
