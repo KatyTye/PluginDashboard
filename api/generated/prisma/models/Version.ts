@@ -8,7 +8,7 @@
  *
  * 🟢 You can import this file directly.
  */
-import type * as runtime from "@prisma/client/runtime/library"
+import type * as runtime from "@prisma/client/runtime/client"
 import type * as $Enums from "../enums"
 import type * as Prisma from "../internal/prismaNamespace"
 
@@ -174,7 +174,7 @@ export type VersionGroupByOutputType = {
   _max: VersionMaxAggregateOutputType | null
 }
 
-type GetVersionGroupByPayload<T extends VersionGroupByArgs> = Prisma.PrismaPromise<
+export type GetVersionGroupByPayload<T extends VersionGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<VersionGroupByOutputType, T['by']> &
       {
@@ -1083,6 +1083,11 @@ export type VersionFindManyArgs<ExtArgs extends runtime.Types.Extensions.Interna
    * Skip the first `n` Versions.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of Versions.
+   */
   distinct?: Prisma.VersionScalarFieldEnum | Prisma.VersionScalarFieldEnum[]
 }
 
