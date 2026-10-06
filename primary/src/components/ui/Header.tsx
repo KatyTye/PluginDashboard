@@ -38,7 +38,7 @@ export default function HeaderComponent() {
 
 		{useIcon && <Link href={"/"} className="w-12 h-12 rounded-full overflow-hidden m-auto md:m-0 hover:border-(--special-color)
 		border-transparent border-2 transition-[border-color] duration-500" rel="alternate">
-			<img src="favicon.ico" alt="SEssentials Logo" className="w-12 h-auto m-auto md:m-0 transform-[scale(1.5)]" />
+			<img src="/favicon.ico" alt="SEssentials Logo" className="w-12 h-auto m-auto md:m-0 transform-[scale(1.5)]" />
 		</Link> || <Link href={"/"} className="text-2xl text-center border-none font-bold md:w-fit hover:text-(--special-color) duration-500"
 			rel="alternate">SEssentials
 		</Link>}

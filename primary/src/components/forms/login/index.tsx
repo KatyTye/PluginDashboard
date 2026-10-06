@@ -49,7 +49,7 @@ export default function LoginForm() {
 		})
 	}, [formState])
 
-	return (<form action={formAction} className="mt-15 w-91">
+	return (<form action={formAction} className="mt-15 w-91 not-md:hidden">
 		<label htmlFor="username" className="flex flex-col">
 			<span className="font-bold text-[1.1rem] w-fit">
 				Username:
