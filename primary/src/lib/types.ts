@@ -13,6 +13,16 @@ export type typesObject = {
 	tested: boolean
 }
 
+export type loginResponse = {
+	status: number,
+	message: string,
+	tokens?: {
+		auth: string,
+		decrypt: string,
+		validUntil: number
+	}
+}
+
 export type downloadObject = {
 	notes?: string,
 	version: string,
