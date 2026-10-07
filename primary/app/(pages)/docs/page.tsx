@@ -1,12 +1,13 @@
 "use client"
 
+import { useDownloadInfoData } from "@/src/components/contexts/downloads"
 import Installation from "@/src/components/ui/docs-pages/Installation"
 import { IoArrowBack, IoArrowForward } from "react-icons/io5"
 import Intro from "@/src/components/ui/docs-pages/Intro"
 import Setup from "@/src/components/ui/docs-pages/Setup"
+import { Suspense, useEffect, useState } from "react"
 import Api from "@/src/components/ui/docs-pages/Api"
 import { useSearchParams } from "next/navigation"
-import { Suspense, useEffect, useState } from "react"
 
 export default function Documentation() {
 	return <Suspense fallback={<div className="text-center">Loading documentation...</div>}>
@@ -16,13 +17,14 @@ export default function Documentation() {
 
 function DocumentationContent() {
 	const BasicStages = ["intro", "setup", "installation"]
+	const { downloadsList } = useDownloadInfoData()
 	const section  = useSearchParams().get("")
 
 	const paramSection = section? `${section}` : "intro"
 
+	const [version, setVersion] = useState<number | undefined>(undefined)
 	const [selected, setSelected] = useState(paramSection.toLowerCase())
 	const [currentStage, setCurrentStage] = useState(0)
-	const [version, setVersion] = useState("0.0.1")
 
 	useEffect(() => {
 		document.querySelector(`#top`)?.scrollIntoView({
@@ -32,6 +34,12 @@ function DocumentationContent() {
 			history.replaceState(null, "", `/docs?=${selected.toLowerCase()}`)
 		}
 	}, [selected])
+
+	useEffect(() => {
+		if (downloadsList) {
+			setVersion(Number(downloadsList[0].version.replaceAll(".", "")))
+		}
+	}, [downloadsList])
 
 	function changeSelected(evt: React.MouseEvent<HTMLElement>) {
 		const elm = evt.target as HTMLElement
@@ -98,23 +106,46 @@ function DocumentationContent() {
 
 				{
 					selected == "intro" ? <Intro /> :
-					selected == "setup" ? <Setup /> :
+					selected == "setup" ? <Setup version={version || 1} /> :
 					selected == "installation" ? <Installation /> :
 					selected == "api" ? <Api /> :
 				<></>}
 
-				{BasicStages.includes(selected) ? <div className="flex w-full">
-					{currentStage != 0 && <button className="flex tracking-wider gap-2 mt-15 items-center transition-all duration-500 focus:text-(--special-color)
-					hover:text-(--special-color) cursor-pointer" onClick={() => { setCurrentStage(currentStage - 1); setSelected(BasicStages[currentStage - 1]) }}>
-						<IoArrowBack /><span>Go to last stage</span></button>}
+				<div className="flex w-full justify-between mt-20 gap-25">
+					{ BasicStages.includes(selected) ? <>
+						{currentStage != 0 && <button className="flex tracking-wider gap-2 items-center transition-all duration-500 focus:text-(--special-color)
+						hover:text-(--special-color) cursor-pointer" onClick={() => { setCurrentStage(currentStage - 1); setSelected(BasicStages[currentStage - 1]) }}>
+							<IoArrowBack /><span>Go to last stage</span></button>}
 
-					{currentStage != BasicStages.length - 1 && <button className="flex tracking-wider gap-2 ml-auto mt-15 items-center transition-all duration-500 focus:text-(--special-color)
-					hover:text-(--special-color) cursor-pointer" onClick={() => { setCurrentStage(currentStage + 1); setSelected(BasicStages[currentStage + 1]) }}>
-						<span>Go to next stage</span><IoArrowForward /></button>}</div>
+						<select name="version" id="version" className="p-2 pl-5 pr-5 tracking-widest border-2 border-[#ffffff1a]
+							bg-[#252729] light:bg-gray-400 rounded-xl" value={version} onChange={event => setVersion(Number(event.target.value))}>
+							{ downloadsList?.map((download, index) => download.downloadable &&
+								<option value={Number(download.version.replaceAll(".", ""))} key={"version-" + index}>
+									{download.version}
+								</option>
+							)}
+						</select>
 
-					: <button className="flex tracking-wider gap-2 ml-auto mt-15 items-center transition-all duration-500 focus:text-(--special-color)
-					hover:text-(--special-color) cursor-pointer" onClick={() => { setCurrentStage(0); setSelected(BasicStages[0]) }}>
-						<IoArrowBack /><span>Return to the basics</span></button>}
+						{currentStage != BasicStages.length - 1 && <button className="flex tracking-wider gap-2 items-center transition-all duration-500 focus:text-(--special-color)
+						hover:text-(--special-color) cursor-pointer" onClick={() => { setCurrentStage(currentStage + 1); setSelected(BasicStages[currentStage + 1]) }}>
+							<span>Go to next stage</span><IoArrowForward /></button>}</>
+
+						: <>
+							<button className="flex tracking-wider gap-2 items-center transition-all duration-500 focus:text-(--special-color)
+							hover:text-(--special-color) cursor-pointer" onClick={() => { setCurrentStage(0); setSelected(BasicStages[0]) }}>
+							<IoArrowBack /><span>Return to the basics</span></button>
+
+							<select name="version" id="version" className="p-2 pl-5 pr-5 tracking-widest border-2 border-[#ffffff1a]
+								bg-[#252729] light:bg-gray-400 rounded-xl" value={version} onChange={event => setVersion(Number(event.target.value))}>
+								{ downloadsList?.map((download, index) => download.downloadable &&
+									<option value={Number(download.version.replaceAll(".", ""))} key={"version-" + index}>
+										{download.version}
+									</option>
+								)}
+							</select>
+						</>
+					}
+				</div>
 			</div>
 		</div>
 	</>)
