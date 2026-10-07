@@ -6,9 +6,15 @@ import Intro from "@/src/components/ui/docs-pages/Intro"
 import Setup from "@/src/components/ui/docs-pages/Setup"
 import Api from "@/src/components/ui/docs-pages/Api"
 import { useSearchParams } from "next/navigation"
-import { useEffect, useState } from "react"
+import { Suspense, useEffect, useState } from "react"
 
 export default function Documentation() {
+	return <Suspense fallback={<div className="text-center">Loading documentation...</div>}>
+		<DocumentationContent />
+	</Suspense>
+}
+
+function DocumentationContent() {
 	const BasicStages = ["intro", "setup", "installation"]
 	const section  = useSearchParams().get("")
 

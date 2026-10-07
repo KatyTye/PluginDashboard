@@ -1,15 +1,21 @@
 "use client"
 
 import { useDownloadInfoData } from "@/src/components/contexts/downloads";
+import { useParams, useRouter } from "next/navigation";
 import type { downloadObject } from "@/src/lib/types";
 import Versions from "@/src/components/ui/Versions";
 import { findSpeficObject } from "@/src/lib/types";
 import { IoArrowBack } from "react-icons/io5";
-import { useParams, useRouter } from "next/navigation";
-import { useEffect } from "react";
+import { Suspense, useEffect } from "react";
 import Link from "next/link";
 
 export default function Changelog() {
+	return <Suspense fallback={<div className="text-center">Loading changelog...</div>}>
+		<ChangelogContent />
+	</Suspense>
+}
+
+function ChangelogContent() {
 	const { downloadsList } = useDownloadInfoData()
 	const params = useParams()
 	const router = useRouter()
