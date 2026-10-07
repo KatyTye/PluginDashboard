@@ -55,13 +55,13 @@ export default function LoginForm() {
 				Username:
 			</span>
 		<input type="text" name="username" id="username" disabled={pending}
-		placeholder="Minecraft Username" value={username} className="w-full p-3.25 outline-0 bg-[#2d3134]
+		placeholder="Minecraft Username" value={username} className="w-full p-3.25 outline-0 bg-[#2d3134] light:bg-gray-400
 			rounded-2xl mt-2" onChange={elm => setUsername(elm.target.value)} />
 		</label>
 		<ul hidden={!errors?.username} className="mt-5">
 			{
 				errors?.username?.errors?.map((text, idx) => <li key={"login-username-" + idx}
-				className="list-disc ml-5 text-red-700 mt-2.5" role="alert">
+				className="list-disc ml-5 text-red-700 light:text-red-600 mt-2.5" role="alert">
 					{text}
 				</li>)
 			}
@@ -72,13 +72,13 @@ export default function LoginForm() {
 				Password:
 			</span>
 		<input type="password" name="password" id="password" disabled={pending}
-		placeholder="Password" value={password} className="w-full p-3.25 outline-0 bg-[#2d3134]
+		placeholder="Password" value={password} className="w-full p-3.25 outline-0 bg-[#2d3134] light:bg-gray-400
 			rounded-2xl mt-2" onChange={elm => setPassword(elm.target.value)} />
 		</label>
 		<ul hidden={!errors?.password}>
 			{
 				errors?.password?.errors?.map((text, idx) => <li key={"login-password-" + idx}
-				className="list-disc ml-5 text-red-700 mt-2.5" role="alert">
+				className="list-disc ml-5 text-red-700 light:text-red-600 mt-2.5" role="alert">
 					{text}
 				</li>)
 			}
@@ -99,7 +99,7 @@ export default function LoginForm() {
 		}
 
 		<button type="submit" className="rounded-lg mt-5 p-3.25 pl-10 pr-10 font-bold transition-all
-		duration-500 bg-(--special-color) hover:bg-amber-700 w-full cursor-pointer" disabled={pending}>
+		duration-500 bg-(--special-color) hover:bg-amber-700 w-full cursor-pointer light:text-white" disabled={pending}>
 			{pending? "LOGGING IN" : "LOG IN"}
 		</button>
 	</form>)

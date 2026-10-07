@@ -16,6 +16,7 @@ export default function Documentation() {
 
 	const [selected, setSelected] = useState(paramSection.toLowerCase())
 	const [currentStage, setCurrentStage] = useState(0)
+	const [version, setVersion] = useState("0.0.1")
 
 	useEffect(() => {
 		document.querySelector(`#top`)?.scrollIntoView({
@@ -42,13 +43,14 @@ export default function Documentation() {
 			<h1 className="text-center text-4xl font-bold mt-10">
 				Documentation
 			</h1>
-			<p className="mt-2 text-(--text-second-color) max-w-250 m-auto tracking-widest text-center">
+			<p className="mt-2 text-(--text-second-color) max-w-250 m-auto tracking-widest text-center light:text-gray-600">
 				This page provides a comprehensive inventory of all available features, describes each feature’s purpose and functionality in detail, explains how to access and configure them.
 			</p>
 		</article>
 
 		<div className="md:flex m-auto mt-10 gap-10 max-w-375">
-			<div className="bg-(--box-background-color) mb-10 h-fit border-(--border-color) p-5 pl-15 pr-15 border-2 rounded-2xl">
+			<div className="bg-(--box-background-color) mb-10 h-fit border-(--border-color) p-5 pl-15 pr-15 border-2 rounded-2xl
+				light:border-gray-400 light:bg-gray-300">
 				<p className="font-bold">Basic:</p>
 				<ol className="mt-2">
 					<li onClick={evt => changeSelected(evt)} className={`transition-all ml-2.5 pl-2.5 border-l-2 duration-500 cursor-pointer
@@ -83,7 +85,8 @@ export default function Documentation() {
 				</ol>
 			</div>
 
-			<div id="top" className="bg-(--box-background-color) border-(--border-color) p-10 border-2 rounded-2xl">
+			<div id="top" className="bg-(--box-background-color) border-(--border-color) p-10 border-2 rounded-2xl
+				light:border-gray-400 light:bg-gray-300">
 
 				<h2 className="font-bold text-3xl">{selected.replace(selected.charAt(0), selected.charAt(0).toUpperCase())}</h2>
 

@@ -3,7 +3,7 @@ import SpecialBox from "../SpecialBox";
 export default function Intro() {
 
 	return (<>
-		<p className="mt-2 text-(--text-second-color) tracking-widest">
+		<p className="mt-2 text-(--text-second-color) tracking-widest light:text-gray-600">
 			This section of the documentation introduces the plugins sections and related topics.
 		</p>
 		<SpecialBox>
@@ -18,9 +18,9 @@ export default function Intro() {
 			<span className="font-bold">Structure:</span> Features are grouped into categories and subcategories by importance and function; high-priority or core features appear near the top of each category.
 		</p>
 		<p className="mt-5">
-			<span className="font-bold">Entries:</span> Each entry shows the feature name and the minimum compatible plugin version.</p>
+			<span className="font-bold">Entries:</span> Each entry shows the function name, and you can change the plugin version at the bottom of each page.</p>
 		<p className="mt-5">
-			<span className="font-bold">Navigation:</span> Click an entry to jump (smooth scroll) to that feature’s section in the main content area.
+			<span className="font-bold">Navigation:</span> Click an entry to open that feature's section in the main content area.
 		</p>
 		<p className="mt-5">
 			<span className="font-bold">Active state:</span> The currently visible section is highlighted in the menu; the highlight updates as the users click.
@@ -32,10 +32,14 @@ export default function Intro() {
 		<p className="mt-5">There are two types:</p>
 		<ul className="list-disc ml-5">
 			<li className="mt-2">
-				<span className="font-bold bg-[#ff000040] p-1 rounded-lg">Red (Critical):</span> Contains critical warnings or actions the user must take; treated as high priority and should be read before proceeding.
+				<span className="font-bold bg-[#ff000040] p-1 rounded-lg light:bg-[#ff000080]">
+					Red (Critical):
+				</span> Contains critical warnings or actions the user must take; treated as high priority and should be read before proceeding.
 			</li>
 			<li className="mt-2">
-				<span className="font-bold bg-[#ffc40040] p-1 rounded-lg">Yellow (Note/Tip):</span> Contains helpful notes, tips, or clarifications that make using the feature easier but are not mandatory to read.
+				<span className="font-bold bg-[#ffc40040] p-1 rounded-lg light:bg-[#ffc40080]">
+					Yellow (Note/Tip):
+				</span> Contains helpful notes, tips, or clarifications that make using the feature easier but are not mandatory to read.
 			</li>
 		</ul>
 	</>)

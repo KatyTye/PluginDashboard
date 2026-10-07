@@ -3,7 +3,7 @@ import SpecialBox from "../SpecialBox";
 export default function Api() {
 
 	return (<>
-		<p className="mt-2 text-(--text-second-color) tracking-widest">
+		<p className="mt-2 text-(--text-second-color) tracking-widest light:text-gray-600">
 			This part of the documentation will tell you how our API for the plugin works.
 		</p>
 		<SpecialBox critical={true}>

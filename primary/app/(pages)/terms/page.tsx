@@ -1,13 +1,14 @@
 export default function Terms() {
 
-	return (<article className="rounded-2xl max-w-250 m-auto p-5 bg-(--box-background-color) border-2 border-(--border-color)">
+	return (<article className="rounded-2xl max-w-250 m-auto p-5 bg-(--box-background-color) border-2 border-(--border-color)
+		light:bg-gray-300 light:border-gray-400">
 		<h1 className="font-bold text-3xl">SEssentials Non-Resale, In-Plugin Monetization License (NRIM)</h1>
 		
-		<p className="text-(--text-second-color)">Copyright (c) 2026 Katy Tye. All rights reserved.</p>
+		<p className="text-(--text-second-color) light:text-gray-600">Copyright (c) 2026 Katy Tye. All rights reserved.</p>
 
-		<p className="mt-5 text-lime-400 font-bold">Grant of Rights Permission is granted, free of charge, to any person obtaining a copy of the Software to use, copy, modify, and redistribute the Software subject to the terms below.</p>
+		<p className="mt-5 text-lime-400 light:text-lime-700 font-bold">Grant of Rights Permission is granted, free of charge, to any person obtaining a copy of the Software to use, copy, modify, and redistribute the Software subject to the terms below.</p>
 
-		<p className="text-amber-400 font-bold mt-5">The Software is provided "AS IS", without warranty of any kind. The Copyright Holder is not liable for damages arising from use.</p>
+		<p className="text-amber-400 light:text-amber-600 font-bold mt-5">The Software is provided "AS IS", without warranty of any kind. The Copyright Holder is not liable for damages arising from use.</p>
 
 		<p className="mt-5 font-bold text-[18px]">Definitions</p>
 

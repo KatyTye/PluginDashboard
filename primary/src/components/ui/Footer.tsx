@@ -4,21 +4,21 @@ import NavLink from "next/link";
 export default function FooterComponent() {
 
 	return (<footer className="bottom-content flex flex-col gap-10 md:grid md:grid-cols-2 items-center bg-(--background-second-color)
-		p-4 lg:pl-20 lg:pr-20 transition-all duration-700">
+		p-4 lg:pl-20 lg:pr-20 transition-all duration-700 light:text-gray-600 light:bg-gray-200">
 		<div>
-			<p className="text-center md:text-left">SEssentials</p>
-			<p className="text-(--text-second-color) text-[14px] text-center md:text-left">
+			<p className="text-center md:text-left light:text-black">SEssentials</p>
+			<p className="text-(--text-second-color) light:text-gray-600 text-[14px] text-center md:text-left">
 				© 2026 SEssentials Plugin. All rights reserved.
 			</p>
 		</div>
 		<nav className="flex flex-wrap gap-10 md:ml-auto justify-center">
 			<NavLink href={"/support"} className="border-b-2 border-transparent transition-all [&.active]:border-(--special-color) 
-			hover:border-(--special-color) duration-500 text-[14px] [&.active]:text-(--text-color) text-(--text-second-color)"
+			hover:border-(--special-color) duration-500 text-[14px] [&.active]:text-(--text-color) text-(--text-second-color) light:text-gray-600"
 				rel="alternate">Contact Us
 			</NavLink>
 
 			<NavLink href={"/terms"} className="border-b-2 border-transparent transition-all [&.active]:border-(--special-color) 
-			hover:border-(--special-color) duration-500 text-[14px] [&.active]:text-(--text-color) text-(--text-second-color)"
+			hover:border-(--special-color) duration-500 text-[14px] [&.active]:text-(--text-color) text-(--text-second-color) light:text-gray-600"
 				rel="alternate">Copyright and Terms
 			</NavLink>
 

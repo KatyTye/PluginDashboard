@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant light (&:where(.scheme-light, .scheme-light *));
+
 * {
 	box-sizing: border-box;
 }
@@ -14,9 +16,10 @@ body {
 	flex-direction: column;
 	font-family: sans-serif;
 	scroll-behavior: smooth;
-	color: var(--text-color);
 	justify-content: space-between;
-	background: var(--background-color);
+	color: light-dark(#000, var(--text-color));
+	background: light-dark(invert(var(--background-color), 1), var(--background-color));
+	transition: background 700ms;
 }
 
 .full-image>svg {
@@ -48,13 +51,13 @@ body>span {
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus {
-  -webkit-box-shadow: 0 0 0 1000px #191d20 inset !important;
-  -webkit-text-fill-color: #ffffff !important;
-  border-color: #ffffff !important;
+  -webkit-box-shadow: 0 0 0 1000px light-dark(#97a1af, #191d20) inset;
+  -webkit-text-fill-color: light-dark(black, #ffffff);
+  border-color: light-dark(black, #ffffff);
 }
 
 .spigot {
-	color: #e2e83f;
+	color: light-dark(#c19007, #e2e83f);
 }
 
 .bukkit {

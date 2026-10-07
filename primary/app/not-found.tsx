@@ -4,11 +4,11 @@ import Link from "next/link";
 
 export default function NotFound() {
 
-	return (<>
-		<div className="m-auto full-image p-2 bg-(--background-color) rounded-full w-2/3 max-w-50">
+	return (<body style={{backgroundColor:"var(--background-color)"}}>
+		<div className="m-auto full-image p-2 bg-transparent rounded-full w-2/3 max-w-50 mb-10">
 			<TbError404 className="text-orange-500" />
 		</div>
-		<h2 className="text-2xl text-center font-bold">Not Found</h2>
+		<h2 className="text-2xl text-center font-bold text-white">Not Found</h2>
 		<p className="text-(--text-second-color) mt-5 text-center">
 			<span className="block">
 				We couldn't find the page your searching for,
@@ -17,7 +17,7 @@ export default function NotFound() {
 				you can return by clicking the button below.
 			</span>
 		</p>
-		<Link href={"/"} className="m-auto mt-5 flex gap-2 w-fit bg-(--special-color) rounded-lg p-5 pl-7 pr-7 font-bold">
+		<Link href={"/"} className="m-auto mt-5 flex gap-2 w-fit bg-(--special-color) rounded-lg p-5 pl-7 pr-7 font-bold text-white">
 			<span className="full-image">
 				<FaHouseChimney />
 			</span>
@@ -25,5 +25,5 @@ export default function NotFound() {
 				Go Back Home
 			</span>
 		</Link>
-	</>)
+	</body>)
 }

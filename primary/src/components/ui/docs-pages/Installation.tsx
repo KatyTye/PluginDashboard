@@ -3,7 +3,7 @@ import Link from "next/link";
 export default function Installation() {
 
 	return (<>
-		<p className="mt-2 text-(--text-second-color) tracking-widest">
+		<p className="mt-2 text-(--text-second-color) tracking-widest light:text-gray-600">
 			This section explains how to download and install the plugin, to your minecraft server.
 		</p>
 
@@ -14,8 +14,9 @@ export default function Installation() {
 			and websites such as
 			<a href="https://dev.bukkit.org/projects/sessentials" className="text-(--special-color) hover:text-amber-700" target="_blank"> Bukkit</a>,
 			<a href="https://hangar.papermc.io/Squirrels/SEssentials" className="text-(--special-color) hover:text-amber-700"target="_blank"> Paper</a>
-			, and <a href="https://www.curseforge.com/minecraft/bukkit-plugins/sessentials" className="text-(--special-color) hover:text-amber-700"
-			target="_blank">CurseForge</a> they also have the offical versions.
+			, <a href="https://www.curseforge.com/minecraft/bukkit-plugins/sessentials" className="text-(--special-color) hover:text-amber-700"
+			target="_blank">CurseForge</a>, and <a href="https://modrinth.com/plugin/sessentials-untxia" className="text-(--special-color) hover:text-amber-700" target="_blank"> Modrinth</a>
+			, they also have the offical versions.
 		</p>
 		<h3 className="text-xl mt-10 font-bold">Server Types</h3>
 		<p>
