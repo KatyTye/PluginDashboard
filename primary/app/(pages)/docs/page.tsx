@@ -3,6 +3,7 @@
 import { useDownloadInfoData } from "@/src/components/contexts/downloads"
 import Installation from "@/src/components/ui/docs-pages/Installation"
 import { IoArrowBack, IoArrowForward } from "react-icons/io5"
+import Economy from "@/src/components/ui/docs-pages/Economy"
 import Intro from "@/src/components/ui/docs-pages/Intro"
 import Setup from "@/src/components/ui/docs-pages/Setup"
 import { Suspense, useEffect, useState } from "react"
@@ -22,9 +23,9 @@ function DocumentationContent() {
 
 	const paramSection = section? `${section}` : "intro"
 
-	const [version, setVersion] = useState<number | undefined>(undefined)
 	const [selected, setSelected] = useState(paramSection.toLowerCase())
 	const [currentStage, setCurrentStage] = useState(0)
+	const [version, setVersion] = useState(1)
 
 	useEffect(() => {
 		document.querySelector(`#top`)?.scrollIntoView({
@@ -106,9 +107,10 @@ function DocumentationContent() {
 
 				{
 					selected == "intro" ? <Intro /> :
-					selected == "setup" ? <Setup version={version || 1} /> :
+					selected == "setup" ? <Setup version={version} /> :
 					selected == "installation" ? <Installation /> :
 					selected == "api" ? <Api /> :
+					selected == "economy" ? <Economy version={version} /> :
 				<></>}
 
 				<div className="flex w-full justify-between mt-20 gap-25">
