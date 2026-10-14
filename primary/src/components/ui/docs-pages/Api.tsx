@@ -1,6 +1,6 @@
 import SpecialBox from "../SpecialBox";
 
-export default function Api() {
+export default function ApiDocsComponent() {
 
 	return (<>
 		<p className="mt-2 text-(--text-second-color) tracking-widest light:text-gray-600">

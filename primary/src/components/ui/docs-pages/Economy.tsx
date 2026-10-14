@@ -1,6 +1,6 @@
 import SpecialBox from "../SpecialBox";
 
-export default function Economy({version} : {version: number}) {
+export default function EconomyDocsComponent({version} : {version: number}) {
 
 	if (version === 1) return (<>
 		<p className="mt-2 text-(--text-second-color) tracking-widest light:text-gray-600">

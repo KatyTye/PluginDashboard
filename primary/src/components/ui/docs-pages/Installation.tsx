@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-export default function Installation() {
+export default function InstallationDocsComponent() {
 
 	return (<>
 		<p className="mt-2 text-(--text-second-color) tracking-widest light:text-gray-600">
