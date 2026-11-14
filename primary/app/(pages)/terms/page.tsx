@@ -1,3 +1,9 @@
+import { Metadata } from "next"
+
+export const metadata: Metadata = {
+	title: "Terms"
+}
+
 export default function Terms() {
 
 	return (<article className="rounded-2xl max-w-250 m-auto p-5 bg-(--box-background-color) border-2 border-(--border-color)

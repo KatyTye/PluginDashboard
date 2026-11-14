@@ -2,6 +2,12 @@ import { MdAccountCircle, MdEmail } from "react-icons/md";
 import { CiCoffeeCup } from "react-icons/ci";
 import Link from "next/link";
 
+import { Metadata } from "next"
+
+export const metadata: Metadata = {
+	title: "Support"
+}
+
 export default function Support() {
 
 	return (<>

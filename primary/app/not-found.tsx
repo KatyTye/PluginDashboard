@@ -1,6 +1,11 @@
 import { FaHouseChimney } from "react-icons/fa6";
 import { TbError404 } from "react-icons/tb";
+import { Metadata } from "next"
 import Link from "next/link";
+
+export const metadata: Metadata = {
+	title: "Not Found"
+}
 
 export default function NotFound() {
 
