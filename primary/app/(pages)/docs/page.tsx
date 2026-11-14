@@ -60,8 +60,6 @@ function DocumentationContent() {
 		if (toggles.includes(name)) {
 			setToggles(toggles.filter(itm => itm !== name))
 		} else setToggles([...toggles, name])
-
-		console.log(toggles)
 	}
 
 	return (<>
@@ -138,7 +136,7 @@ function DocumentationContent() {
 					selected == "intro" ? <IntroDocsComponent /> :
 					selected == "setup" ? <SetupDocsComponent version={version} /> :
 					selected == "installation" ? <InstallationDocsComponent /> :
-					selected == "api" ? <ApiDocsComponent /> :
+					selected == "api" ? <ApiDocsComponent version={version} /> :
 					selected == "economy" ? <EconomyDocsComponent version={version} /> :
 					selected == "rank" ? <RankDocsComponent version={version} /> :
 				<></>}
