@@ -6,6 +6,7 @@ import EconomyDocsComponent from "@/src/components/ui/docs-pages/Economy"
 import { useDownloadInfoData } from "@/src/components/contexts/downloads"
 import SetupDocsComponent from "@/src/components/ui/docs-pages/Setup"
 import IntroDocsComponent from "@/src/components/ui/docs-pages/Intro"
+import GiveDocsComponent from "@/src/components/ui/docs-pages/Give"
 import RankDocsComponent from "@/src/components/ui/docs-pages/Rank"
 import ApiDocsComponent from "@/src/components/ui/docs-pages/Api"
 import { Suspense, useEffect, useState } from "react"
@@ -89,6 +90,7 @@ function DocumentationContent() {
 					<li onClick={evt => changeSelected(evt)} className={`transition-all ml-2.5 pl-2.5 border-l-2 duration-500 cursor-pointer
 						${selected == "installation" ? " text-(--special-color)" : ""}`}>Installation</li>
 				</ol>
+
 				<button className="font-bold mt-5 flex gap-5 justify-between items-center w-full cursor-pointer" onClick={() => 
 					handleToggleEvent("Managements")}>
 					<span>Managements:</span>
@@ -103,6 +105,7 @@ function DocumentationContent() {
 					<li onClick={evt => changeSelected(evt)} className={`transition-all ml-2.5 pl-2.5 border-l-2 duration-500 cursor-pointer
 						${selected == "sessentials" ? " text-(--special-color)" : ""}`}>SEssentials</li>
 				</ol>
+
 				<button className="font-bold mt-5 flex gap-5 justify-between items-center w-full cursor-pointer" onClick={() => 
 					handleToggleEvent("Commands")}>
 					<span>Commands:</span>
@@ -115,13 +118,14 @@ function DocumentationContent() {
 					<li onClick={evt => changeSelected(evt)} className={`transition-all ml-2.5 pl-2.5 border-l-2 duration-500 cursor-pointer
 						${selected == "spawn" ? " text-(--special-color)" : ""}`}>Spawn</li>
 				</ol>
+
 				<button className="font-bold mt-5 flex gap-5 justify-between items-center w-full cursor-pointer" onClick={() => 
 					handleToggleEvent("Other")}>
 					<span>Other:</span>
 					<IoChevronDownOutline className={`transition-transform min-w-5 min-h-5 duration-300 ${
 						toggles.includes("Other") ? "rotate-0" : "rotate-180"}`} />
 				</button>
-				<ol className="mt-2">
+				<ol className={`mt-2 overflow-hidden transition-all duration-500 ${toggles.includes("Other") ? "h-0" : "h-6"}`}>
 					<li onClick={evt => changeSelected(evt)} className={`transition-all ml-2.5 pl-2.5 border-l-2 duration-500 cursor-pointer
 						${selected == "api" ? " text-(--special-color)" : ""}`}>Api</li>
 				</ol>
@@ -138,6 +142,7 @@ function DocumentationContent() {
 					selected == "installation" ? <InstallationDocsComponent /> :
 					selected == "api" ? <ApiDocsComponent version={version} /> :
 					selected == "economy" ? <EconomyDocsComponent version={version} /> :
+					selected == "give" ? <GiveDocsComponent version={version} /> :
 					selected == "rank" ? <RankDocsComponent version={version} /> :
 				<></>}
 
