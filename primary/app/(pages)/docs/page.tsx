@@ -2,6 +2,7 @@
 
 import InstallationDocsComponent from "@/src/components/ui/docs-pages/Installation"
 import { IoArrowBack, IoArrowForward, IoChevronDownOutline } from "react-icons/io5"
+import SEssentialsDocsComponent from "@/src/components/ui/docs-pages/SEssentials"
 import EconomyDocsComponent from "@/src/components/ui/docs-pages/Economy"
 import { useDownloadInfoData } from "@/src/components/contexts/downloads"
 import SetupDocsComponent from "@/src/components/ui/docs-pages/Setup"
@@ -9,16 +10,10 @@ import IntroDocsComponent from "@/src/components/ui/docs-pages/Intro"
 import GiveDocsComponent from "@/src/components/ui/docs-pages/Give"
 import RankDocsComponent from "@/src/components/ui/docs-pages/Rank"
 import ApiDocsComponent from "@/src/components/ui/docs-pages/Api"
-import { Suspense, useEffect, useState } from "react"
 import { useSearchParams } from "next/navigation"
+import { useEffect, useState } from "react"
 
-export default function Documentation() {
-	return <Suspense fallback={<div className="text-center">Loading documentation...</div>}>
-		<DocumentationContent />
-	</Suspense>
-}
-
-function DocumentationContent() {
+export default function DocumentationContent() {
 	const BasicStages = ["intro", "setup", "installation"]
 	const { downloadsList } = useDownloadInfoData()
 	const section  = useSearchParams().get("")
@@ -134,7 +129,13 @@ function DocumentationContent() {
 			<div id="top" className="bg-(--box-background-color) border-(--border-color) p-10 border-2 rounded-2xl
 				light:border-gray-400 light:bg-gray-300 max-w-400">
 
-				<h2 className="font-bold text-3xl">{selected.replace(selected.charAt(0), selected.charAt(0).toUpperCase())}</h2>
+				<h2 className="font-bold text-3xl">
+					{ selected == "sessentials" ?
+						selected.replace(selected.charAt(0), selected.charAt(0).toUpperCase()).replace(selected.charAt(1), selected.charAt(1).toUpperCase())
+						:
+						selected.replace(selected.charAt(0), selected.charAt(0).toUpperCase())
+					}
+				</h2>
 
 				{
 					selected == "intro" ? <IntroDocsComponent /> :
@@ -142,6 +143,7 @@ function DocumentationContent() {
 					selected == "installation" ? <InstallationDocsComponent /> :
 					selected == "api" ? <ApiDocsComponent version={version} /> :
 					selected == "economy" ? <EconomyDocsComponent version={version} /> :
+					selected == "sessentials" ? <SEssentialsDocsComponent version={version} /> :
 					selected == "give" ? <GiveDocsComponent version={version} /> :
 					selected == "rank" ? <RankDocsComponent version={version} /> :
 				<></>}
