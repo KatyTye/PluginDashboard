@@ -26,30 +26,33 @@ export type AggregateVersion = {
 
 export type VersionMinAggregateOutputType = {
   id: string | null
-  version: string | null
   release: boolean | null
+  version: string | null
   note: string | null
+  downloadable: boolean | null
   createdAt: Date | null
   updatedAt: Date | null
 }
 
 export type VersionMaxAggregateOutputType = {
   id: string | null
-  version: string | null
   release: boolean | null
+  version: string | null
   note: string | null
+  downloadable: boolean | null
   createdAt: Date | null
   updatedAt: Date | null
 }
 
 export type VersionCountAggregateOutputType = {
   id: number
-  version: number
   release: number
+  version: number
   note: number
-  types: number
-  mcversions: number
+  downloadable: number
   changes: number
+  mcversions: number
+  types: number
   createdAt: number
   updatedAt: number
   _all: number
@@ -58,30 +61,33 @@ export type VersionCountAggregateOutputType = {
 
 export type VersionMinAggregateInputType = {
   id?: true
-  version?: true
   release?: true
+  version?: true
   note?: true
+  downloadable?: true
   createdAt?: true
   updatedAt?: true
 }
 
 export type VersionMaxAggregateInputType = {
   id?: true
-  version?: true
   release?: true
+  version?: true
   note?: true
+  downloadable?: true
   createdAt?: true
   updatedAt?: true
 }
 
 export type VersionCountAggregateInputType = {
   id?: true
-  version?: true
   release?: true
+  version?: true
   note?: true
-  types?: true
-  mcversions?: true
+  downloadable?: true
   changes?: true
+  mcversions?: true
+  types?: true
   createdAt?: true
   updatedAt?: true
   _all?: true
@@ -161,12 +167,13 @@ export type VersionGroupByArgs<ExtArgs extends runtime.Types.Extensions.Internal
 
 export type VersionGroupByOutputType = {
   id: string
-  version: string
   release: boolean
+  version: string
   note: string
-  types: string[]
-  mcversions: string[]
+  downloadable: boolean
   changes: string[]
+  mcversions: string[]
+  types: string[]
   createdAt: Date
   updatedAt: Date
   _count: VersionCountAggregateOutputType | null
@@ -194,24 +201,26 @@ export type VersionWhereInput = {
   OR?: Prisma.VersionWhereInput[]
   NOT?: Prisma.VersionWhereInput | Prisma.VersionWhereInput[]
   id?: Prisma.StringFilter<"Version"> | string
-  version?: Prisma.StringFilter<"Version"> | string
   release?: Prisma.BoolFilter<"Version"> | boolean
+  version?: Prisma.StringFilter<"Version"> | string
   note?: Prisma.StringFilter<"Version"> | string
-  types?: Prisma.StringNullableListFilter<"Version">
-  mcversions?: Prisma.StringNullableListFilter<"Version">
+  downloadable?: Prisma.BoolFilter<"Version"> | boolean
   changes?: Prisma.StringNullableListFilter<"Version">
+  mcversions?: Prisma.StringNullableListFilter<"Version">
+  types?: Prisma.StringNullableListFilter<"Version">
   createdAt?: Prisma.DateTimeFilter<"Version"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Version"> | Date | string
 }
 
 export type VersionOrderByWithRelationInput = {
   id?: Prisma.SortOrder
-  version?: Prisma.SortOrder
   release?: Prisma.SortOrder
+  version?: Prisma.SortOrder
   note?: Prisma.SortOrder
-  types?: Prisma.SortOrder
-  mcversions?: Prisma.SortOrder
+  downloadable?: Prisma.SortOrder
   changes?: Prisma.SortOrder
+  mcversions?: Prisma.SortOrder
+  types?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -221,24 +230,26 @@ export type VersionWhereUniqueInput = Prisma.AtLeast<{
   AND?: Prisma.VersionWhereInput | Prisma.VersionWhereInput[]
   OR?: Prisma.VersionWhereInput[]
   NOT?: Prisma.VersionWhereInput | Prisma.VersionWhereInput[]
-  version?: Prisma.StringFilter<"Version"> | string
   release?: Prisma.BoolFilter<"Version"> | boolean
+  version?: Prisma.StringFilter<"Version"> | string
   note?: Prisma.StringFilter<"Version"> | string
-  types?: Prisma.StringNullableListFilter<"Version">
-  mcversions?: Prisma.StringNullableListFilter<"Version">
+  downloadable?: Prisma.BoolFilter<"Version"> | boolean
   changes?: Prisma.StringNullableListFilter<"Version">
+  mcversions?: Prisma.StringNullableListFilter<"Version">
+  types?: Prisma.StringNullableListFilter<"Version">
   createdAt?: Prisma.DateTimeFilter<"Version"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Version"> | Date | string
 }, "id">
 
 export type VersionOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
-  version?: Prisma.SortOrder
   release?: Prisma.SortOrder
+  version?: Prisma.SortOrder
   note?: Prisma.SortOrder
-  types?: Prisma.SortOrder
-  mcversions?: Prisma.SortOrder
+  downloadable?: Prisma.SortOrder
   changes?: Prisma.SortOrder
+  mcversions?: Prisma.SortOrder
+  types?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   _count?: Prisma.VersionCountOrderByAggregateInput
@@ -251,96 +262,104 @@ export type VersionScalarWhereWithAggregatesInput = {
   OR?: Prisma.VersionScalarWhereWithAggregatesInput[]
   NOT?: Prisma.VersionScalarWhereWithAggregatesInput | Prisma.VersionScalarWhereWithAggregatesInput[]
   id?: Prisma.StringWithAggregatesFilter<"Version"> | string
-  version?: Prisma.StringWithAggregatesFilter<"Version"> | string
   release?: Prisma.BoolWithAggregatesFilter<"Version"> | boolean
+  version?: Prisma.StringWithAggregatesFilter<"Version"> | string
   note?: Prisma.StringWithAggregatesFilter<"Version"> | string
-  types?: Prisma.StringNullableListFilter<"Version">
-  mcversions?: Prisma.StringNullableListFilter<"Version">
+  downloadable?: Prisma.BoolWithAggregatesFilter<"Version"> | boolean
   changes?: Prisma.StringNullableListFilter<"Version">
+  mcversions?: Prisma.StringNullableListFilter<"Version">
+  types?: Prisma.StringNullableListFilter<"Version">
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Version"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Version"> | Date | string
 }
 
 export type VersionCreateInput = {
   id?: string
-  version: string
   release: boolean
+  version: string
   note?: string
-  types?: Prisma.VersionCreatetypesInput | string[]
-  mcversions?: Prisma.VersionCreatemcversionsInput | string[]
+  downloadable: boolean
   changes?: Prisma.VersionCreatechangesInput | string[]
+  mcversions?: Prisma.VersionCreatemcversionsInput | string[]
+  types?: Prisma.VersionCreatetypesInput | string[]
   createdAt?: Date | string
   updatedAt?: Date | string
 }
 
 export type VersionUncheckedCreateInput = {
   id?: string
-  version: string
   release: boolean
+  version: string
   note?: string
-  types?: Prisma.VersionCreatetypesInput | string[]
-  mcversions?: Prisma.VersionCreatemcversionsInput | string[]
+  downloadable: boolean
   changes?: Prisma.VersionCreatechangesInput | string[]
+  mcversions?: Prisma.VersionCreatemcversionsInput | string[]
+  types?: Prisma.VersionCreatetypesInput | string[]
   createdAt?: Date | string
   updatedAt?: Date | string
 }
 
 export type VersionUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  version?: Prisma.StringFieldUpdateOperationsInput | string
   release?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  version?: Prisma.StringFieldUpdateOperationsInput | string
   note?: Prisma.StringFieldUpdateOperationsInput | string
-  types?: Prisma.VersionUpdatetypesInput | string[]
-  mcversions?: Prisma.VersionUpdatemcversionsInput | string[]
+  downloadable?: Prisma.BoolFieldUpdateOperationsInput | boolean
   changes?: Prisma.VersionUpdatechangesInput | string[]
+  mcversions?: Prisma.VersionUpdatemcversionsInput | string[]
+  types?: Prisma.VersionUpdatetypesInput | string[]
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type VersionUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  version?: Prisma.StringFieldUpdateOperationsInput | string
   release?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  version?: Prisma.StringFieldUpdateOperationsInput | string
   note?: Prisma.StringFieldUpdateOperationsInput | string
-  types?: Prisma.VersionUpdatetypesInput | string[]
-  mcversions?: Prisma.VersionUpdatemcversionsInput | string[]
+  downloadable?: Prisma.BoolFieldUpdateOperationsInput | boolean
   changes?: Prisma.VersionUpdatechangesInput | string[]
+  mcversions?: Prisma.VersionUpdatemcversionsInput | string[]
+  types?: Prisma.VersionUpdatetypesInput | string[]
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type VersionCreateManyInput = {
   id?: string
-  version: string
   release: boolean
+  version: string
   note?: string
-  types?: Prisma.VersionCreatetypesInput | string[]
-  mcversions?: Prisma.VersionCreatemcversionsInput | string[]
+  downloadable: boolean
   changes?: Prisma.VersionCreatechangesInput | string[]
+  mcversions?: Prisma.VersionCreatemcversionsInput | string[]
+  types?: Prisma.VersionCreatetypesInput | string[]
   createdAt?: Date | string
   updatedAt?: Date | string
 }
 
 export type VersionUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  version?: Prisma.StringFieldUpdateOperationsInput | string
   release?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  version?: Prisma.StringFieldUpdateOperationsInput | string
   note?: Prisma.StringFieldUpdateOperationsInput | string
-  types?: Prisma.VersionUpdatetypesInput | string[]
-  mcversions?: Prisma.VersionUpdatemcversionsInput | string[]
+  downloadable?: Prisma.BoolFieldUpdateOperationsInput | boolean
   changes?: Prisma.VersionUpdatechangesInput | string[]
+  mcversions?: Prisma.VersionUpdatemcversionsInput | string[]
+  types?: Prisma.VersionUpdatetypesInput | string[]
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type VersionUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  version?: Prisma.StringFieldUpdateOperationsInput | string
   release?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  version?: Prisma.StringFieldUpdateOperationsInput | string
   note?: Prisma.StringFieldUpdateOperationsInput | string
-  types?: Prisma.VersionUpdatetypesInput | string[]
-  mcversions?: Prisma.VersionUpdatemcversionsInput | string[]
+  downloadable?: Prisma.BoolFieldUpdateOperationsInput | boolean
   changes?: Prisma.VersionUpdatechangesInput | string[]
+  mcversions?: Prisma.VersionUpdatemcversionsInput | string[]
+  types?: Prisma.VersionUpdatetypesInput | string[]
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -355,35 +374,38 @@ export type StringNullableListFilter<$PrismaModel = never> = {
 
 export type VersionCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  version?: Prisma.SortOrder
   release?: Prisma.SortOrder
+  version?: Prisma.SortOrder
   note?: Prisma.SortOrder
-  types?: Prisma.SortOrder
-  mcversions?: Prisma.SortOrder
+  downloadable?: Prisma.SortOrder
   changes?: Prisma.SortOrder
+  mcversions?: Prisma.SortOrder
+  types?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
 
 export type VersionMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  version?: Prisma.SortOrder
   release?: Prisma.SortOrder
+  version?: Prisma.SortOrder
   note?: Prisma.SortOrder
+  downloadable?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
 
 export type VersionMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  version?: Prisma.SortOrder
   release?: Prisma.SortOrder
+  version?: Prisma.SortOrder
   note?: Prisma.SortOrder
+  downloadable?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
 
-export type VersionCreatetypesInput = {
+export type VersionCreatechangesInput = {
   set: string[]
 }
 
@@ -391,11 +413,11 @@ export type VersionCreatemcversionsInput = {
   set: string[]
 }
 
-export type VersionCreatechangesInput = {
+export type VersionCreatetypesInput = {
   set: string[]
 }
 
-export type VersionUpdatetypesInput = {
+export type VersionUpdatechangesInput = {
   set?: string[]
   push?: string | string[]
 }
@@ -405,7 +427,7 @@ export type VersionUpdatemcversionsInput = {
   push?: string | string[]
 }
 
-export type VersionUpdatechangesInput = {
+export type VersionUpdatetypesInput = {
   set?: string[]
   push?: string | string[]
 }
@@ -414,65 +436,70 @@ export type VersionUpdatechangesInput = {
 
 export type VersionSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  version?: boolean
   release?: boolean
+  version?: boolean
   note?: boolean
-  types?: boolean
-  mcversions?: boolean
+  downloadable?: boolean
   changes?: boolean
+  mcversions?: boolean
+  types?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }, ExtArgs["result"]["version"]>
 
 export type VersionSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  version?: boolean
   release?: boolean
+  version?: boolean
   note?: boolean
-  types?: boolean
-  mcversions?: boolean
+  downloadable?: boolean
   changes?: boolean
+  mcversions?: boolean
+  types?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }, ExtArgs["result"]["version"]>
 
 export type VersionSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  version?: boolean
   release?: boolean
+  version?: boolean
   note?: boolean
-  types?: boolean
-  mcversions?: boolean
+  downloadable?: boolean
   changes?: boolean
+  mcversions?: boolean
+  types?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }, ExtArgs["result"]["version"]>
 
 export type VersionSelectScalar = {
   id?: boolean
-  version?: boolean
   release?: boolean
+  version?: boolean
   note?: boolean
-  types?: boolean
-  mcversions?: boolean
+  downloadable?: boolean
   changes?: boolean
+  mcversions?: boolean
+  types?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type VersionOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "version" | "release" | "note" | "types" | "mcversions" | "changes" | "createdAt" | "updatedAt", ExtArgs["result"]["version"]>
+export type VersionOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "release" | "version" | "note" | "downloadable" | "changes" | "mcversions" | "types" | "createdAt" | "updatedAt", ExtArgs["result"]["version"]>
 
 export type $VersionPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Version"
   objects: {}
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
-    version: string
     release: boolean
+    version: string
     note: string
-    types: string[]
-    mcversions: string[]
+    downloadable: boolean
     changes: string[]
+    mcversions: string[]
+    types: string[]
     createdAt: Date
     updatedAt: Date
   }, ExtArgs["result"]["version"]>
@@ -899,12 +926,13 @@ export interface Prisma__VersionClient<T, Null = never, ExtArgs extends runtime.
  */
 export interface VersionFieldRefs {
   readonly id: Prisma.FieldRef<"Version", 'String'>
-  readonly version: Prisma.FieldRef<"Version", 'String'>
   readonly release: Prisma.FieldRef<"Version", 'Boolean'>
+  readonly version: Prisma.FieldRef<"Version", 'String'>
   readonly note: Prisma.FieldRef<"Version", 'String'>
-  readonly types: Prisma.FieldRef<"Version", 'String[]'>
-  readonly mcversions: Prisma.FieldRef<"Version", 'String[]'>
+  readonly downloadable: Prisma.FieldRef<"Version", 'Boolean'>
   readonly changes: Prisma.FieldRef<"Version", 'String[]'>
+  readonly mcversions: Prisma.FieldRef<"Version", 'String[]'>
+  readonly types: Prisma.FieldRef<"Version", 'String[]'>
   readonly createdAt: Prisma.FieldRef<"Version", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"Version", 'DateTime'>
 }
