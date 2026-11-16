@@ -1,11 +1,11 @@
 "use client"
 
 import { useDownloadInfoData } from "@/src/components/contexts/downloads";
+import { IoArrowBack, IoArrowForward } from "react-icons/io5";
 import { useParams, useRouter } from "next/navigation";
 import type { downloadObject } from "@/src/lib/types";
 import Versions from "@/src/components/ui/Versions";
 import { findSpeficObject } from "@/src/lib/types";
-import { IoArrowBack } from "react-icons/io5";
 import { useEffect } from "react";
 import Link from "next/link";
 
@@ -18,16 +18,27 @@ export default function ChangelogContent() {
 	useEffect(() => {
 		if (!version) router.replace("/downloads")
 	}, [router, version])
-
+	
 	if (!version) return null
-
+	
 	if (downloadsList) {
 		const data: downloadObject = findSpeficObject(downloadsList, "version", version)
+		const currentVersion = downloadsList.find((v) => v.version === version)
+		const VersionID = currentVersion ? downloadsList.indexOf(currentVersion) : -1
+		const NextVersionID = VersionID-1
 
 		return ((Object.keys(data).length !== 0) && <>
-			<Link href={"/downloads"} className="flex tracking-wider gap-2 mt-10 items-center transition-all duration-500
-			focus:text-(--special-color) hover:text-(--special-color) mb-10" rel="alternate"><IoArrowBack />
+			<div className="flex mb-10 mt-10 justify-between">				
+				<Link href={"/downloads"} className="flex tracking-wider gap-2 items-center transition-all duration-500
+				focus:text-(--special-color) hover:text-(--special-color)" rel="alternate"><IoArrowBack />
 				<span>Return to downloads</span></Link>
+
+				{ NextVersionID >= 0 &&
+					<Link href={"/changelog/" + downloadsList[NextVersionID].version} className="flex tracking-wider gap-2 items-center transition-all
+					duration-500 focus:text-(--special-color) hover:text-(--special-color)" rel="alternate">
+					<span>Go to version {downloadsList[NextVersionID].version}</span><IoArrowForward /></Link>
+				}
+			</div>
 
 			<article className="flex flex-col">
 				<h1 className="text-4xl font-bold text-center flex self-center items-center gap-3">
