@@ -108,7 +108,7 @@ export default function DocumentationContent() {
 					<IoChevronDownOutline className={`transition-transform min-w-5 min-h-5 duration-300 ${
 						toggles.includes("Commands") ? "rotate-0" : "rotate-180"}`} />
 				</button>
-				<ol className="mt-2">
+				<ol className={`mt-2 overflow-hidden transition-all duration-500 ${toggles.includes("Commands") ? "h-0" : "h-12"}`}>
 					<li onClick={evt => changeSelected(evt)} className={`transition-all ml-2.5 pl-2.5 border-l-2 duration-500 cursor-pointer
 						${selected == "give" ? " text-(--special-color)" : ""}`}>Give</li>
 					<li onClick={evt => changeSelected(evt)} className={`transition-all ml-2.5 pl-2.5 border-l-2 duration-500 cursor-pointer
