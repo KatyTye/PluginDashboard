@@ -28,6 +28,12 @@ export function getUser(id: string) {
 	});
 }
 
+export function getUserByName(name: string) {
+	return prisma.user.findFirst({
+		where: { name }
+	});
+}
+
 export function updateUser(id: string, data: UserUpdateableType) {
 	return prisma.user.update({
 		where: { id },
