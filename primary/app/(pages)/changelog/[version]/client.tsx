@@ -106,6 +106,12 @@ export default function ChangelogContent() {
 				</section>
 			</article>
 
+			{ Number(currentVersion?.version.replaceAll(".", "")) <= 30 &&
+				<p className="mt-10 p-10 pt-5 pb-5 border-l-2 bg-[#ff000040] light:bg-[#ff000060] border-l-red-500">
+					Please note that this version does not support permissions. This issue is fixed in version 0.3.7 and later.
+				</p>
+			}
+
 			{data.downloadable ? <a href={`/files/sessentials-${version}.jar`} download={true}
 				className="w-full text-center ml-auto bg-(--special-color) mt-10 rounded-lg p-4 pl-10
 				pr-10 font-bold transition-all duration-500 hover:bg-amber-700 mb-10 light:text-white">
