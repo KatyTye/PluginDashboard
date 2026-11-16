@@ -12,6 +12,7 @@ import RankDocsComponent from "@/src/components/ui/docs-pages/Rank"
 import ApiDocsComponent from "@/src/components/ui/docs-pages/Api"
 import { useSearchParams } from "next/navigation"
 import { useEffect, useState } from "react"
+import SpawnDocsComponent from "@/src/components/ui/docs-pages/Spawn"
 
 export default function DocumentationContent() {
 	const BasicStages = ["intro", "setup", "installation"]
@@ -143,6 +144,7 @@ export default function DocumentationContent() {
 					selected == "installation" ? <InstallationDocsComponent /> :
 					selected == "api" ? <ApiDocsComponent version={version} /> :
 					selected == "economy" ? <EconomyDocsComponent version={version} /> :
+					selected == "spawn" ? <SpawnDocsComponent version={version} /> :
 					selected == "sessentials" ? <SEssentialsDocsComponent version={version} /> :
 					selected == "give" ? <GiveDocsComponent version={version} /> :
 					selected == "rank" ? <RankDocsComponent version={version} /> :
