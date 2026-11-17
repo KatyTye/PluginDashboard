@@ -1,5 +1,6 @@
 export type UserUpdateableType = {
 	active?: boolean,
+	token?: string,
 	RefreshToken?: string,
 	activation_key?: string,
 	email?: string,
