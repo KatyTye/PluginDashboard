@@ -48,6 +48,14 @@ export async function fetchLoginFromApi(username: string, password: string, reme
 						httpOnly: true,
 						path: "/"
 					})
+
+					cookieStore.set("SE_PROFILE_CACHE", JSON.stringify(fetchData.result), {
+						secure: process.env.NODE_ENV === "production",
+						expires: new Date(fetchData.tokens.validUntil),
+						sameSite: "lax",
+						httpOnly: true,
+						path: "/"
+					})
 				}
 			}
 			default: res = {

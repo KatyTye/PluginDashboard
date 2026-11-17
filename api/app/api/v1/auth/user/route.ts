@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import checkAuthority from "@/src/helpers/auth";
-import { getUserByName } from "@/src/dal/users";
+import { getUserByName, updateUser } from "@/src/dal/users";
 import { headers } from "next/headers";
 import { compare } from "bcrypt";
 import jwt from "jsonwebtoken";
@@ -15,7 +15,7 @@ export async function POST(request: NextRequest) {
 	}, {status: 400})
 
 	try {
-		const user = await getUserByName((header.get("user_name") || "").toLowerCase())
+		const user = await getUserByName((header.get("user_name") || ""))
 		const password = header.get("user_password") || ""
 
 		if (!user) return NextResponse.json({
@@ -29,13 +29,20 @@ export async function POST(request: NextRequest) {
 			"message": "You have entered the wrong email or password."
 		}, { status: 401, statusText: "You have entered the wrong email or password." })
 
-		const token = jwt.sign({}, secretKey, {
+		const token = jwt.sign({
+			"name": user.name,
+			"email": user.email.split("@")[1],
+			"plan": user.plan,
+			"createdAt": user.createdAt
+		}, secretKey, {
 			algorithm: "HS256",
 			subject: user.id,
 			issuer: "sessentials-page",
 			audience: "sessentials-api",
 			expiresIn: "15m",
 		})
+
+		await updateUser(user.id, { token: token })
 
 		return NextResponse.json({
 			"status": 200,
