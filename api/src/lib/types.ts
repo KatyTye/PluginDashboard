@@ -17,3 +17,5 @@ export type UserCreateType = {
 	name: string,
 	plan?: string
 }
+
+export type MailTypes = "deletedAccount" | "verifyAccount" | "verifyLogin" | "changedAccount"

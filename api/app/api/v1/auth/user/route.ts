@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
-import checkAuthority from "@/src/helpers/auth";
-import { getUserByName, updateUser } from "@/src/dal/users";
+import checkAuthority from "@/src/lib/helpers/auth";
+import { getUserByName, updateUser } from "@/src/lib/dal/users";
 import { headers } from "next/headers";
 import { compare } from "bcrypt";
 import jwt from "jsonwebtoken";

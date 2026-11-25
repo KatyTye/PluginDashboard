@@ -28,6 +28,12 @@ export function getUser(id: string) {
 	});
 }
 
+export function deleteUser(id: string) {
+	return prisma.user.delete({
+		where: { id }
+	});
+}
+
 export function getUserByName(name: string) {
 	return prisma.user.findFirst({
 		where: { name }

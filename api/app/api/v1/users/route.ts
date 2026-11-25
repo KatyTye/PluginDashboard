@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
-import checkAuthority from "@/src/helpers/auth";
-import { getUsers } from "@/src/dal/users";
+import checkAuthority from "@/src/lib/helpers/auth";
+import { getUsers } from "@/src/lib/dal/users";
 import { headers } from "next/headers";
 
 export async function GET(request: NextRequest) {
