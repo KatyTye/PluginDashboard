@@ -7,7 +7,6 @@ export function createUser(data: UserCreateType) {
 	return prisma.user.create({
 		data: {
 			"active": data.active,
-			"activation_key": data.activation_key,
 			"email": data.email,
 			"password": data.password,
 			"plan": data.plan,

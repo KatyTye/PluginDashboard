@@ -32,7 +32,7 @@ export type UserMinAggregateOutputType = {
   plan: string | null
   active: boolean | null
   token: string | null
-  activation_key: string | null
+  session_key: string | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -45,7 +45,7 @@ export type UserMaxAggregateOutputType = {
   plan: string | null
   active: boolean | null
   token: string | null
-  activation_key: string | null
+  session_key: string | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -58,7 +58,7 @@ export type UserCountAggregateOutputType = {
   plan: number
   active: number
   token: number
-  activation_key: number
+  session_key: number
   createdAt: number
   updatedAt: number
   _all: number
@@ -73,7 +73,7 @@ export type UserMinAggregateInputType = {
   plan?: true
   active?: true
   token?: true
-  activation_key?: true
+  session_key?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -86,7 +86,7 @@ export type UserMaxAggregateInputType = {
   plan?: true
   active?: true
   token?: true
-  activation_key?: true
+  session_key?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -99,7 +99,7 @@ export type UserCountAggregateInputType = {
   plan?: true
   active?: true
   token?: true
-  activation_key?: true
+  session_key?: true
   createdAt?: true
   updatedAt?: true
   _all?: true
@@ -185,7 +185,7 @@ export type UserGroupByOutputType = {
   plan: string
   active: boolean
   token: string | null
-  activation_key: string | null
+  session_key: string | null
   createdAt: Date
   updatedAt: Date
   _count: UserCountAggregateOutputType | null
@@ -219,7 +219,7 @@ export type UserWhereInput = {
   plan?: Prisma.StringFilter<"User"> | string
   active?: Prisma.BoolFilter<"User"> | boolean
   token?: Prisma.StringNullableFilter<"User"> | string | null
-  activation_key?: Prisma.StringNullableFilter<"User"> | string | null
+  session_key?: Prisma.StringNullableFilter<"User"> | string | null
   createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
   refreshTokens?: Prisma.RefreshTokenListRelationFilter
@@ -233,7 +233,7 @@ export type UserOrderByWithRelationInput = {
   plan?: Prisma.SortOrder
   active?: Prisma.SortOrder
   token?: Prisma.SortOrderInput | Prisma.SortOrder
-  activation_key?: Prisma.SortOrderInput | Prisma.SortOrder
+  session_key?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   refreshTokens?: Prisma.RefreshTokenOrderByRelationAggregateInput
@@ -250,7 +250,7 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   plan?: Prisma.StringFilter<"User"> | string
   active?: Prisma.BoolFilter<"User"> | boolean
   token?: Prisma.StringNullableFilter<"User"> | string | null
-  activation_key?: Prisma.StringNullableFilter<"User"> | string | null
+  session_key?: Prisma.StringNullableFilter<"User"> | string | null
   createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
   refreshTokens?: Prisma.RefreshTokenListRelationFilter
@@ -264,7 +264,7 @@ export type UserOrderByWithAggregationInput = {
   plan?: Prisma.SortOrder
   active?: Prisma.SortOrder
   token?: Prisma.SortOrderInput | Prisma.SortOrder
-  activation_key?: Prisma.SortOrderInput | Prisma.SortOrder
+  session_key?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   _count?: Prisma.UserCountOrderByAggregateInput
@@ -283,7 +283,7 @@ export type UserScalarWhereWithAggregatesInput = {
   plan?: Prisma.StringWithAggregatesFilter<"User"> | string
   active?: Prisma.BoolWithAggregatesFilter<"User"> | boolean
   token?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
-  activation_key?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
+  session_key?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"User"> | Date | string
 }
@@ -296,7 +296,7 @@ export type UserCreateInput = {
   plan?: string
   active?: boolean
   token?: string | null
-  activation_key?: string | null
+  session_key?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   refreshTokens?: Prisma.RefreshTokenCreateNestedManyWithoutUserInput
@@ -310,7 +310,7 @@ export type UserUncheckedCreateInput = {
   plan?: string
   active?: boolean
   token?: string | null
-  activation_key?: string | null
+  session_key?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   refreshTokens?: Prisma.RefreshTokenUncheckedCreateNestedManyWithoutUserInput
@@ -324,7 +324,7 @@ export type UserUpdateInput = {
   plan?: Prisma.StringFieldUpdateOperationsInput | string
   active?: Prisma.BoolFieldUpdateOperationsInput | boolean
   token?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  activation_key?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  session_key?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   refreshTokens?: Prisma.RefreshTokenUpdateManyWithoutUserNestedInput
@@ -338,7 +338,7 @@ export type UserUncheckedUpdateInput = {
   plan?: Prisma.StringFieldUpdateOperationsInput | string
   active?: Prisma.BoolFieldUpdateOperationsInput | boolean
   token?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  activation_key?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  session_key?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   refreshTokens?: Prisma.RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
@@ -352,7 +352,7 @@ export type UserCreateManyInput = {
   plan?: string
   active?: boolean
   token?: string | null
-  activation_key?: string | null
+  session_key?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -365,7 +365,7 @@ export type UserUpdateManyMutationInput = {
   plan?: Prisma.StringFieldUpdateOperationsInput | string
   active?: Prisma.BoolFieldUpdateOperationsInput | boolean
   token?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  activation_key?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  session_key?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -378,7 +378,7 @@ export type UserUncheckedUpdateManyInput = {
   plan?: Prisma.StringFieldUpdateOperationsInput | string
   active?: Prisma.BoolFieldUpdateOperationsInput | boolean
   token?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  activation_key?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  session_key?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -391,7 +391,7 @@ export type UserCountOrderByAggregateInput = {
   plan?: Prisma.SortOrder
   active?: Prisma.SortOrder
   token?: Prisma.SortOrder
-  activation_key?: Prisma.SortOrder
+  session_key?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -404,7 +404,7 @@ export type UserMaxOrderByAggregateInput = {
   plan?: Prisma.SortOrder
   active?: Prisma.SortOrder
   token?: Prisma.SortOrder
-  activation_key?: Prisma.SortOrder
+  session_key?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -417,7 +417,7 @@ export type UserMinOrderByAggregateInput = {
   plan?: Prisma.SortOrder
   active?: Prisma.SortOrder
   token?: Prisma.SortOrder
-  activation_key?: Prisma.SortOrder
+  session_key?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -465,7 +465,7 @@ export type UserCreateWithoutRefreshTokensInput = {
   plan?: string
   active?: boolean
   token?: string | null
-  activation_key?: string | null
+  session_key?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -478,7 +478,7 @@ export type UserUncheckedCreateWithoutRefreshTokensInput = {
   plan?: string
   active?: boolean
   token?: string | null
-  activation_key?: string | null
+  session_key?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -507,7 +507,7 @@ export type UserUpdateWithoutRefreshTokensInput = {
   plan?: Prisma.StringFieldUpdateOperationsInput | string
   active?: Prisma.BoolFieldUpdateOperationsInput | boolean
   token?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  activation_key?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  session_key?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -520,7 +520,7 @@ export type UserUncheckedUpdateWithoutRefreshTokensInput = {
   plan?: Prisma.StringFieldUpdateOperationsInput | string
   active?: Prisma.BoolFieldUpdateOperationsInput | boolean
   token?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  activation_key?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  session_key?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -564,7 +564,7 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   plan?: boolean
   active?: boolean
   token?: boolean
-  activation_key?: boolean
+  session_key?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   refreshTokens?: boolean | Prisma.User$refreshTokensArgs<ExtArgs>
@@ -579,7 +579,7 @@ export type UserSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   plan?: boolean
   active?: boolean
   token?: boolean
-  activation_key?: boolean
+  session_key?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }, ExtArgs["result"]["user"]>
@@ -592,7 +592,7 @@ export type UserSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   plan?: boolean
   active?: boolean
   token?: boolean
-  activation_key?: boolean
+  session_key?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }, ExtArgs["result"]["user"]>
@@ -605,12 +605,12 @@ export type UserSelectScalar = {
   plan?: boolean
   active?: boolean
   token?: boolean
-  activation_key?: boolean
+  session_key?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "email" | "password" | "plan" | "active" | "token" | "activation_key" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
+export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "email" | "password" | "plan" | "active" | "token" | "session_key" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
 export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   refreshTokens?: boolean | Prisma.User$refreshTokensArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
@@ -631,7 +631,7 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     plan: string
     active: boolean
     token: string | null
-    activation_key: string | null
+    session_key: string | null
     createdAt: Date
     updatedAt: Date
   }, ExtArgs["result"]["user"]>
@@ -1065,7 +1065,7 @@ export interface UserFieldRefs {
   readonly plan: Prisma.FieldRef<"User", 'String'>
   readonly active: Prisma.FieldRef<"User", 'Boolean'>
   readonly token: Prisma.FieldRef<"User", 'String'>
-  readonly activation_key: Prisma.FieldRef<"User", 'String'>
+  readonly session_key: Prisma.FieldRef<"User", 'String'>
   readonly createdAt: Prisma.FieldRef<"User", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"User", 'DateTime'>
 }

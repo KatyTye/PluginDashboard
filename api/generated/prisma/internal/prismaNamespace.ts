@@ -688,7 +688,7 @@ export const UserScalarFieldEnum = {
   plan: 'plan',
   active: 'active',
   token: 'token',
-  activation_key: 'activation_key',
+  session_key: 'session_key',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const

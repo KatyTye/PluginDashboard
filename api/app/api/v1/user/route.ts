@@ -16,26 +16,25 @@ export async function POST(request: NextRequest) {
 	}, {status: 400})
 
 	try {
-		const activationKey = header.get("user_key") || crypto.randomUUID().split("-")[0]
 		const mail = header.get("user_email") || ""
+		const username = header.get("user_name") || ""
 		const isActive = header.get("user_active") === "true"
+		const userPassword = await hash(header.get("user_password") || "", 12)
 
 		if (header.has("user_plan")) {
 			await createUser({
 				active: isActive,
 				email: mail,
-				password: await hash(header.get("user_password") || "", 12),
-				name: header.get("user_name") || "",
-				activation_key: activationKey,
+				password: userPassword,
+				name: username,
 				plan: header.get("user_plan") || "free"
 			})
 		} else {
 			await createUser({
 				active: isActive,
 				email: mail,
-				password: await hash(header.get("user_password") || "", 12),
-				name: header.get("user_name") || "",
-				activation_key: activationKey,
+				password: userPassword,
+				name: username,
 				plan: "free"
 			})
 		}
@@ -44,7 +43,7 @@ export async function POST(request: NextRequest) {
 			await SendEmail({
 				type: "verifyAccount",
 				reciver: mail,
-				content: btoa(`${mail}----${activationKey}`)
+				content: btoa(`${mail}---${username}`)
 			})
 		}
 

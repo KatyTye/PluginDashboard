@@ -2,7 +2,7 @@ export type UserUpdateableType = {
 	active?: boolean,
 	token?: string,
 	RefreshToken?: string,
-	activation_key?: string,
+	session_key?: string,
 	email?: string,
 	password?: string,
 	name?: string,
@@ -11,7 +11,6 @@ export type UserUpdateableType = {
 
 export type UserCreateType = {
 	active: boolean,
-	activation_key: string,
 	email: string,
 	password: string,
 	name: string,

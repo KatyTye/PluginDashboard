@@ -15,7 +15,7 @@ model User {
   plan           String         @default("free")
   active         Boolean        @default(false)
   token          String?        @default("")
-  activation_key String?        @default(uuid())
+  session_key    String?        @default("")
   createdAt      DateTime       @default(now())
   updatedAt      DateTime       @updatedAt
   refreshTokens  RefreshToken[]

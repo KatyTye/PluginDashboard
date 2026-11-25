@@ -4,6 +4,7 @@ import { getUserByName, updateUser } from "@/src/lib/dal/users";
 import { headers } from "next/headers";
 import { compare } from "bcrypt";
 import jwt from "jsonwebtoken";
+import { SendEmail } from "@/src/lib/helpers/nodemailer";
 
 export async function POST(request: NextRequest) {
 	const header = await headers()
@@ -23,37 +24,61 @@ export async function POST(request: NextRequest) {
 			"message": "Could not find any user with that username."
 		}, { status: 500, statusText: "Could not find any user with that username." })
 
-		if (!user || !user.active || !(await compare(password, user.password))) return NextResponse.json({
+		if (!user || !(await compare(password, user.password))) return NextResponse.json({
 			"success": false,
 			"status": 401,
-			"message": "You have entered the wrong email or password."
-		}, { status: 401, statusText: "You have entered the wrong email or password." })
+			"message": "You have entered the wrong username or password."
+		}, { status: 401, statusText: "You have entered the wrong username or password." })
 
-		const token = jwt.sign({
-			"name": user.name,
-			"email": user.email.split("@")[1],
-			"plan": user.plan,
-			"createdAt": user.createdAt
-		}, secretKey, {
-			algorithm: "HS256",
-			subject: user.id,
-			issuer: "sessentials-page",
-			audience: "sessentials-api",
-			expiresIn: "15m",
-		})
-
-		await updateUser(user.id, { token: token })
-
-		return NextResponse.json({
-			"status": 200,
+		if (!user.active) return NextResponse.json({
 			"success": false,
-			"message": "Login successful and token created.",
-			"tokens": {
-				"auth": token,
-				"decrypt": token,
-				"validUntil": Date.now() + 60 * 60 * 1000
-			}
-		}, { status: 200 })
+			"status": 302,
+			"message": "Your account's email address is not verified."
+		}, { status: 302, statusText: "Your account's email address is not verified." })
+
+		if (header.has("session_key") && header.get("session_key")?.toString() === user.session_key) {
+			const token = jwt.sign({
+				"name": user.name,
+				"email": user.email.split("@")[1],
+				"plan": user.plan,
+				"createdAt": user.createdAt
+			}, secretKey, {
+				algorithm: "HS256",
+				subject: user.id,
+				issuer: "sessentials-page",
+				audience: "sessentials-api",
+				expiresIn: "15m",
+			})
+	
+			await updateUser(user.id, { token: token, session_key: "" })
+	
+			return NextResponse.json({
+				"status": 200,
+				"success": false,
+				"message": "Login successful and token created.",
+				"tokens": {
+					"auth": token,
+					"decrypt": token,
+					"validUntil": Date.now() + 60 * 60 * 1000
+				}
+			}, { status: 200 })
+		} else {
+			const verifyCode = crypto.randomUUID().split("-")[0]
+
+			if (user.session_key === "") await updateUser(user.id, { session_key: verifyCode })
+
+			await SendEmail({
+				"type": "verifyLogin",
+				"reciver": user.email,
+				"content": verifyCode
+			})
+
+			return NextResponse.json({
+				"status": 201,
+				"success": false,
+				"message": "Login session created.",
+			}, { status: 201 })
+		}
 	} catch {
 		return NextResponse.json({
 			"success": false,

@@ -1,4 +1,4 @@
-import jsonDownloads from "@/src/data/downloads.json" with { type: "json" };
+import jsonDownloads from "@/src/lib/data/downloads.json" with { type: "json" };
 import { NextRequest } from "next/server";
 import { headers } from "next/headers";
 
