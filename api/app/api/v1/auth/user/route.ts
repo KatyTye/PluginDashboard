@@ -63,15 +63,18 @@ export async function POST(request: NextRequest) {
 				}
 			}, { status: 200 })
 		} else {
-			const verifyCode = crypto.randomUUID().split("-")[0]
+			if (user.session_key === "") {
+				const verifyCode = crypto.randomUUID().split("-")[0]
+				
+				await updateUser(user.id, { session_key: verifyCode })
+				
+				await SendEmail({
+					"type": "verifyLogin",
+					"reciver": user.email,
+					"content": verifyCode
+				})
+			}
 
-			if (user.session_key === "") await updateUser(user.id, { session_key: verifyCode })
-
-			await SendEmail({
-				"type": "verifyLogin",
-				"reciver": user.email,
-				"content": verifyCode
-			})
 
 			return NextResponse.json({
 				"status": 201,
