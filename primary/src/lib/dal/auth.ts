@@ -53,6 +53,7 @@ export async function fetchLoginFromApi(username: string, password: string, reme
 			}
 			default: res = {
 				...res,
+				status: fetchResponse.status,
 				message: fetchResponse.statusText
 			}
 		}

@@ -36,7 +36,7 @@ export async function POST(request: NextRequest) {
 			"message": "Your account's email address is not verified."
 		}, { status: 302, statusText: "Your account's email address is not verified." })
 
-		if (header.has("session_key")) {
+		if (header.has("session_key") && user.session_key !== "") {
 			if (header.get("session_key")?.toString() !== user.session_key) return NextResponse.json({
 				"status": 201,
 				"success": false,
