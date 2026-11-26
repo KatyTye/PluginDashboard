@@ -102,7 +102,9 @@ export async function GET(request: NextRequest) {
 			"message": "Here is the user.",
 			"result": user
 		}, { status: 200 })
-	} catch {
+	} catch (error) {
+		console.error("SOMETHING WENT WRONG:", error)
+
 		return NextResponse.json({
 			"success": false,
 			"message": "Could not find user."

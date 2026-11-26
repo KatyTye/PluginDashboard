@@ -1,10 +1,10 @@
+import { getUserByName, updateUser } from "@/src/lib/dal/users";
+import { SendEmail } from "@/src/lib/helpers/nodemailer";
 import { NextRequest, NextResponse } from "next/server";
 import checkAuthority from "@/src/lib/helpers/auth";
-import { getUserByName, updateUser } from "@/src/lib/dal/users";
 import { headers } from "next/headers";
 import { compare } from "bcrypt";
 import jwt from "jsonwebtoken";
-import { SendEmail } from "@/src/lib/helpers/nodemailer";
 
 export async function POST(request: NextRequest) {
 	const header = await headers()
@@ -87,7 +87,9 @@ export async function POST(request: NextRequest) {
 				"message": "Stopped for email verification.",
 			}, { status: 201 })
 		}
-	} catch {
+	} catch (error) {
+		console.error("SOMETHING WENT WRONG:", error)
+
 		return NextResponse.json({
 			"success": false,
 			"message": "Could not login to user."

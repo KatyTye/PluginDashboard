@@ -24,7 +24,9 @@ export async function GET(request: NextRequest) {
 				plan: user.plan
 			}))
 		}, { status: 200 })
-	} catch {
+	} catch (error) {
+		console.error("SOMETHING WENT WRONG:", error)
+
 		return NextResponse.json({
 			"success": false,
 			"message": "Could not get list of users."
