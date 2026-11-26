@@ -3,7 +3,7 @@
 import { cookies } from "next/headers"
 import { loginResponse } from "../types"
 
-export async function fetchLoginFromApi(username: string, password: string, remember: string) : Promise<loginResponse> {
+export async function fetchLoginFromApi(username: string, password: string, remember: string, code: string) : Promise<loginResponse> {
 	
 	let res: loginResponse = {
 		status: 500,
@@ -11,17 +11,16 @@ export async function fetchLoginFromApi(username: string, password: string, reme
 	}
 
 	try {
-
 		const fetchResponse = await fetch(process.env.FETCH_PATH + "/auth/user", {
-			method: "GET",
+			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
-				"username": username,
-				"password": password,
+				"user_name": username,
+				"user_password": password,
+				"session_key": code,
 				"remember": remember
 			}
 		})
-		
 		
 		switch (fetchResponse.status) {
 			case 200: {
@@ -54,11 +53,10 @@ export async function fetchLoginFromApi(username: string, password: string, reme
 			}
 			default: res = {
 				...res,
-				status: fetchResponse.status
-				//message: `${fetchResponse.status}: ` + fetchResponse.statusText
+				status: fetchResponse.status,
+				message: fetchResponse.statusText
 			}
 		}
-
 	} catch (error) {
 		console.error("Fetch Failed: ", error)
 	}

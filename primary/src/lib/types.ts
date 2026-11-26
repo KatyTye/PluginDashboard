@@ -20,6 +20,12 @@ export type loginResponse = {
 		auth: string,
 		decrypt: string,
 		validUntil: number
+	},
+	result?: {
+		"name": string,
+		"email": string,
+		"plan": string,
+		"createdAt": string
 	}
 }
 

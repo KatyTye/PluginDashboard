@@ -79,7 +79,8 @@ export const UserScalarFieldEnum = {
   password: 'password',
   plan: 'plan',
   active: 'active',
-  activation_key: 'activation_key',
+  token: 'token',
+  session_key: 'session_key',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
@@ -98,12 +99,13 @@ export type RefreshTokenScalarFieldEnum = (typeof RefreshTokenScalarFieldEnum)[k
 
 export const VersionScalarFieldEnum = {
   id: 'id',
-  version: 'version',
   release: 'release',
+  version: 'version',
   note: 'note',
-  types: 'types',
-  mcversions: 'mcversions',
+  downloadable: 'downloadable',
   changes: 'changes',
+  mcversions: 'mcversions',
+  types: 'types',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
