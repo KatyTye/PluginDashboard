@@ -9,12 +9,12 @@ export async function proxy(request: NextRequest) {
 		const cookies = request.cookies;
 		const token = cookies.has("SE_PROFILE_TOKEN");
 
-		if (!token || !pathname.includes("verify")) {
+		if (!token && pathname !== "/profile/login" && !pathname.includes("verify")) {
 			return NextResponse.redirect(new URL("/profile/login", request.url))
-		}
+		} else if (token && pathname.includes("login")) return NextResponse.redirect(new URL("/profile", request.url))
 	}
 }
 
 export const config = {
-	matcher: ["/profile", "/changelog"],
+	matcher: ["/profile", "/profile/:path", "/changelog"],
 }

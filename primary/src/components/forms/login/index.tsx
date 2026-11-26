@@ -15,7 +15,9 @@ const initialState: LoginFormState = {
 
 type errorsState = {
 	username?: { errors: string[] },
-	password?: { errors: string[] }
+	password?: { errors: string[] },
+	code?: { errors: string[] }
+
 }
 
 export default function LoginForm() {
@@ -23,6 +25,7 @@ export default function LoginForm() {
 	const [formState, formAction, pending] = useActionState<LoginFormState, FormData>(loginAction, initialState)
 
 	const [errors, setErrors] = useState<errorsState>({})
+	const [loginStage, setLoginStage] = useState(0)
 	const [username, setUsername] = useState("")
 	const [password, setPassword] = useState("")
 	const [checked, setChecked] = useState(false)
@@ -47,10 +50,14 @@ export default function LoginForm() {
 		setErrors({
 			...formState?.error
 		})
+		
+		if (formState.success && loginStage == 0) {
+			setLoginStage(1)
+		}
 	}, [formState])
 
 	return (<form action={formAction} className="mt-15 w-91 not-md:hidden">
-		<label htmlFor="username" className="flex flex-col">
+		<label htmlFor="username" className="flex flex-col" hidden={loginStage == 1}>
 			<span className="font-bold text-[1.1rem] w-fit">
 				Username:
 			</span>
@@ -58,7 +65,7 @@ export default function LoginForm() {
 		placeholder="Minecraft Username" value={username} className="w-full p-3.25 outline-0 bg-[#2d3134] light:bg-gray-400
 			rounded-2xl mt-2" onChange={elm => setUsername(elm.target.value)} />
 		</label>
-		<ul hidden={!errors?.username} className="mt-5">
+		<ul hidden={!errors?.username || loginStage == 1} className="mt-5">
 			{
 				errors?.username?.errors?.map((text, idx) => <li key={"login-username-" + idx}
 				className="list-disc ml-5 text-red-700 light:text-red-600 mt-2.5" role="alert">
@@ -67,7 +74,23 @@ export default function LoginForm() {
 			}
 		</ul>
 
-		<label htmlFor="password" className="flex flex-col mt-10">
+		<label htmlFor="code" className="flex flex-col" hidden={loginStage == 0}>
+			<span className="font-bold text-[1.1rem] w-fit">
+				Email verification code:
+			</span>
+		<input type="text" name="code" id="code" disabled={pending} placeholder="Enter code" autoComplete="off"
+			className="w-full p-3.25 outline-0 bg-[#2d3134] light:bg-gray-400 rounded-2xl mt-2" max={8} min={8} />
+		</label>
+		<ul hidden={!errors?.code || loginStage == 1}>
+			{
+				errors?.code?.errors?.map((text, idx) => <li key={"login-code-" + idx}
+				className="list-disc ml-5 text-red-700 light:text-red-600 mt-2.5" role="alert">
+					{text}
+				</li>)
+			}
+		</ul>
+
+		<label htmlFor="password" className="flex flex-col mt-10" hidden={loginStage == 1}>
 			<span className="font-bold text-[1.1rem] w-fit">
 				Password:
 			</span>
@@ -75,7 +98,7 @@ export default function LoginForm() {
 		placeholder="Password" value={password} className="w-full p-3.25 outline-0 bg-[#2d3134] light:bg-gray-400
 			rounded-2xl mt-2" onChange={elm => setPassword(elm.target.value)} />
 		</label>
-		<ul hidden={!errors?.password}>
+		<ul hidden={!errors?.password || loginStage == 1}>
 			{
 				errors?.password?.errors?.map((text, idx) => <li key={"login-password-" + idx}
 				className="list-disc ml-5 text-red-700 light:text-red-600 mt-2.5" role="alert">

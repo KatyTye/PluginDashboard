@@ -36,7 +36,13 @@ export async function POST(request: NextRequest) {
 			"message": "Your account's email address is not verified."
 		}, { status: 302, statusText: "Your account's email address is not verified." })
 
-		if (header.has("session_key") && header.get("session_key")?.toString() === user.session_key) {
+		if (header.has("session_key")) {
+			if (header.get("session_key")?.toString() !== user.session_key) return NextResponse.json({
+				"status": 201,
+				"success": false,
+				"message": "Stopped for email verification.",
+			}, { status: 201, statusText: "You have entered the wrong code." })
+
 			const token = jwt.sign({
 				"name": user.name,
 				"email": user.email.split("@")[1],
@@ -75,11 +81,10 @@ export async function POST(request: NextRequest) {
 				})
 			}
 
-
 			return NextResponse.json({
 				"status": 201,
 				"success": false,
-				"message": "Login session created.",
+				"message": "Stopped for email verification.",
 			}, { status: 201 })
 		}
 	} catch {

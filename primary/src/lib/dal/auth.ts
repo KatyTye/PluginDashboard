@@ -3,7 +3,7 @@
 import { cookies } from "next/headers"
 import { loginResponse } from "../types"
 
-export async function fetchLoginFromApi(username: string, password: string, remember: string) : Promise<loginResponse> {
+export async function fetchLoginFromApi(username: string, password: string, remember: string, code: string) : Promise<loginResponse> {
 	
 	let res: loginResponse = {
 		status: 500,
@@ -17,6 +17,7 @@ export async function fetchLoginFromApi(username: string, password: string, reme
 				"Content-Type": "application/json",
 				"user_name": username,
 				"user_password": password,
+				"session_key": code,
 				"remember": remember
 			}
 		})
@@ -48,23 +49,13 @@ export async function fetchLoginFromApi(username: string, password: string, reme
 						httpOnly: true,
 						path: "/"
 					})
-
-					cookieStore.set("SE_PROFILE_CACHE", JSON.stringify(fetchData.result), {
-						secure: process.env.NODE_ENV === "production",
-						expires: new Date(fetchData.tokens.validUntil),
-						sameSite: "lax",
-						httpOnly: true,
-						path: "/"
-					})
 				}
 			}
 			default: res = {
 				...res,
-				status: fetchResponse.status,
 				message: fetchResponse.statusText
 			}
 		}
-
 	} catch (error) {
 		console.error("Fetch Failed: ", error)
 	}
