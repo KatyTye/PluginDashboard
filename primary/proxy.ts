@@ -9,7 +9,7 @@ export async function proxy(request: NextRequest) {
 		const cookies = request.cookies;
 		const token = cookies.has("SE_PROFILE_TOKEN");
 
-		if (!token) {
+		if (!token || !pathname.includes("verify")) {
 			return NextResponse.redirect(new URL("/profile/login", request.url))
 		}
 	}

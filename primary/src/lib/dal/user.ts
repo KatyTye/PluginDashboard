@@ -22,3 +22,30 @@ export async function getUserInformation(): Promise<{success: boolean, message: 
 		"message": "Could not get any profile information."
 	}
 }
+
+export async function activateUser({code} : {code: string}) : Promise<boolean> {
+	if (code === "" || code === null || code === undefined) return false
+
+	const apiURL = process.env.FETCH_PATH
+	const internalKey = process.env.INTERNAL_LOGIN_KEY
+
+	if (!apiURL || !internalKey) return false
+
+	try {
+		const response = await fetch(apiURL + "/user/activate", {
+			method: "POST",
+			headers: {
+				"int_key": internalKey,
+				"activation_code": code
+			}
+		})
+
+		const data = await response.json()
+
+		console.log(data)
+
+		return data.success
+	} catch {
+		return false
+	}
+}
