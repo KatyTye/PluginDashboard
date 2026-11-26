@@ -6,8 +6,8 @@ CREATE TABLE "User" (
     "password" TEXT NOT NULL,
     "plan" TEXT NOT NULL DEFAULT 'free',
     "active" BOOLEAN NOT NULL DEFAULT false,
-    "token" TEXT,
-    "activation_key" TEXT,
+    "token" TEXT DEFAULT '',
+    "session_key" TEXT DEFAULT '',
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
 
